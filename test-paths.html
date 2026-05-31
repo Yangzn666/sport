@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路径测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-item {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background: #667eea;
+            color: white;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 GitHub Pages 路径诊断工具</h1>
+    
+    <div class="test-item">
+        <h3>当前URL信息</h3>
+        <p><strong>window.location.href:</strong> <span id="currentUrl"></span></p>
+        <p><strong>window.location.pathname:</strong> <span id="currentPath"></span></p>
+        <p><strong>window.location.origin:</strong> <span id="currentOrigin"></span></p>
+    </div>
+
+    <div class="test-item">
+        <h3>文件存在性测试</h3>
+        <button onclick="testFile('./index.html')">测试 ./index.html</button>
+        <button onclick="testFile('./THE_GOAT_黄佳炀_球王传奇.html')">测试 ./THE_GOAT_*.html</button>
+        <button onclick="testFile('./data/knowledge/运动生理学基础.md')">测试 Markdown文件</button>
+        <div id="fileTestResults"></div>
+    </div>
+
+    <div class="test-item">
+        <h3>链接测试</h3>
+        <p>点击以下链接测试跳转:</p>
+        <a href="./" style="display:inline-block; padding:10px 20px; background:#667eea; color:white; text-decoration:none; border-radius:4px; margin:5px;">跳转到 ./ (知识库)</a>
+        <a href="./THE_GOAT_黄佳炀_球王传奇.html" style="display:inline-block; padding:10px 20px; background:#764ba2; color:white; text-decoration:none; border-radius:4px; margin:5px;">跳转到荣耀殿堂</a>
+    </div>
+
+    <div class="test-item">
+        <h3>Console日志</h3>
+        <p>按F12打开控制台,查看详细信息</p>
+        <button onclick="showDetailedInfo()">显示详细信息</button>
+        <pre id="detailedInfo" style="background:#f0f0f0; padding:10px; border-radius:4px; overflow-x:auto;"></pre>
+    </div>
+
+    <script>
+        // 显示当前URL信息
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('currentPath').textContent = window.location.pathname;
+        document.getElementById('currentOrigin').textContent = window.location.origin;
+
+        // 测试文件是否存在
+        async function testFile(url) {
+            const resultsDiv = document.getElementById('fileTestResults');
+            resultsDiv.innerHTML += `<p class="info">测试: ${url}...</p>`;
+            
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                if (response.ok) {
+                    resultsDiv.innerHTML += `<p class="success">✅ ${url} - 存在 (状态码: ${response.status})</p>`;
+                } else {
+                    resultsDiv.innerHTML += `<p class="error">❌ ${url} - 不存在 (状态码: ${response.status})</p>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML += `<p class="error">❌ ${url} - 请求失败: ${error.message}</p>`;
+            }
+        }
+
+        // 显示详细信息
+        function showDetailedInfo() {
+            const info = {
+                'window.location': window.location,
+                'document.baseURI': document.baseURI,
+                'import.meta.url': import.meta.url || 'N/A (not in module)',
+                'Files in root': ['index.html', 'portal.html', 'THE_GOAT_黄佳炀_球王传奇.html']
+            };
+            
+            document.getElementById('detailedInfo').textContent = JSON.stringify(info, null, 2);
+            console.log('Detailed Info:', info);
+        }
+
+        // 自动测试所有关键文件
+        window.addEventListener('load', () => {
+            console.log('=== 路径诊断开始 ===');
+            console.log('Current URL:', window.location.href);
+            console.log('Base URI:', document.baseURI);
+            
+            // 测试关键文件
+            ['./index.html', './portal.html', './THE_GOAT_黄佳炀_球王传奇.html'].forEach(url => {
+                fetch(url, { method: 'HEAD' })
+                    .then(res => {
+                        console.log(`${url}: ${res.ok ? '✅ OK' : '❌ ' + res.status}`);
+                    })
+                    .catch(err => {
+                        console.error(`${url}: ❌ ${err.message}`);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
