@@ -1,0 +1,40 @@
+{
+  "name": "fitness-knowledge-base",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "search": "node scripts/searchAgent.js",
+    "search:v2": "node scripts/searchAgentV2.js",
+    "index": "node scripts/generateIndex.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "katex": "^0.17.0",
+    "lucide-react": "^1.17.0",
+    "mermaid": "^11.15.0",
+    "papaparse": "^5.5.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-markdown": "^10.1.0",
+    "react-mermaid2": "^0.1.4",
+    "react-router-dom": "^7.16.0",
+    "recharts": "^3.8.1",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.17",
+    "vite": "^8.0.14"
+  }
+}

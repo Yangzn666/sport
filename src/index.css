@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', 'Merriweather', serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-family: 'Noto Serif SC', 'Merriweather', serif;
+}
+
+/* 优化数学公式显示 */
+.katex {
+  font-size: 1.1em;
+  color: #1e293b;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  padding: 1em;
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+/* 优化 Mermaid 图表样式 */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
