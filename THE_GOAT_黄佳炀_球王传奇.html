@@ -1586,7 +1586,64 @@
             }
         }
 
-        /* 光晕效果 */
+        /* 音乐控制按钮 */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.8);
+        }
+
+        .music-control.playing {
+            animation: musicRotate 3s linear infinite, musicPulse 2s ease-in-out infinite;
+        }
+
+        .music-icon {
+            font-size: 1.5em;
+            color: #000;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 5px 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        @keyframes musicRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .music-control {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
+            .music-icon {
+                font-size: 1.3em;
+            }
+        }
         .halo {
             position: fixed;
             width: 400px;
@@ -1606,6 +1663,17 @@
     </style>
 </head>
 <body>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="无敌是多么寂寞.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放
+    </audio>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" id="musicControl" title="点击播放/暂停音乐">
+        <span class="music-icon"></span>
+    </div>
+
     <!-- 粒子背景 -->
     <div class="particles" id="particles"></div>
     <div class="flash"></div>
@@ -2499,6 +2567,42 @@
         window.addEventListener('load', () => {
             createParticles();
             createHalos();
+            
+            // 音乐控制
+            const bgMusic = document.getElementById('bgMusic');
+            const musicControl = document.getElementById('musicControl');
+            const musicIcon = musicControl.querySelector('.music-icon');
+            let isPlaying = false;
+            
+            // 设置初始图标
+            musicIcon.textContent = '🎵';
+            
+            // 点击控制音乐
+            musicControl.addEventListener('click', () => {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicIcon.textContent = '🎵';
+                    musicControl.classList.remove('playing');
+                    musicControl.title = '点击播放音乐';
+                } else {
+                    bgMusic.play().then(() => {
+                        musicIcon.textContent = '🎶';
+                        musicControl.classList.add('playing');
+                        musicControl.title = '点击暂停音乐';
+                    }).catch(err => {
+                        console.log('音乐播放失败:', err);
+                        alert('请手动点击播放音乐');
+                    });
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // 移动端默认静音，等待用户点击
+            if (window.innerWidth <= 768) {
+                bgMusic.volume = 0.5; // 移动端默认音量50%
+            } else {
+                bgMusic.volume = 0.3; // 电脑端默认音量30%
+            }
             
             // 检测是否为移动设备
             const isMobile = window.innerWidth <= 768;
