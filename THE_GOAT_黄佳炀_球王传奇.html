@@ -986,6 +986,12 @@
             height: 300px;
             object-fit: cover;
             display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item img.loaded {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
@@ -1038,6 +1044,8 @@
             height: auto;
             display: block;
             max-height: 400px;
+            background: #000;
+            transition: opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
@@ -1431,12 +1439,23 @@
 
         .particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: radial-gradient(circle, gold, orange, yellow);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, gold, orange);
             border-radius: 50%;
-            animation: float 15s infinite;
-            box-shadow: 0 0 20px gold, 0 0 40px orange, 0 0 60px yellow;
+            animation: float 20s infinite;
+            box-shadow: 0 0 10px gold;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        @media (max-width: 768px) {
+            .particle {
+                width: 6px;
+                height: 6px;
+                animation-duration: 25s;
+                box-shadow: 0 0 5px gold;
+            }
         }
 
         @keyframes float {
@@ -1510,13 +1529,23 @@
         /* 流星效果 */
         .meteor {
             position: fixed;
-            width: 3px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, #FFD700, #FFA500, #FF6347);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #FFD700);
             pointer-events: none;
             z-index: 9996;
             transform: rotate(45deg);
-            box-shadow: 0 0 30px #FFD700, 0 0 60px #FFA500, 0 0 90px #FF6347;
+            box-shadow: 0 0 10px #FFD700;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .meteor {
+                width: 1px;
+                height: 40px;
+                box-shadow: 0 0 5px #FFD700;
+                opacity: 0.4;
+            }
         }
 
         @keyframes meteorFall {
@@ -2299,16 +2328,17 @@
         // 创建粒子效果
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 120;
+            const isMobile = window.innerWidth <= 768;
+            const particleCount = isMobile ? 30 : 120;
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
                 
-                const size = Math.random() * 20 + 8;
+                const size = isMobile ? (Math.random() * 8 + 4) : (Math.random() * 20 + 8);
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
                 
@@ -2318,8 +2348,9 @@
 
         // 创建烟花效果
         function createFirework(x, y) {
-            const colors = ['#FFD700', '#FFA500', '#FF6347', '#FF1493', '#00FFFF', '#7FFF00', '#FF4500'];
-            const particleCount = 50;
+            const isMobile = window.innerWidth <= 768;
+            const colors = ['#FFD700', '#FFA500', '#FF6347', '#FF1493'];
+            const particleCount = isMobile ? 20 : 50;
             
             for (let i = 0; i < particleCount; i++) {
                 const firework = document.createElement('div');
@@ -2327,14 +2358,18 @@
                 firework.style.left = x + 'px';
                 firework.style.top = y + 'px';
                 firework.style.background = colors[Math.floor(Math.random() * colors.length)];
-                firework.style.boxShadow = `0 0 15px ${firework.style.background}, 0 0 30px ${firework.style.background}`;
+                firework.style.boxShadow = isMobile ? 
+                    `0 0 5px ${firework.style.background}` :
+                    `0 0 15px ${firework.style.background}, 0 0 30px ${firework.style.background}`;
                 
                 const angle = (Math.PI * 2 * i) / particleCount;
-                const velocity = Math.random() * 200 + 100;
+                const velocity = isMobile ? (Math.random() * 100 + 50) : (Math.random() * 200 + 100);
                 const tx = Math.cos(angle) * velocity;
                 const ty = Math.sin(angle) * velocity;
                 
-                firework.style.transition = 'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                firework.style.transition = isMobile ? 
+                    'all 1s ease-out' :
+                    'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                 document.body.appendChild(firework);
                 
                 setTimeout(() => {
@@ -2344,26 +2379,22 @@
                 
                 setTimeout(() => {
                     firework.remove();
-                }, 1500);
+                }, isMobile ? 1000 : 1500);
             }
         }
 
         // 自动放烟花
         function autoFirework() {
+            const isMobile = window.innerWidth <= 768;
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * window.innerHeight * 0.6;
             createFirework(x, y);
             
-            // 经常连续放多个
-            if (Math.random() > 0.3) {
+            // 移动端减少连续烟花
+            if (!isMobile && Math.random() > 0.3) {
                 setTimeout(() => {
                     createFirework(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.6);
                 }, 200);
-            }
-            if (Math.random() > 0.5) {
-                setTimeout(() => {
-                    createFirework(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.6);
-                }, 400);
             }
         }
 
@@ -2419,33 +2450,57 @@
             // 检测是否为移动设备
             const isMobile = window.innerWidth <= 768;
             
-            // 移动设备减少特效数量以提升性能
+            // 优化图片加载 - 添加淡入效果
+            const images = document.querySelectorAll('.photo-item img, .hero-photo');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
+            
+            // 预加载视频 - 移动端减少预加载
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                if (isMobile) {
+                    video.preload = 'none'; // 移动端不预加载，节省流量
+                } else {
+                    video.preload = 'metadata'; // 电脑端预加载元数据
+                }
+            });
+            
+            // 移动设备大幅减少特效数量以提升性能
             if (isMobile) {
-                // 减少粒子数量
+                // 大幅减少粒子数量 - 只保留20个
                 const particles = document.querySelectorAll('.particle');
                 particles.forEach((p, index) => {
-                    if (index > 40) p.remove();
+                    if (index > 20) p.remove();
                 });
                 
-                // 减少光晕数量
+                // 移除所有光晕 - 减少闪烁
                 const halos = document.querySelectorAll('.halo');
-                halos.forEach((h, index) => {
-                    if (index > 2) h.remove();
-                });
+                halos.forEach(h => h.remove());
+                
+                // 降低闪光效果强度
+                const flash = document.querySelector('.flash');
+                if (flash) flash.style.opacity = '0.3';
             }
             
-            // 定时放烟花 - 降低频率，让内容更清晰
-            setInterval(autoFirework, isMobile ? 3000 : 2000);
+            // 定时放烟花 - 大幅降低频率
+            setInterval(autoFirework, isMobile ? 6000 : 3000);
             
-            // 定时闪电 - 降低频率
+            // 定时闪电 - 大幅降低频率
             setInterval(() => {
-                if (Math.random() > (isMobile ? 0.8 : 0.7)) {
+                if (Math.random() > (isMobile ? 0.9 : 0.7)) {
                     createLightning();
                 }
-            }, isMobile ? 5000 : 4000);
+            }, isMobile ? 8000 : 5000);
             
-            // 定时流星 - 降低频率
-            setInterval(createMeteor, isMobile ? 4000 : 3000);
+            // 定时流星 - 大幅降低频率
+            setInterval(createMeteor, isMobile ? 6000 : 4000);
             
             // 添加滚动动画
             const observer = new IntersectionObserver((entries) => {
