@@ -4,7 +4,46 @@
 
 ---
 
-## ❌ 问题: "The site configured at this address does not contain the requested file"
+## ❌ 问题2: 知识库子页面无法访问(404错误)
+
+### 症状
+- 门户页面可以正常访问
+- 点击"健身知识库"后,进入首页正常
+- 但点击任何子页面(如文章、分类)时显示404错误
+
+### 原因分析
+
+**React Router默认使用Browser History模式**,这种模式需要服务器支持URL重写。但GitHub Pages是静态托管,**不支持服务器端路由配置**,导致子页面无法访问。
+
+### ✅ 解决方案(已修复)
+
+**将BrowserRouter改为HashRouter**
+
+在 `src/App.jsx` 中:
+
+```javascript
+// 修改前(不兼容GitHub Pages)
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// 修改后(兼容GitHub Pages)
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+```
+
+**原理**:
+- **BrowserRouter**: URL格式为 `/knowledge/运动生理学基础` (需要服务器支持)
+- **HashRouter**: URL格式为 `/#/knowledge/运动生理学基础` (使用URL hash,无需服务器支持)
+
+**优点**:
+- ✅ 完全兼容GitHub Pages等静态托管
+- ✅ 无需额外配置
+- ✅ 所有路由正常工作
+
+**缺点**:
+- ⚠️ URL中包含 `#` 符号(不影响功能)
+
+---
+
+## ❌ 问题1: "The site configured at this address does not contain the requested file"
 
 ### 原因分析
 
