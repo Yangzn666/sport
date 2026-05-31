@@ -24,7 +24,7 @@ const copyStaticFiles = () => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), copyStaticFiles()],
-  base: '/sport/', // GitHub Pages repository name
+  base: process.env.VERCEL ? '/' : '/sport/', // Vercel用根路径,GitHub Pages用/sport/
   publicDir: 'public',
   resolve: {
     alias: {
