@@ -8,7 +8,7 @@ const copyStaticFiles = () => {
   return {
     name: 'copy-static-files',
     closeBundle() {
-      const filesToCopy = ['portal.html', 'THE_GOAT_黄佳炀_球王传奇.html']
+      const filesToCopy = ['portal.html', 'THE_GOAT_黄佳_球王传奇.html']
       filesToCopy.forEach(file => {
         const src = path.resolve(__dirname, file)
         const dest = path.resolve(__dirname, 'dist', file)
