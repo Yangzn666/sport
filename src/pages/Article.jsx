@@ -63,7 +63,8 @@ export default function Article() {
 
     const file = findFile(articleIndex);
     if (file) {
-      const filePath = `/data/reports/${file.path}`;
+      const basePath = import.meta.env.BASE_URL || '/';
+      const filePath = `${basePath}data/reports/${file.path}`;
       fetch(filePath)
         .then(res => {
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);

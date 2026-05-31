@@ -168,9 +168,10 @@ export default function KnowledgeBase() {
 
   useEffect(() => {
     // 检查是否有子页面参数
+    const basePath = import.meta.env.BASE_URL || '/';
     const filePath = subPage 
-      ? `/data/knowledge/${category}_${subPage}.md`
-      : `/data/knowledge/${category}.md`;
+      ? `${basePath}data/knowledge/${category}_${subPage}.md`
+      : `${basePath}data/knowledge/${category}.md`;
     
     // 重置状态
     setLoading(true);
