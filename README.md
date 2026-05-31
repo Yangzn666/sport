@@ -34,7 +34,10 @@ npm install
 npm run dev
 ```
 
-访问 http://localhost:5173
+访问以下页面:
+- **门户页面**: http://localhost:5173/portal.html (推荐入口)
+- **健身知识库**: http://localhost:5173/
+- **荣耀殿堂**: http://localhost:5173/THE_GOAT_黄佳炀_球王传奇.html
 
 ### 构建生产版本
 
@@ -42,11 +45,24 @@ npm run dev
 npm run build
 ```
 
+构建后的文件在 `dist/` 目录,包含:
+- `index.html` - 健身知识库(React应用)
+- `portal.html` - 门户页面
+- `THE_GOAT_黄佳炀_球王传奇.html` - 荣耀殿堂
+
 ### 预览生产构建
 
 ```bash
 npm run preview
 ```
+
+### 部署到GitHub Pages
+
+已配置GitHub Actions自动部署:
+1. Push代码到main分支
+2. GitHub Actions自动触发构建和部署
+3. 等待2-3分钟
+4. 访问: https://yangzn666.github.io/sport/portal.html
 
 ---
 
