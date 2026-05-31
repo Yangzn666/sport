@@ -170,6 +170,78 @@ Cmd + Option + E
 
 ---
 
+## ❌ 问题4: 知识库显示"该分类的知识库正在由 AI 智能体自动生成"
+
+### 症状
+- 点击任何知识分类后,页面一直显示Loading状态
+- 最终显示提示:"该分类的知识库正在由 AI 智能体自动生成，请稍后刷新查看。"
+- 本地开发环境正常,GitHub Pages上无法加载内容
+
+### 原因分析
+
+**文件路径错误导致Markdown文件无法加载**:
+
+在GitHub Pages上,Vite配置了`base: '/sport/'`,所有资源路径都需要加上这个前缀。
+
+**错误的路径** (本地可用,线上失败):
+```javascript
+const filePath = `/data/knowledge/${category}.md`;
+// GitHub Pages实际访问: https://yangzn666.github.io/data/knowledge/xxx.md ❌
+```
+
+**正确的路径** (兼容本地和线上):
+```javascript
+const basePath = import.meta.env.BASE_URL || '/';
+const filePath = `${basePath}data/knowledge/${category}.md`;
+// 本地: /data/knowledge/xxx.md ✅
+// GitHub Pages: /sport/data/knowledge/xxx.md ✅
+```
+
+### ✅ 解决方案(已修复)
+
+在所有需要加载静态文件的页面中,使用`import.meta.env.BASE_URL`动态获取基础路径:
+
+#### 1. KnowledgeBase.jsx (知识库页面)
+
+```javascript
+useEffect(() => {
+  const basePath = import.meta.env.BASE_URL || '/';
+  const filePath = subPage 
+    ? `${basePath}data/knowledge/${category}_${subPage}.md`
+    : `${basePath}data/knowledge/${category}.md`;
+  
+  fetch(filePath)
+    .then(res => res.text())
+    .then(text => setContent(text))
+    .catch(err => {
+      console.error('Error loading knowledge base:', err);
+      setContent(`# 知识库构建中\n\n该分类的知识库正在由 AI 智能体自动生成...`);
+    });
+}, [category, subPage]);
+```
+
+#### 2. Article.jsx (文章详情页面)
+
+```javascript
+const file = findFile(articleIndex);
+if (file) {
+  const basePath = import.meta.env.BASE_URL || '/';
+  const filePath = `${basePath}data/reports/${file.path}`;
+  
+  fetch(filePath)
+    .then(res => res.text())
+    .then(text => setContent(text));
+}
+```
+
+**原理**:
+- `import.meta.env.BASE_URL` 在Vite中自动读取`vite.config.js`的`base`配置
+- 本地开发时,`BASE_URL`为`'/'`
+- GitHub Pages部署时,`BASE_URL`为`'/sport/'`
+- 确保所有环境下路径都正确
+
+---
+
 ## ❌ 问题1: "The site configured at this address does not contain the requested file"
 
 ### 原因分析
