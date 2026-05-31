@@ -237,7 +237,9 @@ export default function KnowledgeBase() {
       })
       .catch(err => {
         console.error('Error loading knowledge base:', err);
-        setContent(`# 知识库构建中\n\n该分类的知识库正在由 AI 智能体自动生成，请稍后刷新查看。`);
+        console.error('Attempted to load:', filePath);
+        console.error('Category:', category, 'Mapped to:', fileName);
+        setContent(`# 加载失败\n\n**请求路径**: \`${filePath}\`\n\n**错误信息**: ${err.message}\n\n请检查文件是否存在于 public/data/knowledge/ 目录中。`);
       })
       .finally(() => {
         setLoading(false);
