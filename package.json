@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx --yes vite build --outDir dist",
     "preview": "vite preview",
     "search": "node scripts/searchAgent.js",
     "search:v2": "node scripts/searchAgentV2.js",
