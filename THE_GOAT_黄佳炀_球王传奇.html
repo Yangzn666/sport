@@ -353,6 +353,10 @@
             object-fit: contain;
             display: block;
             border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            position: relative;
+            z-index: 2;
         }
 
         @media (max-width: 768px) {
@@ -987,11 +991,34 @@
             object-fit: cover;
             display: block;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: opacity 0.5s ease;
+            opacity: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* 骨架屏加载效果 */
+        .image-skeleton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 25%, #764ba2 50%, #667eea 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 15px;
+            z-index: 1;
             transition: opacity 0.3s ease;
         }
 
-        .photo-item img.loaded {
-            opacity: 1;
+        .hero-skeleton {
+            border-radius: 15px;
         }
 
         @media (max-width: 768px) {
@@ -1837,15 +1864,33 @@
             </h2>
             <div class="photo-gallery">
                 <div class="photo-item">
-                    <img src="微信图片_20260528153013_11348_279.jpg" alt="球场英姿" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjY3ZWVhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7ml6Dlm77niYfnqbrmjIfkuK3lvbE8L3RleHQ+PC9zdmc+'">
+                    <div class="image-skeleton"></div>
+                    <img src="微信图片_20260528153013_11348_279.jpg" 
+                         srcset="微信图片_20260528153013_11348_279.jpg 800w, 微信图片_20260528153013_11348_279.jpg 400w"
+                         sizes="(max-width: 768px) 100vw, 800px"
+                         alt="球场英姿" 
+                         loading="lazy"
+                         decoding="async">
                     <div class="photo-caption">⚽ 球场上的王者风范</div>
                 </div>
                 <div class="photo-item">
-                    <img src="微信图片_20260531002749_11370_279.jpg" alt="比赛时刻" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjY3ZWVhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7ml6Dlm77niYfnqbrmjIfkuK3lvbE8L3RleHQ+PC9zdmc+'">
+                    <div class="image-skeleton"></div>
+                    <img src="微信图片_20260531002749_11370_279.jpg" 
+                         srcset="微信图片_20260531002749_11370_279.jpg 800w, 微信图片_20260531002749_11370_279.jpg 400w"
+                         sizes="(max-width: 768px) 100vw, 800px"
+                         alt="比赛时刻" 
+                         loading="lazy"
+                         decoding="async">
                     <div class="photo-caption">🏆 关键时刻的精彩表现</div>
                 </div>
                 <div class="photo-item">
-                    <img src="微信图片_20260531131418_11378_279.jpg" alt="荣耀时刻" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjY3ZWVhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7ml6Dlm77niYfnqbrmjIfkuK3lvbE8L3RleHQ+PC9zdmc+'">
+                    <div class="image-skeleton"></div>
+                    <img src="微信图片_20260531131418_11378_279.jpg" 
+                         srcset="微信图片_20260531131418_11378_279.jpg 800w, 微信图片_20260531131418_11378_279.jpg 400w"
+                         sizes="(max-width: 768px) 100vw, 800px"
+                         alt="荣耀时刻" 
+                         loading="lazy"
+                         decoding="async">
                     <div class="photo-caption">🎯 胜利的喜悦</div>
                 </div>
             </div>
@@ -1855,7 +1900,15 @@
         <div class="hero-photo-section">
             <div class="hero-photo-container">
                 <div class="hero-photo-frame">
-                    <img src="微信图片_20260531151657_906_45.jpg" alt="球王风采" class="hero-photo" loading="eager" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjY3ZWVhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7ml6Dlm77niYfnqbrljZXkv6HmloflvYPmiYnnmoTmnInpmYQ8L3RleHQ+PC9zdmc+'">
+                    <div class="image-skeleton hero-skeleton"></div>
+                    <img src="微信图片_20260531151657_906_45.jpg" 
+                         srcset="微信图片_20260531151657_906_45.jpg 1200w, 微信图片_20260531151657_906_45.jpg 600w"
+                         sizes="(max-width: 768px) 100vw, 1200px"
+                         alt="球王风采" 
+                         class="hero-photo" 
+                         loading="eager"
+                         decoding="async"
+                         fetchpriority="high">
                     <div class="hero-overlay">
                         <div class="hero-text">
                             <div class="hero-crown">👑</div>
@@ -2508,6 +2561,15 @@
                     if (entry.isIntersecting) {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
+                        
+                        // 视频懒加载 - 滚到到视口才加载
+                        if (entry.target.classList.contains('video-item')) {
+                            const video = entry.target.querySelector('video');
+                            if (video && video.dataset.src) {
+                                video.src = video.dataset.src;
+                                video.load();
+                            }
+                        }
                     }
                 });
             }, { threshold: 0.1 });
@@ -2517,6 +2579,25 @@
                 el.style.transform = 'translateY(30px)';
                 el.style.transition = 'all 0.6s ease-out';
                 observer.observe(el);
+            });
+            
+            // 图片加载完成后隐藏骨架屏
+            document.querySelectorAll('.photo-item img, .hero-photo').forEach(img => {
+                const handleLoad = () => {
+                    img.style.opacity = '1';
+                    const skeleton = img.parentElement.querySelector('.image-skeleton');
+                    if (skeleton) {
+                        skeleton.style.opacity = '0';
+                        setTimeout(() => skeleton.remove(), 300);
+                    }
+                };
+                
+                if (img.complete) {
+                    handleLoad();
+                } else {
+                    img.addEventListener('load', handleLoad);
+                    img.addEventListener('error', handleLoad); // 错误时也隐藏骨架屏
+                }
             });
         });
 
