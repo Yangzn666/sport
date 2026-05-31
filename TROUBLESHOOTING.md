@@ -242,6 +242,71 @@ if (file) {
 
 ---
 
+## ❌ 问题5: 门户页面点击链接无反应
+
+### 症状
+- 访问 `portal.html` 正常显示
+- 点击"健身知识库"或"荣耀殿堂"卡片没有任何反应
+- 或者点击后跳转到错误的URL
+
+### 原因分析
+
+**路径配置错误**:
+
+在GitHub Pages上,所有文件都在 `/sport/` 目录下,但portal.html中使用了绝对路径或错误的路径。
+
+**错误示例**:
+```html
+<!-- ❌ 错误: 绝对路径,会跳转到根目录 -->
+<a href="/sport/">进入知识库</a>
+
+<!-- ❌ 错误: 相对路径缺少 ./ 前缀 -->
+<a href="THE_GOAT_黄佳炀_球王传奇.html">进入荣耀殿堂</a>
+```
+
+**正确做法**:
+```html
+<!-- ✅ 正确: 使用 ./ 表示当前目录 -->
+<a href="./">进入知识库</a>
+<a href="./THE_GOAT_黄佳炀_球王传奇.html">进入荣耀殿堂</a>
+```
+
+### ✅ 解决方案(已修复)
+
+在 [`portal.html`](file://d:\学习\健身\fitness-knowledge-base\portal.html) 中修改所有链接为相对路径:
+
+#### 1. 健身知识库链接
+
+```html
+<!-- 修改前 -->
+<div class="project-card" onclick="window.location.href='/sport/'">
+<a href="/sport/" class="project-link">进入知识库 →</a>
+
+<!-- 修改后 -->
+<div class="project-card" onclick="window.location.href='./'">
+<a href="./" class="project-link">进入知识库 →</a>
+```
+
+#### 2. 荣耀殿堂链接
+
+```html
+<!-- 修改前 -->
+<div class="project-card" onclick="window.location.href='THE_GOAT_黄佳炀_球王传奇.html'">
+<a href="THE_GOAT_黄佳炀_球王传奇.html" class="project-link">进入荣耀殿堂 →</a>
+
+<!-- 修改后 -->
+<div class="project-card" onclick="window.location.href='./THE_GOAT_黄佳炀_球王传奇.html'">
+<a href="./THE_GOAT_黄佳炀_球王传奇.html" class="project-link">进入荣耀殿堂 →</a>
+```
+
+**原理**:
+- `./` 表示当前目录
+- 在GitHub Pages上,portal.html位于 `/sport/portal.html`
+- `./` 会解析为 `/sport/`,正好是React应用的入口
+- `./THE_GOAT_*.html` 会解析为 `/sport/THE_GOAT_*.html`
+
+---
+
 ## ❌ 问题1: "The site configured at this address does not contain the requested file"
 
 ### 原因分析
