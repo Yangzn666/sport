@@ -50,7 +50,29 @@ npm run preview
 
 ---
 
-## 📁 项目结构
+## 🌐 项目结构
+
+本项目包含两个独立的展示页面:
+
+### 1. 门户页面 (portal.html)
+- **访问**: `https://yangzn666.github.io/sport/portal.html`
+- **功能**: 项目导航入口,展示所有个人项目
+- **内容**: 
+  - 健身与跑步科学知识库入口
+  - 球王黄佳炀荣耀殿堂入口
+
+### 2. 健身知识库 (index.html + React应用)
+- **访问**: `https://yangzn666.github.io/sport/`
+- **技术栈**: React 19 + Vite 8 + Tailwind CSS 4
+- **功能**: 完整的健身科学知识管理系统
+- **内容**: 运动生理学、力量训练、有氧耐力、营养恢复等
+
+### 3. 黄佳炀荣耀殿堂 (THE_GOAT_黄佳炀_球王传奇.html)
+- **访问**: `https://yangzn666.github.io/sport/THE_GOAT_黄佳炀_球王传奇.html`
+- **功能**: 个人成就展示页面
+- **内容**: 65+项荣誉、足球传奇、特效展示
+
+---
 
 ```
 fitness-knowledge-base/
