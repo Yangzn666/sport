@@ -8,6 +8,15 @@ import mermaid from 'mermaid';
 import { categories } from '../data/categories';
 import 'katex/dist/katex.min.css';
 
+// Category ID 到文件名的映射
+const categoryFileMap = {
+  'physiology': '运动生理学基础',
+  'running': '有氧训练与耐力科学',
+  'strength': '力量训练科学',
+  'nutrition': '营养与恢复科学',
+  'recovery': '周期化训练高级理论'
+};
+
 // Mermaid 渲染组件 - 优化版（支持点击放大）
 const Mermaid = ({ chart }) => {
   const [svg, setSvg] = useState('');
@@ -169,9 +178,13 @@ export default function KnowledgeBase() {
   useEffect(() => {
     // 检查是否有子页面参数
     const basePath = import.meta.env.BASE_URL || '/';
+    
+    // 将 category ID 转换为实际文件名
+    const fileName = categoryFileMap[category] || category;
+    
     const filePath = subPage 
-      ? `${basePath}data/knowledge/${category}_${subPage}.md`
-      : `${basePath}data/knowledge/${category}.md`;
+      ? `${basePath}data/knowledge/${fileName}_${subPage}.md`
+      : `${basePath}data/knowledge/${fileName}.md`;
     
     // 重置状态
     setLoading(true);
