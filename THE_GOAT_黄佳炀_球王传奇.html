@@ -1673,8 +1673,8 @@
     </audio>
 
     <!-- 音乐控制按钮 -->
-    <div class="music-control" id="musicControl" title="点击播放/暂停音乐">
-        <span class="music-icon"></span>
+    <div class="music-control" id="musicControl" title="点击播放/暂停音乐" style="pointer-events: auto;">
+        <span class="music-icon">🎵</span>
     </div>
 
     <!-- 粒子背景 -->
@@ -2577,24 +2577,36 @@
             const musicIcon = musicControl.querySelector('.music-icon');
             let isPlaying = false;
             
+            console.log('音乐控制初始化...');
+            console.log('音乐元素:', bgMusic);
+            console.log('按钮元素:', musicControl);
+            
             // 设置初始图标
             musicIcon.textContent = '🎵';
             
             // 点击控制音乐
-            musicControl.addEventListener('click', () => {
+            musicControl.addEventListener('click', (e) => {
+                e.stopPropagation(); // 阻止事件冒泡，避免触发烟花
+                e.preventDefault(); // 阻止默认行为
+                
+                console.log('音乐按钮被点击！当前状态:', isPlaying ? '播放中' : '已暂停');
+                
                 if (isPlaying) {
                     bgMusic.pause();
                     musicIcon.textContent = '🎵';
                     musicControl.classList.remove('playing');
                     musicControl.title = '点击播放音乐';
+                    console.log('音乐已暂停');
                 } else {
+                    console.log('尝试播放音乐...');
                     bgMusic.play().then(() => {
                         musicIcon.textContent = '🎶';
                         musicControl.classList.add('playing');
                         musicControl.title = '点击暂停音乐';
+                        console.log('音乐开始播放');
                     }).catch(err => {
-                        console.log('音乐播放失败:', err);
-                        alert('请手动点击播放音乐');
+                        console.error('音乐播放失败:', err);
+                        alert('音乐播放失败，请检查网络连接或稍后重试');
                     });
                 }
                 isPlaying = !isPlaying;
