@@ -1,0 +1,31 @@
+# 排除所有依赖和构建垃圾
+node_modules/
+dist/
+.vscode/
+.lingma/
+
+# 排除 Python 脚本和临时文件
+*.py
+*.bat
+*.txt
+*.md
+!项目说明.md
+
+# 排除旧项目文件夹
+personal-fitness-tracker/
+fitness-knowledge-base/
+public/
+scripts/
+src/
+海报/
+体脂秤数据/
+*.js
+!vite.config.js
+tailwind.config.js
+postcss.config.js
+package.json
+package-lock.json
+*.html
+!index.html
+!portal.html
+!THE_GOAT_黄佳炀_球王传奇.html
