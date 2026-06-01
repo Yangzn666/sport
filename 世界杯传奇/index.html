@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄佳炀的传奇宇宙 | THE GOAT PORTAL</title>
+    <style>
+        :root { --gold: #FFD700; }
+        body {
+            margin: 0; padding: 0; font-family: 'Microsoft YaHei', sans-serif;
+            background: #0f0c29; color: white; overflow-x: hidden;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        }
+        .portal-container {
+            max-width: 1200px; margin: 0 auto; padding: 50px 20px; text-align: center;
+        }
+        h1 {
+            font-size: 4em; color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow { from { text-shadow: 0 0 10px var(--gold); } to { text-shadow: 0 0 30px var(--gold), 0 0 10px white; } }
+        
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px; margin-top: 60px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 20px;
+            padding: 40px; transition: all 0.4s ease; cursor: pointer;
+            position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); }
+        .card h2 { color: var(--gold); margin-bottom: 15px; }
+        .card p { color: #ccc; line-height: 1.6; }
+        .icon { font-size: 3em; margin-bottom: 20px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <h1>THE GOAT 宇宙 🐐</h1>
+        <p style="color: #aaa; font-size: 1.2em;">黄佳炀的个人品牌与传奇史诗</p>
+
+        <div class="grid">
+            <!-- 模块 1: 健身知识库 -->
+            <a href="../fitness-knowledge-base/dist/index.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <span class="icon">🧠</span>
+                    <h2>健身知识库</h2>
+                    <p>前沿训练理论、营养科学与运动生理学深度解析。</p>
+                </div>
+            </a>
+
+            <!-- 模块 2: 荣誉殿堂 -->
+            <a href="../海报/THE_GOAT_黄佳炀_球王传奇.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <span class="icon">🏆</span>
+                    <h2>荣誉殿堂</h2>
+                    <p>黄佳炀个人成就展示，C罗风格的奢华视觉盛宴。</p>
+                </div>
+            </a>
+
+            <!-- 模块 3: 世界杯传奇小说 -->
+            <a href="./小说主页_最终典藏版_v3.html" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <span class="icon">⚽</span>
+                    <h2>世界杯夺冠传奇</h2>
+                    <p>方毅与四皇的史诗篇章，中国足球的黄金时代。</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

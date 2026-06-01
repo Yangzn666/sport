@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>🏆 中国队世界杯夺冠传奇 - THE GOAT 🚀</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #1a1a2e 75%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* 标题区 */
+        .header { text-align: center; padding: 60px 20px; animation: slideDown 1s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        .header h1 {
+            font-size: 4em; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            letter-spacing: 5px; font-weight: 900; margin-bottom: 20px;
+        }
+        .header p { font-size: 1.5em; color: #aaa; }
+
+        /* 章节列表 */
+        .chapter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 0; }
+        .chapter-card {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 30px; transition: all 0.4s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2); cursor: pointer;
+        }
+        .chapter-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); border-color: #FFD700;
+        }
+        .chapter-num { font-size: 3em; color: #FFD700; font-weight: 900; opacity: 0.3; margin-bottom: 10px; }
+        .chapter-title { font-size: 1.8em; font-weight: bold; margin-bottom: 15px; color: #fff; }
+        .chapter-desc { font-size: 1em; color: #ccc; line-height: 1.6; }
+
+        /* 阅读器 */
+        .reader-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 1000; display: none;
+            overflow-y: auto; padding: 40px 20px;
+        }
+        .reader-content {
+            max-width: 800px; margin: 0 auto; background: #1a1a1a;
+            padding: 50px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            line-height: 1.8; font-size: 1.1em; color: #eee;
+        }
+        .close-btn {
+            position: fixed; top: 20px; right: 30px; font-size: 3em;
+            color: #FFD700; cursor: pointer; z-index: 1001;
+        }
+        
+        /* 粒子背景 */
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .particle {
+            position: absolute; background: gold; border-radius: 50%;
+            animation: float 15s infinite; opacity: 0.3;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>⚽ 中国队世界杯夺冠传奇 ⚽</h1>
+            <p>方毅与四皇的黄金时代 | THE GOAT 史诗篇章</p>
+        </div>
+
+        <div class="chapter-grid" id="chapterList">
+            <!-- 章节卡片将通过 JS 动态生成 -->
+        </div>
+    </div>
+
+    <div class="reader-overlay" id="readerOverlay">
+        <div class="close-btn" onclick="closeReader()">×</div>
+        <div class="reader-content" id="readerContent"></div>
+    </div>
+
+    <script>
+        const chapters = [
+            "第一章：上古神人的召唤", "第二章：小组赛的惊魂时刻", "第三章：死亡之组的突围",
+            "第四章：宿命的对决（VS 法国）", "第五章：中场休息室的秘密", "第六章：八强战的奇迹（VS 法国）",
+            "第七章：半决赛的阴影（VS 阿根廷）", "第八章：决赛前夜的风波", "第九章：巅峰之战（上）", "第十章：SIUUU！新王登基"
+        ];
+
+        // 生成章节列表
+        const listContainer = document.getElementById('chapterList');
+        chapters.forEach((title, index) => {
+            const card = document.createElement('div');
+            card.className = 'chapter-card';
+            card.innerHTML = `
+                <div class="chapter-num">${index + 1}</div>
+                <div class="chapter-title">${title.split('：')[1] || title}</div>
+                <div class="chapter-desc">点击阅读完整章节，感受方毅与四皇的传奇征途...</div>
+            `;
+            card.onclick = () => openReader(index + 1);
+            listContainer.appendChild(card);
+        });
+
+        // 打开阅读器并加载 Markdown 内容
+        async function openReader(num) {
+            const overlay = document.getElementById('readerOverlay');
+            const content = document.getElementById('readerContent');
+            const fileName = chapters[num - 1].replace(/[()]/g, '') + '.md';
+            
+            try {
+                const response = await fetch(`./${fileName}`);
+                const text = await response.text();
+                // 简单的 Markdown 转 HTML
+                const html = text.replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                               .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                               .replace(/\n/gim, '<br>');
+                content.innerHTML = html;
+                overlay.style.display = 'block';
+            } catch (e) {
+                content.innerHTML = `<h1>章节加载中...</h1><p>请确保所有章节文件在同一目录下。</p>`;
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeReader() {
+            document.getElementById('readerOverlay').style.display = 'none';
+        }
+
+        // 粒子特效
+        for(let i=0; i<50; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.width = p.style.height = (Math.random() * 10 + 5) + 'px';
+            p.style.animationDelay = Math.random() * 10 + 's';
+            document.getElementById('particles').appendChild(p);
+        }
+    </script>
+</body>
+</html>

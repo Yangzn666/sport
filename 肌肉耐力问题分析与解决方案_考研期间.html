@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肌肉耐力问题分析与解决方案 - 考研期间训练优化</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+        
+        .header h1 { font-size: 22px; margin-bottom: 8px; font-weight: 700; }
+        .header .subtitle { font-size: 14px; opacity: 0.9; }
+        .header .date { font-size: 12px; margin-top: 10px; opacity: 0.8; }
+        
+        .content { padding: 15px; }
+        
+        .section { margin-bottom: 25px; animation: fadeIn 0.5s ease-in; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff6b6b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card .value { font-size: 24px; font-weight: 700; color: #ff6b6b; margin-bottom: 4px; }
+        .stat-card .label { font-size: 12px; color: #666; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 6px;
+            overflow-x: auto;
+            display: block;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        
+        table thead, table tbody { display: table; width: 100%; table-layout: fixed; }
+        
+        th {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+        
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+        
+        tr:nth-child(even) { background: #f8f9fa; }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .badge-danger { background: #f8d7da; color: #721c24; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-info { background: #cce5ff; color: #004085; }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #ff6b6b15 0%, #ee5a6f15 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .recommendation h4 { color: #ff6b6b; margin-bottom: 10px; font-size: 16px; }
+        .recommendation ul { list-style: none; padding-left: 0; }
+        .recommendation li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 13px;
+        }
+        .recommendation li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 20px; }
+            .content { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>💪 肌肉耐力问题深度分析与解决方案</h1>
+            <div class="subtitle">考研期间训练优化指南 | 减重增组策略</div>
+            <div class="date">报告生成时间：2026年5月31日 | 收件人：2142744149@qq.com</div>
+        </div>
+        
+        <div class="content">
+            <!-- Section 1: Problem Analysis -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>🔍</span>
+                    问题诊断：为什么会出现肌肉耐力下降？
+                </h2>
+                
+                <div class="highlight-box" style="border-left-color: #dc3545; background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);">
+                    <h4 style="color: #721c24; margin-bottom: 10px;">️ 您的症状描述</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>❌ 训练重量接近峰值，但很快疲劳</li>
+                        <li>❌ 间歇时间越来越长（恢复能力下降）</li>
+                        <li>❌ 学业繁忙+考研压力（皮质醇升高）</li>
+                        <li>❌ 跑步和健身交替进行（非全年持续）</li>
+                    </ul>
+                </div>
+                
+                <h3 style="color: #ff6b6b; margin: 20px 0 15px 0;">📊 核心问题分析</h3>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%); border-left-color: #ffc107;">
+                    <h4 style="color: #856404; margin-bottom: 10px;">1. 神经适应 vs 代谢适应失衡</h4>
+                    <p><strong>现象：</strong>您的力量（神经适应）很好，但耐力（代谢适应）不足。</p>
+                    <p style="margin-top: 8px;"><strong>科学依据：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li><strong>神经适应：</strong>前4-8周力量提升主要来自运动单位募集增加、放电频率提高</li>
+                        <li><strong>代谢适应：</strong>需要高次数（12-20次/组）、短休息（30-60秒）来刺激线粒体增生、毛细血管密度增加</li>
+                        <li><strong>您的问题：</strong>长期采用大重量低次数训练（6-10次/组），缺乏代谢压力刺激</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left-color: #2196f3;">
+                    <h4 style="color: #1565c0; margin-bottom: 10px;">2. 训练容量过高导致恢复不足</h4>
+                    <p><strong>您的现状：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>背部：~8组/周（优秀，但偏高）</li>
+                        <li>胸部：~5.5组/周（中等）</li>
+                        <li>腿部：~3组/周（偏低）</li>
+                        <li><strong>总容量：</strong>1605组 / 78周 ≈ 20.6组/周</li>
+                    </ul>
+                    <p style="margin-top: 8px;"><strong>问题：</strong>在学业压力下，过高的训练容量导致：</p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>❌ ATP-CP系统恢复不完全</li>
+                        <li>❌ 乳酸清除速度下降</li>
+                        <li>❌ 皮质醇水平升高（抑制睾酮）</li>
+                        <li>❌ 睡眠质量下降（影响恢复）</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-left-color: #e91e63;">
+                    <h4 style="color: #c2185b; margin-bottom: 10px;">3. 压力激素（皮质醇）的影响</h4>
+                    <p><strong>考研压力 → 皮质醇升高 → 肌肉分解加速</strong></p>
+                    <p style="margin-top: 8px;"><strong>生理机制：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>皮质醇促进蛋白质分解（尤其是快肌纤维）</li>
+                        <li>抑制mTOR信号通路（减少肌肉合成）</li>
+                        <li>降低胰岛素敏感性（影响糖原补充）</li>
+                        <li>干扰睡眠质量（进一步影响恢复）</li>
+                    </ul>
+                    <p style="margin-top: 8px; color: #c2185b;"><strong>表现：</strong>相同重量下更快疲劳、需要更长休息时间</p>
+                </div>
+            </div>
+            
+            <!-- Section 2: Solution Strategy -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>💡</span>
+                    解决方案：减重增组策略
+                </h2>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-left-color: #28a745;">
+                    <h4 style="color: #155724; margin-bottom: 10px;">✅ 核心原则：降低强度，提高容量效率</h4>
+                    <p><strong>目标：</strong>在保持力量的同时，显著提升肌肉耐力和恢复能力</p>
+                    
+                    <table style="margin-top: 15px;">
+                        <thead>
+                            <tr>
+                                <th>调整维度</th>
+                                <th>当前状态</th>
+                                <th>建议调整</th>
+                                <th>预期效果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>重量（强度）</strong></td>
+                                <td>85-95% 1RM</td>
+                                <td>降至 70-80% 1RM</td>
+                                <td>减少神经疲劳</td>
+                            </tr>
+                            <tr>
+                                <td><strong>次数</strong></td>
+                                <td>6-10次/组</td>
+                                <td>增至 12-15次/组</td>
+                                <td>提升代谢压力</td>
+                            </tr>
+                            <tr>
+                                <td><strong>组数</strong></td>
+                                <td>3-5组/动作</td>
+                                <td>维持 3-4组/动作</td>
+                                <td>控制总容量</td>
+                            </tr>
+                            <tr>
+                                <td><strong>休息时间</strong></td>
+                                <td>2-3分钟</td>
+                                <td>缩短至 60-90秒</td>
+                                <td>提高乳酸耐受</td>
+                            </tr>
+                            <tr>
+                                <td><strong>训练频率</strong></td>
+                                <td>1.9次/周</td>
+                                <td>增至 3次/周</td>
+                                <td>更均衡的刺激</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 style="color: #ff6b6b; margin: 25px 0 15px 0;">🎯 具体实施方案（考研期间优化版）</h3>
+                
+                <div class="recommendation">
+                    <h4>方案A：全身训练（每周3次，每次45-60分钟）⭐ 推荐</h4>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 10px;">最适合学业繁忙时期，时间效率高，恢复压力小</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>动作类型</th>
+                                <th>具体动作</th>
+                                <th>组数×次数</th>
+                                <th>重量</th>
+                                <th>休息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>复合推</strong></td>
+                                <td>坐姿推胸机</td>
+                                <td>3×12-15</td>
+                                <td>70% 1RM<br><small>(约50kg)</small></td>
+                                <td>60秒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>复合拉</strong></td>
+                                <td>高位下拉</td>
+                                <td>3×12-15</td>
+                                <td>70% 1RM<br><small>(约56kg)</small></td>
+                                <td>60秒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>下肢推</strong></td>
+                                <td>倒蹬机</td>
+                                <td>3×12-15</td>
+                                <td>70% 1RM<br><small>(约70kg)</small></td>
+                                <td>90秒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>肩推</strong></td>
+                                <td>哑铃推肩</td>
+                                <td>3×12-15</td>
+                                <td>70% 1RM<br><small>(约32kg)</small></td>
+                                <td>60秒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>划船</strong></td>
+                                <td>坐姿划船</td>
+                                <td>3×12-15</td>
+                                <td>70% 1RM<br><small>(约49kg)</small></td>
+                                <td>60秒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>核心</strong></td>
+                                <td>平板支撑+卷腹</td>
+                                <td>3×60秒+15次</td>
+                                <td>自重</td>
+                                <td>45秒</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p style="margin-top: 10px;"><strong>总时长：</strong>约50分钟（含热身拉伸）</p>
+                    <p><strong>优点：</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>✅ 每次训练覆盖全身，避免局部过度疲劳</li>
+                        <li>✅ 训练频率高（3次/周），但单次容量低（18组）</li>
+                        <li>✅ 重量轻，对神经系统压力小</li>
+                        <li>✅ 时间短，适合学业繁忙时期</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>方案B：上下肢分化（每周4次，每次40-50分钟）</h4>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 10px;">如果时间允许，可进一步提升训练效果</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>训练内容</th>
+                                <th>动作数量</th>
+                                <th>总组数</th>
+                                <th>时长</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>周一</strong></td>
+                                <td>上肢推（胸、肩、三头）</td>
+                                <td>4个动作</td>
+                                <td>12组</td>
+                                <td>40分钟</td>
+                            </tr>
+                            <tr>
+                                <td><strong>周二</strong></td>
+                                <td>下肢（股四头、腘绳肌、臀）</td>
+                                <td>4个动作</td>
+                                <td>12组</td>
+                                <td>40分钟</td>
+                            </tr>
+                            <tr>
+                                <td><strong>周四</strong></td>
+                                <td>上肢拉（背、二头）</td>
+                                <td>4个动作</td>
+                                <td>12组</td>
+                                <td>40分钟</td>
+                            </tr>
+                            <tr>
+                                <td><strong>周六</strong></td>
+                                <td>全身综合 + 核心</td>
+                                <td>5个动作</td>
+                                <td>15组</td>
+                                <td>50分钟</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Section 3: Scientific Basis -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span></span>
+                    科学依据：为什么减重增组有效？
+                </h2>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left-color: #4caf50;">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">1. 代谢压力理论（Metabolic Stress）</h4>
+                    <p><strong>研究来源：</strong>Schoenfeld BJ (2010) - The mechanisms of muscle hypertrophy and their application to resistance training</p>
+                    <p style="margin-top: 8px;"><strong>核心观点：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>代谢压力（乳酸堆积、细胞肿胀、激素释放）是肌肉肥大的三大机制之一</li>
+                        <li>高次数（12-20次/组）+ 短休息（30-60秒）→ 最大化代谢压力</li>
+                        <li>代谢压力刺激：生长激素、IGF-1释放、卫星细胞激活</li>
+                        <li><strong>对您的好处：</strong>提升肌肉耐力、改善乳酸清除能力、加速恢复</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left-color: #2196f3;">
+                    <h4 style="color: #1565c0; margin-bottom: 10px;">2. 训练容量与强度的平衡</h4>
+                    <p><strong>研究来源：</strong>Ralston GW et al. (2017) - Weekly Set Threshold for Resistance Training-Induced Muscle Hypertrophy</p>
+                    <p style="margin-top: 8px;"><strong>关键发现：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>每周每部位<strong>10-20组</strong>是增肌最佳范围</li>
+                        <li>超过20组/周 → 收益递减，恢复压力过大</li>
+                        <li><strong>您的优化：</strong>从高强度低容量（85% 1RM × 15组/周）→ 中强度高容量（70% 1RM × 18组/周）</li>
+                        <li>结果：总容量相似，但代谢刺激更强，神经疲劳更低</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left-color: #ff9800;">
+                    <h4 style="color: #e65100; margin-bottom: 10px;">3. 压力管理与皮质醇控制</h4>
+                    <p><strong>研究来源：</strong>Hill EE et al. (2008) - Salivary cortisol and testosterone responses to different resistance exercise protocols</p>
+                    <p style="margin-top: 8px;"><strong>实验结果：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>大重量训练（≥85% 1RM）→ 皮质醇显著升高（+40-60%）</li>
+                        <li>中等重量训练（65-75% 1RM）→ 皮质醇温和升高（+15-25%）</li>
+                        <li><strong>对考研学生的意义：</strong>降低训练强度可减少皮质醇累积，避免与学业压力叠加</li>
+                        <li>额外好处：改善睡眠质量、提升免疫力、稳定情绪</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-left-color: #9c27b0;">
+                    <h4 style="color: #7b1fa2; margin-bottom: 10px;">4. 线粒体适应与有氧能力提升</h4>
+                    <p><strong>研究来源：</strong>Holloszy JO (1967) - Biochemical adaptations in muscle. Effects of exercise on mitochondrial oxygen uptake and respiratory enzyme activity</p>
+                    <p style="margin-top: 8px;"><strong>生理机制：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>高次数训练（12-20次/组）→ 刺激线粒体增生</li>
+                        <li>线粒体密度增加 → ATP产生效率提升 → 肌肉耐力增强</li>
+                        <li>毛细血管密度增加 → 氧气输送能力提升 → 乳酸清除加速</li>
+                        <li><strong>实际效果：</strong>相同重量下能完成更多次数，间歇时间缩短</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 4: Expected Results -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>📈</span>
+                    预期效果与时间线
+                </h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="value">2周</div>
+                        <div class="label">适应期</div>
+                        <div class="badge badge-info">神经适应</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">4周</div>
+                        <div class="label">明显改善</div>
+                        <div class="badge badge-success">耐力提升</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">8周</div>
+                        <div class="label">显著进步</div>
+                        <div class="badge badge-success">恢复加速</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">12周</div>
+                        <div class="label">稳定状态</div>
+                        <div class="badge badge-success">全面优化</div>
+                    </div>
+                </div>
+                
+                <h3 style="color: #ff6b6b; margin: 20px 0 15px 0;">📅 阶段性变化预测</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>时间节点</th>
+                            <th>肌肉耐力</th>
+                            <th>间歇时间</th>
+                            <th>训练感受</th>
+                            <th>注意事项</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>第1-2周</strong></td>
+                            <td>适应新节奏</td>
+                            <td>略长于目标</td>
+                            <td>感觉"太轻"</td>
+                            <td>忍住不要加重！</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第3-4周</strong></td>
+                            <td>明显提升</td>
+                            <td>接近目标</td>
+                            <td>开始感到挑战</td>
+                            <td>可适当增加1-2次/组</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第5-8周</strong></td>
+                            <td>显著提升</td>
+                            <td>达到目标</td>
+                            <td>训练后疲劳感减轻</td>
+                            <td>可尝试缩短休息5-10秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第9-12周</strong></td>
+                            <td>稳定高水平</td>
+                            <td>短于目标</td>
+                            <td>轻松完成训练</td>
+                            <td>可考虑周期性回归大重量</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-left-color: #28a745;">
+                    <h4 style="color: #155724; margin-bottom: 10px;">🎯 量化目标（12周后）</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>✅ 相同重量下，次数提升 <strong>20-30%</strong>（如：50kg从12次→15-16次）</li>
+                        <li>✅ 间歇时间缩短 <strong>30-40%</strong>（如：从3分钟→1.5-2分钟）</li>
+                        <li>✅ 训练后疲劳感降低 <strong>50%</strong>（主观感受）</li>
+                        <li>✅ 睡眠质量改善（PSQI评分降低2-3分）</li>
+                        <li>✅ 白天精力更充沛（应对考研复习）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 5: Nutrition & Recovery -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>🍽️</span>
+                    营养与恢复支持（考研特别版）
+                </h2>
+                
+                <div class="recommendation">
+                    <h4> 饮食调整（针对皮质醇控制）</h4>
+                    <ul>
+                        <li><strong>早餐必吃：</strong>燕麦+鸡蛋+坚果（稳定血糖，降低皮质醇）</li>
+                        <li><strong>训练前1小时：</strong>香蕉+酸奶（提供快速能量，避免空腹训练）</li>
+                        <li><strong>训练后30分钟：</strong>乳清蛋白30g + 白面包2片（快速补充，启动恢复）</li>
+                        <li><strong>晚餐重点：</strong>三文鱼/鸡胸肉 + 糙米 + 西兰花（抗炎食物组合）</li>
+                        <li><strong>睡前加餐：</strong>希腊酸奶200g + 蜂蜜10g（酪蛋白缓释，助眠）</li>
+                        <li><strong>避免：</strong>咖啡下午3点后、高糖零食、油炸食品（加剧皮质醇分泌）</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>😴 睡眠优化（考研期间最关键）</h4>
+                    <ul>
+                        <li><strong>目标时长：</strong>每晚7-7.5小时（最低底线，不可低于6.5小时）</li>
+                        <li><strong>固定作息：</strong>尽量每天同一时间睡觉和起床（包括周末）</li>
+                        <li><strong>睡前1小时：</strong>远离电子屏幕（蓝光抑制褪黑素）</li>
+                        <li><strong>卧室环境：</strong>温度18-20°C、完全黑暗、安静</li>
+                        <li><strong>午休策略：</strong>如有条件，中午小睡20分钟（提升下午复习效率）</li>
+                        <li><strong>补充剂：</strong>镁300mg + 维生素D 2000IU（改善睡眠质量）</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation">
+                    <h4> 压力管理技巧</h4>
+                    <ul>
+                        <li><strong>深呼吸练习：</strong>每天早晚各5分钟（4秒吸气-7秒屏息-8秒呼气）</li>
+                        <li><strong>正念冥想：</strong>使用APP（如Headspace）每天10分钟</li>
+                        <li><strong>番茄工作法：</strong>学习25分钟 + 休息5分钟（避免长时间久坐）</li>
+                        <li><strong>社交支持：</strong>每周至少1次与朋友/家人交流（释放压力）</li>
+                        <li><strong>兴趣爱好：</strong>保留1项非学习的爱好（音乐、绘画等）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 6: Special Considerations -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>️</span>
+                    考研期间特殊注意事项
+                </h2>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%); border-left-color: #ffc107;">
+                    <h4 style="color: #856404; margin-bottom: 10px;">📅 考试时间表与训练调整</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>时间段</th>
+                                <th>训练策略</th>
+                                <th>目标</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>现在 - 9月</strong><br><small>（基础复习期）</small></td>
+                                <td>执行"减重增组"方案<br>每周3次，每次50分钟</td>
+                                <td>建立肌肉耐力基础<br>控制皮质醇水平</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10月 - 11月</strong><br><small>（强化复习期）</small></td>
+                                <td>维持训练量<br>可降至每周2次<br>每次40分钟</td>
+                                <td>保持训练习惯<br>避免过度疲劳</td>
+                            </tr>
+                            <tr>
+                                <td><strong>12月考前2周</strong><br><small>（冲刺期）</small></td>
+                                <td>减量训练<br>每周1-2次<br>每次30分钟<br>重量降至50% 1RM</td>
+                                <td>最小化训练压力<br>保证复习精力</td>
+                            </tr>
+                            <tr>
+                                <td><strong>考后1周</strong><br><small>（恢复期）</small></td>
+                                <td>主动恢复<br>散步、拉伸、瑜伽<br>无力量训练</td>
+                                <td>身心完全放松<br>为下一阶段做准备</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left-color: #2196f3;">
+                    <h4 style="color: #1565c0; margin-bottom: 10px;">💡 跑步与健身的协调策略</h4>
+                    <p><strong>您当前的模式：</strong>跑步和健身交替进行（各几个月）</p>
+                    <p style="margin-top: 8px;"><strong>考研期间建议：</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>✅ <strong>暂停跑步</strong>（直到考研结束）</li>
+                        <li>原因：跑步对神经系统压力大，会加剧疲劳</li>
+                        <li>替代：每周2次低强度有氧（快走、椭圆机）30分钟</li>
+                        <li>目的：保持心肺功能，但不增加恢复负担</li>
+                        <li>考研结束后：再恢复跑步训练，冲击半马PB</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-left-color: #e91e63;">
+                    <h4 style="color: #c2185b; margin-bottom: 10px;">🚨 警惕过度训练信号</h4>
+                    <p>在学业+训练双重压力下，需密切关注以下信号：</p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>❌ 静息心率连续3天升高 >5 bpm</li>
+                        <li>❌ 睡眠质量持续下降（入睡困难、早醒）</li>
+                        <li>❌ 训练表现持续下滑（相同重量次数减少）</li>
+                        <li>❌ 情绪波动大、易怒、焦虑</li>
+                        <li>❌ 免疫力下降（感冒、喉咙痛频繁）</li>
+                        <li>❌ 食欲异常（暴食或厌食）</li>
+                    </ul>
+                    <p style="margin-top: 10px; color: #c2185b;"><strong>应对措施：</strong>出现以上任意2项 → 立即减量训练50%，优先保证睡眠和复习</p>
+                </div>
+            </div>
+            
+            <!-- Section 7: Summary -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span>✨</span>
+                    总结与行动清单
+                </h2>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-left-color: #28a745;">
+                    <h4 style="color: #155724; margin-bottom: 10px;">✅ 核心结论</h4>
+                    <p>您的肌肉耐力下降和间歇时间延长，主要源于：</p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>1️⃣ 长期大重量低次数训练，缺乏代谢压力刺激</li>
+                        <li>2️⃣ 训练容量偏高，在学业压力下恢复不足</li>
+                        <li>3️ 皮质醇水平升高（考研压力+大重量训练叠加）</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>解决方案：</strong>减重增组策略（70% 1RM × 12-15次/组 × 60-90秒休息）</p>
+                    <p style="margin-top: 5px;"><strong>预期效果：</strong>12周后肌肉耐力提升20-30%，间歇时间缩短30-40%</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>📋 立即行动清单（从今天开始）</h4>
+                    <ul>
+                        <li><strong>第1步：</strong>重新测试1RM（或使用现有数据计算70%）</li>
+                        <li><strong>第2步：</strong>选择方案A（全身训练）或方案B（上下肢分化）</li>
+                        <li><strong>第3步：</strong>制定每周训练日程（固定时间，如周一、三、五晚8点）</li>
+                        <li><strong>第4步：</strong>准备训练日志（记录重量、次数、休息时间）</li>
+                        <li><strong>第5步：</strong>调整饮食（确保蛋白质140g/天，碳水充足）</li>
+                        <li><strong>第6步：</strong>优化睡眠（固定作息，睡前远离手机）</li>
+                        <li><strong>第7步：</strong>暂停跑步，改为每周2次低强度有氧</li>
+                        <li><strong>第8步：</strong>2周后评估进展，必要时微调</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); border-radius: 12px; color: white;">
+                    <h3 style="margin-bottom: 10px;">💪 给考研战士的寄语</h3>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        健身和考研一样，都是一场马拉松。<br>
+                        现在的"退一步"（降低重量），是为了将来"进两步"（全面提升）。<br><br>
+                        <strong>记住：</strong><br>
+                        训练不是负担，而是你应对压力的武器；<br>
+                        肌肉不是累赘，而是你精力的源泉；<br>
+                        坚持不是固执，而是你对自己的承诺。<br><br>
+                        相信科学的方法，保持耐心，<br>
+                        考研结束后，你会感谢现在坚持的自己！
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>📧 报告发送至：2142744149@qq.com</p>
+            <p>📅 下次评估时间：2026年6月14日（2周后）</p>
+            <p>🔄 报告更新频率：建议每4周进行一次完整评估</p>
+            <p style="margin-top: 10px; color: #999;">© 2026 健身知识库 | 数据驱动 · 科学训练 · 学业平衡</p>
+        </div>
+    </div>
+</body>
+</html>
