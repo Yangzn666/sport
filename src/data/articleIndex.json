@@ -1,0 +1,152 @@
+[
+  {
+    "name": "nutrition",
+    "type": "folder",
+    "children": [
+      {
+        "name": "genetic_determinants_of_white_matter_hyperintensit",
+        "type": "file",
+        "path": "nutrition/genetic_determinants_of_white_matter_hyperintensit.md",
+        "title": "Genetic determinants of white matter hyperintensities on brain scans: a systematic assessment of 19 candidate gene polymorphisms in 46 studies in 19,000 subjects."
+      },
+      {
+        "name": "international_society_of_sports_nutrition_position",
+        "type": "file",
+        "path": "nutrition/international_society_of_sports_nutrition_position.md",
+        "title": "International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine."
+      },
+      {
+        "name": "issn_exercise___sports_nutrition_review_update__re",
+        "type": "file",
+        "path": "nutrition/issn_exercise___sports_nutrition_review_update__re.md",
+        "title": "ISSN exercise & sports nutrition review update: research & recommendations."
+      }
+    ]
+  },
+  {
+    "name": "physiology",
+    "type": "folder",
+    "children": [
+      {
+        "name": "exercise_as_a_tool_to_mitigate_metabolic_disease_",
+        "type": "file",
+        "path": "physiology/exercise_as_a_tool_to_mitigate_metabolic_disease_.md",
+        "title": "Exercise as a tool to mitigate metabolic disease."
+      },
+      {
+        "name": "metabolic_flexibility_in_health_and_disease_",
+        "type": "file",
+        "path": "physiology/metabolic_flexibility_in_health_and_disease_.md",
+        "title": "Metabolic Flexibility in Health and Disease."
+      }
+    ]
+  },
+  {
+    "name": "recovery",
+    "type": "folder",
+    "children": [
+      {
+        "name": "sleep_and_athletic_performance__impacts_on_physica",
+        "type": "file",
+        "path": "recovery/sleep_and_athletic_performance__impacts_on_physica.md",
+        "title": "Sleep and Athletic Performance: Impacts on Physical Performance, Mental Performance, Injury Risk and Recovery, and Mental Health."
+      },
+      {
+        "name": "sleep_and_athletic_performance__the_effects_of_sle",
+        "type": "file",
+        "path": "recovery/sleep_and_athletic_performance__the_effects_of_sle.md",
+        "title": "Sleep and athletic performance: the effects of sleep loss on exercise performance, and physiological and cognitive responses to exercise."
+      },
+      {
+        "name": "the_value_of_sleep_on_athletic_performance__injury",
+        "type": "file",
+        "path": "recovery/the_value_of_sleep_on_athletic_performance__injury.md",
+        "title": "The Value of Sleep on Athletic Performance, Injury, and Recovery in the Young Athlete."
+      }
+    ]
+  },
+  {
+    "name": "running",
+    "type": "folder",
+    "children": [
+      {
+        "name": "biomechanics_of_running__a_systematic_review",
+        "type": "file",
+        "path": "running/biomechanics_of_running__a_systematic_review.md",
+        "title": "Biomechanics of Running: A Systematic Review"
+      },
+      {
+        "name": "impact_of_footwear_on_running_economy",
+        "type": "file",
+        "path": "running/impact_of_footwear_on_running_economy.md",
+        "title": "Impact of Footwear on Running Economy"
+      },
+      {
+        "name": "the_relationship_between_running_biomechanics_and_",
+        "type": "file",
+        "path": "running/the_relationship_between_running_biomechanics_and_.md",
+        "title": "The Relationship Between Running Biomechanics and Running Economy: A Systematic Review and Meta-Analysis of Observational Studies."
+      },
+      {
+        "name": "the_use_of_machine_learning_to_estimate_ground_rea",
+        "type": "file",
+        "path": "running/the_use_of_machine_learning_to_estimate_ground_rea.md",
+        "title": "The Use of Machine Learning to Estimate Ground Reaction Forces During Running: A Scoping Review of the Current Practices."
+      }
+    ]
+  },
+  {
+    "name": "strength",
+    "type": "folder",
+    "children": [
+      {
+        "name": "an_evidence_based_narrative_review_of_mechanisms_o",
+        "type": "file",
+        "path": "strength/an_evidence_based_narrative_review_of_mechanisms_o.md",
+        "title": "An Evidence-Based Narrative Review of Mechanisms of Resistance Exercise-Induced Human Skeletal Muscle Hypertrophy."
+      },
+      {
+        "name": "a_systematic_review__meta_analysis_and_meta_regres",
+        "type": "file",
+        "path": "strength/a_systematic_review__meta_analysis_and_meta_regres.md",
+        "title": "A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults."
+      },
+      {
+        "name": "educational_intervention_to_optimize_antibiotic_pr",
+        "type": "file",
+        "path": "strength/educational_intervention_to_optimize_antibiotic_pr.md",
+        "title": "Educational intervention to optimize antibiotic prescribing: a narrative review of recent evidence."
+      },
+      {
+        "name": "host__and_pathogen_related_determinants_of_pulmona",
+        "type": "file",
+        "path": "strength/host__and_pathogen_related_determinants_of_pulmona.md",
+        "title": "Host- and pathogen-related determinants of pulmonary  extrapulmonary tuberculosis."
+      },
+      {
+        "name": "hypertrophy",
+        "type": "file",
+        "path": "strength/hypertrophy.md",
+        "title": "肌肥大机制 (Hypertrophy Mechanisms)"
+      },
+      {
+        "name": "mechanisms_of_muscle_hypertrophy",
+        "type": "file",
+        "path": "strength/mechanisms_of_muscle_hypertrophy.md",
+        "title": "Mechanisms of Muscle Hypertrophy"
+      },
+      {
+        "name": "synergistic_effects_of_protein_intake_and_exercise",
+        "type": "file",
+        "path": "strength/synergistic_effects_of_protein_intake_and_exercise.md",
+        "title": "Synergistic Effects of Protein Intake and Exercise on Biomarkers of Sarcopenia: A Systematic Review."
+      },
+      {
+        "name": "the_mechanisms_of_muscle_hypertrophy_and_their_app",
+        "type": "file",
+        "path": "strength/the_mechanisms_of_muscle_hypertrophy_and_their_app.md",
+        "title": "The mechanisms of muscle hypertrophy and their application to resistance training."
+      }
+    ]
+  }
+]
