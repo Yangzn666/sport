@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', 'Merriweather', serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* 暗色模式 */
+.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark .prose {
+  color: #e2e8f0;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3 {
+  color: #f1f5f9;
+}
+
+.dark .prose p {
+  color: #cbd5e1;
+}
+
+.dark .prose strong {
+  color: #f8fafc;
+}
+
+.dark .prose blockquote {
+  color: #94a3b8;
+  border-left-color: #3b82f6;
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.dark .prose code {
+  color: #60a5fa;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.dark .prose pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.dark .prose table thead {
+  background-color: #1e293b;
+}
+
+.dark .prose table td,
+.dark .prose table th {
+  border-color: #334155;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-family: 'Noto Serif SC', 'Merriweather', serif;
+}
+
+/* 优化数学公式显示 */
+.katex {
+  font-size: 1.1em;
+  color: #1e293b;
+}
+
+.dark .katex {
+  color: #e2e8f0;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  padding: 1em;
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.dark .katex-display {
+  background: linear-gradient(to right, #1e293b, #0f172a);
+}
+
+/* 优化 Mermaid 图表样式 */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}

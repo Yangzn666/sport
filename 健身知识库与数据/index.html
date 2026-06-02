@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;">
+    <title>健身知识库与数据中心 - THE GOAT</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --gold: #FFD700;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .card h3 {
+            font-size: 1.3em;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .data-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .data-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-item h4 {
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .data-item p {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 健身知识库与数据中心</h1>
+            <p>科学训练 · 数据分析 · 知识管理</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🚀 完整交互式网站（推荐）</h2>
+            <div class="cards-grid">
+                <a href="http://localhost:5173/" class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <span class="card-icon">⚡</span>
+                    <h3 style="color: white;">启动完整知识库网站</h3>
+                    <p style="color: rgba(255,255,255,0.9);">点击此处打开完整的 React 交互式知识库网站（需要保持终端运行）</p>
+                    <span class="badge" style="background: white; color: #667eea;">本地服务器</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 知识库部分 -->
+        <div class="section">
+            <h2 class="section-title"> 健身科学知识库</h2>
+            <div class="cards-grid">
+                <a href="./知识库/运动生理学基础.md" class="card" target="_blank">
+                    <span class="card-icon"></span>
+                    <h3>运动生理学基础</h3>
+                    <p>肌肉纤维类型、VO2max、乳酸阈值等核心生理学概念与训练应用。</p>
+                    <span class="badge">基础理论</span>
+                </a>
+                
+                <a href="./知识库/力量训练科学.md" class="card" target="_blank">
+                    <span class="card-icon"></span>
+                    <h3>力量训练科学</h3>
+                    <p>超负荷原则、肌肉肥大机制、力量发展周期与技术细节。</p>
+                    <span class="badge">力量训练</span>
+                </a>
+                
+                <a href="./知识库/有氧训练与耐力科学.md" class="card" target="_blank">
+                    <span class="card-icon"></span>
+                    <h3>有氧训练与耐力</h3>
+                    <p>有氧耐力发展、跑步生物力学、训练计划与配速策略。</p>
+                    <span class="badge">有氧耐力</span>
+                </a>
+                
+                <a href="./知识库/营养与恢复科学.md" class="card" target="_blank">
+                    <span class="card-icon">🥗</span>
+                    <h3>营养与恢复科学</h3>
+                    <p>宏量营养素、补剂科学、睡眠恢复与过度训练预防。</p>
+                    <span class="badge">营养恢复</span>
+                </a>
+                
+                <a href="./知识库/周期化训练高级理论.md" class="card" target="_blank">
+                    <span class="card-icon"></span>
+                    <h3>周期化训练理论</h3>
+                    <p>线性周期、波动周期、板块周期等高级训练计划设计方法。</p>
+                    <span class="badge">进阶理论</span>
+                </a>
+                
+                <a href="./知识库/心理训练与认知表现.md" class="card" target="_blank">
+                    <span class="card-icon">🧘</span>
+                    <h3>心理训练与认知</h3>
+                    <p>运动心理学、注意力控制、压力管理与表现优化。</p>
+                    <span class="badge">心理训练</span>
+                </a>
+                
+                <a href="./知识库/2024-2026前沿研究汇总.md" class="card" target="_blank">
+                    <span class="card-icon">🔬</span>
+                    <h3>2024-2026 前沿研究</h3>
+                    <p>最新运动科学文献汇总，包含40+篇PubMed研究论文。</p>
+                    <span class="badge">最新研究</span>
+                </a>
+                
+                <a href="./知识库/README_快速导航.md" class="card" target="_blank">
+                    <span class="card-icon"></span>
+                    <h3>快速导航与索引</h3>
+                    <p>知识库完整目录、文献索引与快速查找指南。</p>
+                    <span class="badge">导航</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 个人数据部分 -->
+        <div class="section">
+            <h2 class="section-title">📈 个人训练数据</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <h4>📊 体脂秤数据</h4>
+                    <p>体重、体脂率、肌肉量等体成分追踪记录</p>
+                </div>
+                
+                <div class="data-item">
+                    <h4>🏃 跑步数据</h4>
+                    <p>配速、距离、心率等跑步训练记录</p>
+                </div>
+                
+                <div class="data-item">
+                    <h4>💪 力量训练数据</h4>
+                    <p>深蹲、硬拉、卧推等力量训练记录</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 杨臻宁 | 健身学习与数据追踪系统</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">基于 PubMed 文献 · 科学训练指南</p>
+        </div>
+    </div>
+    
+    <script>
+        // 添加点击动画效果
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
