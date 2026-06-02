@@ -1,0 +1,123 @@
+import { Link } from 'react-router-dom';
+import { categories } from '../data/categories';
+import { useState, useEffect } from 'react';
+import articleIndex from '../data/articleIndex.json';
+
+export default function Home() {
+  const [stats, setStats] = useState({
+    totalArticles: 0,
+    totalCategories: 5,
+    latestUpdate: '',
+  });
+
+  useEffect(() => {
+    let totalArticles = 0;
+    
+    articleIndex.forEach(cat => {
+      if (cat.type === 'folder' && cat.children) {
+        cat.children.forEach(article => {
+          if (article.type === 'file' && article.name !== 'intro') {
+            totalArticles++;
+          }
+        });
+      }
+    });
+
+    setStats({
+      totalArticles,
+      totalCategories: 5,
+      latestUpdate: new Date().toLocaleDateString('zh-CN'),
+    });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-900">
+      {/* Hero 区域 */}
+      <header className="border-b border-slate-200 dark:border-slate-700">
+        <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-slate-900 dark:text-white mb-4">
+              健身科学知识库
+            </h1>
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed px-4">
+              基于 PubMed 最新文献的自动化知识聚合平台，为您提供循证训练指导
+            </p>
+          </div>
+
+          {/* 统计信息 */}
+          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-8 md:mb-12">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">
+                {stats.totalArticles}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">精选文献</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">
+                {stats.totalCategories}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">知识领域</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">
+                {stats.latestUpdate}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">最近更新</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* 知识领域卡片 */}
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 dark:text-white mb-8 text-center">
+          📚 知识领域
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((category, index) => (
+            <Link
+              key={category.id}
+              to={`/knowledge/${category.id}`}
+              className="group bg-white dark:bg-slate-800 rounded-xl border-2 border-slate-200 dark:border-slate-700 p-6 hover:border-blue-500 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
+            >
+              <div className="text-4xl mb-4">{category.icon}</div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {category.name}
+              </h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+                {category.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mb-4">
+                {category.subcategories.slice(0, 3).map((sub, idx) => (
+                  <span key={idx} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-full">
+                    {sub}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
+                <span>{category.articleCount || 0} 篇文章</span>
+                <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  进入学习 →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </main>
+
+      {/* 底部 */}
+      <footer className="border-t border-slate-200 dark:border-slate-700 mt-12 py-8">
+        <div className="max-w-7xl mx-auto px-6 text-center text-slate-600 dark:text-slate-400">
+          <p className="mb-2">基于 PubMed 文献的健身科学知识库</p>
+          <p className="text-sm">为您提供最新、最权威的循证训练指导</p>
+        </div>
+      </footer>
+    </div>
+  );
+}

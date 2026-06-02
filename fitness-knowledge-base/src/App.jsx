@@ -5,7 +5,6 @@ import Category from './pages/Category';
 import Article from './pages/Article';
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
-import PWAInstallPrompt from './components/PWAInstallPrompt';
 import 'katex/dist/katex.min.css';
 
 // 懒加载页面组件
@@ -53,9 +52,6 @@ function App() {
             <Route path="/article/:category/:id" element={<LazyArticle />} />
           </Routes>
         </Suspense>
-        
-        {/* PWA安装提示 */}
-        <PWAInstallPrompt />
       </Router>
     </ThemeProvider>
   );
