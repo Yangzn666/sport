@@ -103,8 +103,31 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 30px;
             padding: 0 20px;
+        }
+
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-section-title {
+            font-size: 0.85em;
+            color: #ffd700;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
         }
 
         .nav-btn {
@@ -366,165 +389,138 @@
     <!-- 导航 -->
     <nav>
         <div class="nav-container">
-            <button class="nav-btn active" onclick="showChapter('intro')">故事简介</button>
-            <button class="nav-btn" onclick="showChapter('characters')">人物介绍</button>
-            <button class="nav-btn" onclick="showChapter('ch1')">第一章</button>
-            <button class="nav-btn" onclick="showChapter('ch2')">第二章</button>
-            <button class="nav-btn" onclick="showChapter('ch3')">第三章</button>
-            <button class="nav-btn" onclick="showChapter('ch4')">第四章</button>
-            <button class="nav-btn" onclick="showChapter('ch5')">第五章</button>
-            <button class="nav-btn" onclick="showChapter('ch6')">第六章</button>
-            <button class="nav-btn" onclick="showChapter('ch7')">第七章</button>
-            <button class="nav-btn" onclick="showChapter('ch8a')">第八章上</button>
-            <button class="nav-btn" onclick="showChapter('ch8b')">第八章下</button>
-            <button class="nav-btn" onclick="showChapter('ch9')">第九章</button>
-            <button class="nav-btn" onclick="showChapter('ch10')">第十章</button>
-            <button class="nav-btn" onclick="showChapter('ch11')">第十一章</button>
-            <button class="nav-btn" onclick="showChapter('ch12')">第十二章</button>
+            <div class="nav-section">
+                <span class="nav-section-title">第一卷</span>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" onclick="showChapter('ch1')">第1章</button>
+                    <button class="nav-btn" onclick="showChapter('ch2')">第2章</button>
+                    <button class="nav-btn" onclick="showChapter('ch3')">第3章</button>
+                    <button class="nav-btn" onclick="showChapter('ch4')">第4章</button>
+                </div>
+            </div>
+            <div class="nav-section">
+                <span class="nav-section-title">第二卷</span>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="showChapter('ch5')">第5章</button>
+                    <button class="nav-btn" onclick="showChapter('ch6')">第6章</button>
+                    <button class="nav-btn" onclick="showChapter('ch7')">第7章</button>
+                    <button class="nav-btn" onclick="showChapter('ch8')">第8章</button>
+                    <button class="nav-btn" onclick="showChapter('ch9')">第9章</button>
+                    <button class="nav-btn" onclick="showChapter('ch10')">第10章</button>
+                    <button class="nav-btn" onclick="showChapter('ch11')">第11章</button>
+                    <button class="nav-btn" onclick="showChapter('ch12a')">第12章上</button>
+                    <button class="nav-btn" onclick="showChapter('ch12b')">第12章下</button>
+                    <button class="nav-btn" onclick="showChapter('ch13')">第13章</button>
+                    <button class="nav-btn" onclick="showChapter('ch14')">第14章</button>
+                    <button class="nav-btn" onclick="showChapter('ch15')">第15章</button>
+                    <button class="nav-btn" onclick="showChapter('ch16')">第16章</button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- 主要内容 -->
     <main>
-        <!-- 故事简介 -->
-        <section id="intro" class="chapter active">
-            <h2 class="chapter-title">故事简介</h2>
-            <div class="chapter-content">
-                <p><strong>四皇传奇：从临安到世界</strong>讲述了一段关于友谊、成长、爱国与传承的足球史诗。</p>
-                        
-                <p>2018年，退役球员方毅回到家乡临安，成为临安中学的一名普通体育老师。这位曾经的贝肯鲍尔式自由人，光头形象鲜明，口头禅是“这球怎么踢踢的？”，喜欢摆大巴战术，常用541阵型，极端情况下甚至能摆出91神阵死防。</p>
-                        
-                <p>在这所学业压力巨大的重点高中，足球被视为“副科”，校队三年未获冠军。直到2021年秋天，四个性格迥异的少年出现了：</p>
-                        
-                <p><strong>叶泽辉</strong>——一个对足球充满热爱的左后卫，技术出色，意识优秀，只是有害怕点球和激烈对抗的弱点。但他从不逃避，一直在努力克服，是个很有魅力的人；</p>
-                        
-                <p><strong>黄佳炀</strong>——团队的领袖和精神核心，场上的指挥官。他与方毅有着两代临安球王的传承关系，沉稳冷静，是危机时刻的定海神针；</p>
-                        
-                <p><strong>陈家乐</strong>——曾经沉迷女色，但在兄弟们的开导下觉醒，最终戒掉了一切暧昧关系，成为了最愿意为团队奉献的人；</p>
-                        
-                <p><strong>杨臻宁</strong>——冷静的守护者，擅长不可思议的扑救。平时沉默专注，只在生死关头才会发出咆哮，更像布冯而非卡恩。</p>
-                        
-                <div class="divider">***</div>
-                        
-                <p>在方毅的指导下，四个少年帮助临安中学首次获得市级冠军，从此开启了一段传奇之旅。从校队到省队，从国青到国家队，他们一步步走来，最终站在了2026年世界杯的舞台上。</p>
-                        
-                <p>面对媒体的质疑、博彩集团的阴谋、VAR的误判、对手的歧视，他们用各自的方式诠释了足球的本质。方毅的541阵型和91神阵展现了战术的智慧，叶泽辉的魅力和努力赢得了队友的信任，黄佳炀的领袖气质稳定了军心，陈家乐的奉献精神感动了所有人，杨臻宁的不可思议扑救创造了奇迹。</p>
-                        
-                <div class="divider">***</div>
-                        
-                <p>这不仅是一个关于胜利的故事，更是一个关于<strong>友谊、成长、爱国与传承</strong>的故事。四个人从陌生到兄弟，从迷茫到坚定，从个人到集体，最终成为了中国足球的传奇。</p>
-                        
-                <p>方毅与黄佳炀的两代临安球王传承，更是整个故事的精神内核。正如方毅所说：“临安有两个球王：第一个是我，第二个是你。这不是荣誉，这是责任。”</p>
-                        
-                <p>而故事并没有结束。二十年后，他们回到临安中学，将这份精神传递给新一代的少年。因为<strong>黄金时代，已经来临。而这，仅仅是开始。</strong></p>
-            </div>
-        </section>
-
-        <!-- 人物介绍 -->
-        <section id="characters" class="chapter">
-            <h2 class="chapter-title">人物介绍</h2>
-            <div class="character-section">
-                <div class="character-grid">
-                    <div class="character-card">
-                        <h3 class="character-name">方毅</h3>
-                        <p class="character-trait">贝肯鲍尔式自由人 · 战术大师</p>
-                        <p class="character-desc">光头形象鲜明，曾是什么位置都能踢的全能球员。退役后回到临安中学任教，喜欢摆大巴，常用541阵型，极端情况下甚至能摆出91神阵。口头禅是“这球怎么踢踢的？”。他与黄佳炀有着两代临安球王的传承关系，是团队的精神导师。</p>
-                    </div>
-
-                    <div class="character-card">
-                        <h3 class="character-name">叶泽辉</h3>
-                        <p class="character-trait">闭眼防守 · 热爱足球的魅力左后卫</p>
-                        <p class="character-desc">临安中学左后卫，技术出色，意识优秀，传球精准。对足球充满热爱，只是有害怕点球和激烈对抗的弱点。但他从不逃避，一直在努力克服，是个很有魅力的人。队友们都说：“有叶泽辉在，我们就安心。”</p>
-                    </div>
-
-                    <div class="character-card">
-                        <h3 class="character-name">黄佳炀</h3>
-                        <p class="character-trait">时间静止 · 团队领袖</p>
-                        <p class="character-desc">临安中学中场核心，团队的精神核心和场上的指挥官。他的“省电模式”和“时间静止”让对手失去重心。与方毅有着两代临安球王的传承关系，沉稳冷静，是危机时刻的定海神针。被收养的身份让他陷入危机，但最终他明白：身份不重要，重要的是选择自己的道路。</p>
-                    </div>
-
-                    <div class="character-card">
-                        <h3 class="character-name">陈家乐</h3>
-                        <p class="character-trait">锦鲤属性 · 奉献精神</p>
-                        <p class="character-desc">临安中学前锋，身高一米九的校园偶像。曾经沉迷女色，但在兄弟们的开导下觉醒，最终戒掉了一切暧昧关系，成为了最愿意为团队奉献的人。他的“脚后跟进球”成为玄学传说。从迷茫到自由，他找到了真正的自己。</p>
-                    </div>
-
-                    <div class="character-card">
-                        <h3 class="character-name">杨臻宁</h3>
-                        <p class="character-trait">不可思议扑救 · 冷静守护者</p>
-                        <p class="character-desc">临安中学门将，身高只有一米八五。擅长不可思议的扑救，平时沉默专注，只在生死关头才会发出咆哮，更像布冯而非卡恩。从小被嘲笑身高不够，他用技术证明：身高不是决定门将水平的唯一因素。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- 第一章 -->
-        <section id="ch1" class="chapter">
-            <h2 class="chapter-title">第一章：上古神人的召唤</h2>
-            <div class="chapter-content" id="content-ch1">
-                <!-- 内容将通过JavaScript加载 -->
-            </div>
+        <section id="ch1" class="chapter active">
+            <h2 class="chapter-title">第一卷 第1章：方毅的回归</h2>
+            <div class="chapter-content" id="content-ch1"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
-        <!-- 其他章节占位 -->
+        <!-- 第二章 -->
         <section id="ch2" class="chapter">
-            <h2 class="chapter-title">第二章：小组赛的惊魂时刻</h2>
-            <div class="chapter-content" id="content-ch2"></div>
+            <h2 class="chapter-title">第一卷 第2章：四个少年的相遇</h2>
+            <div class="chapter-content" id="content-ch2"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第三章 -->
         <section id="ch3" class="chapter">
-            <h2 class="chapter-title">第三章：死亡之组的突围</h2>
-            <div class="chapter-content" id="content-ch3"></div>
+            <h2 class="chapter-title">第一卷 第3章：首次夺冠</h2>
+            <div class="chapter-content" id="content-ch3"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第四章 -->
         <section id="ch4" class="chapter">
-            <h2 class="chapter-title">第四章：宿命的对决</h2>
-            <div class="chapter-content" id="content-ch4"></div>
+            <h2 class="chapter-title">第一卷 第4章：传承的种子</h2>
+            <div class="chapter-content" id="content-ch4"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第五章（第二卷第1章） -->
         <section id="ch5" class="chapter">
-            <h2 class="chapter-title">第五章：中场休息室的秘密</h2>
-            <div class="chapter-content" id="content-ch5"></div>
+            <h2 class="chapter-title">第二卷 第1章：上古神人的召唤</h2>
+            <div class="chapter-content" id="content-ch5"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第六章（第二卷第2章） -->
         <section id="ch6" class="chapter">
-            <h2 class="chapter-title">第六章：八强战的奇迹</h2>
-            <div class="chapter-content" id="content-ch6"></div>
+            <h2 class="chapter-title">第二卷 第2章：小组赛的惊魂时刻</h2>
+            <div class="chapter-content" id="content-ch6"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第七章（第二卷第3章） -->
         <section id="ch7" class="chapter">
-            <h2 class="chapter-title">第七章：半决赛的阴影</h2>
-            <div class="chapter-content" id="content-ch7"></div>
+            <h2 class="chapter-title">第二卷 第3章：死亡之组的突围</h2>
+            <div class="chapter-content" id="content-ch7"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
-        <section id="ch8a" class="chapter">
-            <h2 class="chapter-title">第八章（上）：媒体风暴</h2>
-            <div class="chapter-content" id="content-ch8a"></div>
+        <!-- 第八章（第二卷第4章） -->
+        <section id="ch8" class="chapter">
+            <h2 class="chapter-title">第二卷 第4章：宿命的对决</h2>
+            <div class="chapter-content" id="content-ch8"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
-        <section id="ch8b" class="chapter">
-            <h2 class="chapter-title">第八章（下）：阴谋浮现</h2>
-            <div class="chapter-content" id="content-ch8b"></div>
-        </section>
-
+        <!-- 第九章（第二卷第5章） -->
         <section id="ch9" class="chapter">
-            <h2 class="chapter-title">第九章：巅峰之战（上）- 不公待遇</h2>
-            <div class="chapter-content" id="content-ch9"></div>
+            <h2 class="chapter-title">第二卷 第5章：中场休息室的秘密</h2>
+            <div class="chapter-content" id="content-ch9"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第十章（第二卷第6章） -->
         <section id="ch10" class="chapter">
-            <h2 class="chapter-title">第十章：巅峰之战（中）- 绝地反击</h2>
-            <div class="chapter-content" id="content-ch10"></div>
+            <h2 class="chapter-title">第二卷 第6章：八强战的奇迹</h2>
+            <div class="chapter-content" id="content-ch10"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
+        <!-- 第十一章（第二卷第7章） -->
         <section id="ch11" class="chapter">
-            <h2 class="chapter-title">第十一章：巅峰之战（下）- 新王登基</h2>
-            <div class="chapter-content" id="content-ch11"></div>
+            <h2 class="chapter-title">第二卷 第7章：半决赛的阴影</h2>
+            <div class="chapter-content" id="content-ch11"><!-- 内容将通过JavaScript加载 --></div>
         </section>
 
-        <section id="ch12" class="chapter">
-            <h2 class="chapter-title">第十二章：黄金时代的黎明</h2>
-            <div class="chapter-content" id="content-ch12"></div>
+        <!-- 第十二章上（第二卷第8章上） -->
+        <section id="ch12a" class="chapter">
+            <h2 class="chapter-title">第二卷 第8章（上）：决赛前夜的风波</h2>
+            <div class="chapter-content" id="content-ch12a"><!-- 内容将通过JavaScript加载 --></div>
+        </section>
+
+        <!-- 第十二章下（第二卷第8章下） -->
+        <section id="ch12b" class="chapter">
+            <h2 class="chapter-title">第二卷 第8章（下）：媒体风暴</h2>
+            <div class="chapter-content" id="content-ch12b"><!-- 内容将通过JavaScript加载 --></div>
+        </section>
+
+        <!-- 第十三章（第二卷第9章） -->
+        <section id="ch13" class="chapter">
+            <h2 class="chapter-title">第二卷 第9章：巅峰之战（上）- 不公待遇</h2>
+            <div class="chapter-content" id="content-ch13"><!-- 内容将通过JavaScript加载 --></div>
+        </section>
+
+        <!-- 第十四章（第二卷第10章） -->
+        <section id="ch14" class="chapter">
+            <h2 class="chapter-title">第二卷 第10章：巅峰之战（中）- 绝地反击</h2>
+            <div class="chapter-content" id="content-ch14"><!-- 内容将通过JavaScript加载 --></div>
+        </section>
+
+        <!-- 第十五章（第二卷第11章） -->
+        <section id="ch15" class="chapter">
+            <h2 class="chapter-title">第二卷 第11章：巅峰之战（下）- 新王登基</h2>
+            <div class="chapter-content" id="content-ch15"><!-- 内容将通过JavaScript加载 --></div>
+        </section>
+
+        <!-- 第十六章（第二卷第12章） -->
+        <section id="ch16" class="chapter">
+            <h2 class="chapter-title">第二卷 第12章：黄金时代的黎明</h2>
+            <div class="chapter-content" id="content-ch16"><!-- 内容将通过JavaScript加载 --></div>
         </section>
     </main>
 
