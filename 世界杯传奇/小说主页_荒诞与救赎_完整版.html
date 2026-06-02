@@ -95,6 +95,33 @@
             backdrop-filter: blur(10px);
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        nav.collapsed {
+            max-height: 60px;
+            padding: 10px 0;
+        }
+
+        nav.expanded {
+            max-height: 500px;
+        }
+
+        .nav-toggle {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            z-index: 101;
         }
 
         .nav-container {
@@ -363,11 +390,55 @@
 
             .chapter-content {
                 font-size: 1em;
+                line-height: 1.9;
+            }
+
+            /* 移动端导航优化 */
+            nav {
+                position: fixed;
+                width: 100%;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            nav.collapsed .nav-container {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            nav.expanded .nav-container {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                max-height: 400px;
+                overflow-y: auto;
+            }
+
+            .nav-section {
+                width: 100%;
+            }
+
+            .nav-buttons {
+                gap: 6px;
             }
 
             .nav-btn {
                 padding: 6px 12px;
-                font-size: 0.8em;
+                font-size: 0.85em;
+            }
+
+            header {
+                padding: 60px 15px 30px;
+            }
+
+            main {
+                padding: 10px 15px 40px;
             }
         }
 
@@ -401,7 +472,8 @@
     </header>
 
     <!-- 导航 -->
-    <nav>
+    <nav id="mainNav" class="collapsed">
+        <button class="nav-toggle" id="navToggle" onclick="toggleNav()">☰</button>
         <div class="nav-container">
             <div class="nav-section">
                 <span class="nav-section-title">第一卷</span>
@@ -2763,31 +2835,61 @@
             }
         }
 
-        // 显示章节
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+
+        // 切换导航栏（移动端）
+        function toggleNav() {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.getElementById('navToggle');
+            
+            if (nav.classList.contains('collapsed')) {
+                nav.classList.remove('collapsed');
+                nav.classList.add('expanded');
+                toggle.textContent = '✕';
+            } else {
+                nav.classList.remove('expanded');
+                nav.classList.add('collapsed');
+                toggle.textContent = '☰';
+            }
+        }
+
+        // 点击章节按钮后自动折叠导航栏（移动端）
         function showChapter(chapterId) {
+            // 移除所有active类
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
             // 隐藏所有章节
             document.querySelectorAll('.chapter').forEach(chapter => {
                 chapter.classList.remove('active');
             });
             
             // 显示选中的章节
-            document.getElementById(chapterId).classList.add('active');
+            const selectedChapter = document.getElementById(chapterId);
+            if (selectedChapter) {
+                selectedChapter.classList.add('active');
+            }
             
-            // 更新导航按钮状态
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // 激活对应的按钮
             event.target.classList.add('active');
             
             // 滚动到顶部
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // 加载章节内容（如果是第一次访问）
-            loadChapterContent(chapterId);
-        }
-
-        // 加载章节内容
-        function loadChapterContent(chapterId) {
+            // 移动端：点击后自动折叠导航栏
+            if (window.innerWidth <= 768) {
+                const nav = document.getElementById('mainNav');
+                const toggle = document.getElementById('navToggle');
+                nav.classList.remove('expanded');
+                nav.classList.add('collapsed');
+                toggle.textContent = '☰';
+            }
+            
+            // 加载章节内容
             const contentDiv = document.getElementById('content-' + chapterId);
             if (contentDiv && !contentDiv.innerHTML) {
                 // 这里应该从Markdown文件加载内容
@@ -2795,32 +2897,6 @@
                 contentDiv.innerHTML = '<p>内容加载中...</p>';
             }
         }
-
-        // 返回顶部
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // 显示/隐藏返回顶部按钮
-        window.addEventListener('scroll', () => {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-            
-            // 更新阅读进度条
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
-
-        // 初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-        });
     </script>
 </body>
 </html>
