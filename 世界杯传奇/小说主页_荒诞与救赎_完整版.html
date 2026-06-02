@@ -86,6 +86,105 @@
             margin-top: 15px;
         }
 
+        /* 小说介绍区域 */
+        .novel-intro {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .novel-intro::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4em;
+            color: rgba(255, 215, 0, 0.15);
+            font-family: Georgia, serif;
+        }
+
+        .intro-quote {
+            font-size: 1.4em;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .intro-paragraph {
+            font-size: 1.1em;
+            line-height: 2;
+            color: #c0c0c0;
+            text-indent: 2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .intro-paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-paragraph strong {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .intro-paragraph em {
+            color: #b8b8b8;
+            font-style: italic;
+        }
+
+        .intro-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 30px auto;
+        }
+
+        .intro-signature {
+            text-align: right;
+            color: #888;
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        /* 开始阅读按钮 */
+        .start-reading-btn {
+            display: block;
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .start-reading-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .start-reading-btn:active {
+            transform: translateY(0);
+        }
+
         /* 导航 */
         nav {
             position: sticky;
@@ -471,6 +570,62 @@
             <p>从临安中学到世界杯巅峰 | 一段关于友谊、成长与传承的故事</p>
         </div>
     </header>
+
+    <!-- 小说介绍区域 -->
+    <section class="novel-intro">
+        <div class="intro-quote">
+            “临安有两个球王：第一个是我，第二个是你。<br>这不是荣誉，这是责任。”
+        </div>
+
+        <div class="intro-divider"></div>
+
+        <p class="intro-paragraph">
+            2018年的夏天，杭州萧山国际机场的候机大厅里，人来人往。<strong>方毅</strong>坐在角落里，手里夹着一支点燃的香烟，烟雾缭绕中，他的眼神深邃而疲惫。二十年前，他是欧洲赛场上的自由人，是万人欢呼的英雄；二十年后，他只是一个退役的老将，带着对足球的执念，回到了这片生他养他的土地。
+        </p>
+
+        <p class="intro-paragraph">
+            <em>“我想改变这个，”</em>他曾对自己说，<em>“从基层开始，从孩子开始，从灵魂开始。”</em>
+        </p>
+
+        <p class="intro-paragraph">
+            于是，他来到了临安中学。在那里，他遇见了四个少年——<strong>黄佳炀</strong>、<strong>叶泽辉</strong>、<strong>杨臻宁</strong>、<strong>陈家乐</strong>。他们性格迥异，天赋不同，却有着同样的梦想：踢足球，踢好足球，踢到世界的舞台上。
+        </p>
+
+        <div class="intro-divider"></div>
+
+        <p class="intro-paragraph">
+            这是一部关于<strong>荒诞与救赎</strong>的小说。在这个时代，足球不仅仅是运动，它是信仰，是执念，是对抗虚无的唯一方式。方毅用他的人生经验，试图改变这四个孩子的命运；而这四个孩子，也用他们的青春与热血，重新定义了什么是足球，什么是生命。
+        </p>
+
+        <p class="intro-paragraph">
+            从临安中学的操场，到2026年世界杯的决赛赛场；从青涩的少年，到世界的球王；从怀疑与迷茫，到信念与坚定——这是一条布满荆棘的道路，也是一条通向荣耀的道路。
+        </p>
+
+        <p class="intro-paragraph">
+            <em>“你们知道吗？”</em>方毅在第一次训练时对他们说，<em>“足球不是关于胜利，而是关于选择。每一次传球，每一次跑位，每一次射门，都是你在告诉自己：我是谁，我要成为什么样的人。”</em>
+        </p>
+
+        <div class="intro-divider"></div>
+
+        <p class="intro-paragraph">
+            这是一个<strong>荒诞</strong>的故事——因为在中国，踢足球似乎永远不可能站上世界之巅；这又是一个<strong>救赎</strong>的故事——因为当四个少年真的做到了，他们不仅救赎了自己，也救赎了所有相信足球的人。
+        </p>
+
+        <p class="intro-paragraph">
+            <strong>SIUUUUU！</strong>当终场哨声响起，当比分定格在3:2，当全世界都在为中国队欢呼时，方毅站在场边，泪水模糊了双眼。他知道，这不是终点，而是开始。
+        </p>
+
+        <p class="intro-paragraph">
+            <em>因为足球，从来都不是关于一个人，而是关于一群人；从来都不是关于胜利，而是关于信念；从来都不是关于现在，而是关于未来。</em>
+        </p>
+
+        <div class="intro-signature">
+            —— 献给所有热爱足球的人
+        </div>
+    </section>
+
+    <!-- 开始阅读按钮 -->
+    <a href="#ch1" class="start-reading-btn" onclick="showChapter('ch1'); return false;">开始阅读 SIUUU! </a>
 
     <!-- 导航 -->
     <nav id="mainNav" class="collapsed">
