@@ -13,49 +13,21 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
             padding: 20px;
             position: relative;
             overflow-x: hidden;
+            color: #333;
         }
 
-        /* 背景粒子效果 */
+        /* 移除粒子效果 */
         .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
+            display: none;
         }
 
         .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
+            display: none;
         }
 
         .container {
@@ -67,9 +39,11 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: #2c3e50;
             margin-bottom: 50px;
             animation: fadeInDown 0.8s ease-out;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
         }
 
         @keyframes fadeInDown {
@@ -86,12 +60,13 @@
         .header h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: #2c3e50;
+            font-weight: 700;
         }
 
         .header p {
             font-size: 1.2em;
-            opacity: 0.95;
+            color: #666;
         }
 
         .projects-grid {
@@ -102,10 +77,11 @@
         }
 
         .project-card {
-            background: white;
-            border-radius: 20px;
+            background: #ffffff;
+            border-radius: 12px;
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
             transition: all 0.3s ease;
             cursor: pointer;
             animation: fadeInUp 0.8s ease-out;
@@ -136,8 +112,9 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
         }
 
         .project-icon {
@@ -195,13 +172,14 @@
 
         .footer {
             text-align: center;
-            color: white;
+            color: #666;
             margin-top: 50px;
-            opacity: 0.9;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
         }
 
         .footer a {
-            color: #FFD700;
+            color: #667eea;
             text-decoration: none;
             font-weight: 600;
         }
