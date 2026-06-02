@@ -635,6 +635,12 @@
         <button class="nav-toggle" id="navToggle" onclick="toggleNav()">☰</button>
         <div class="nav-container">
             <div class="nav-section">
+                <span class="nav-section-title">首页</span>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="showHome()" style="background: rgba(255, 215, 0, 0.1);">🏠 首页</button>
+                </div>
+            </div>
+            <div class="nav-section">
                 <span class="nav-section-title">第一卷</span>
                 <div class="nav-buttons">
                     <button class="nav-btn active" onclick="showChapter('ch1')">第1章</button>
@@ -3273,6 +3279,12 @@
             // 滚动到顶部
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
+            // 隐藏小说介绍区域和开始阅读按钮
+            const introSection = document.querySelector('.novel-intro');
+            const startBtn = document.querySelector('.start-reading-btn');
+            if (introSection) introSection.style.display = 'none';
+            if (startBtn) startBtn.style.display = 'none';
+            
             // 移动端：点击后自动折叠导航栏
             if (window.innerWidth <= 768) {
                 const nav = document.getElementById('mainNav');
@@ -3289,6 +3301,28 @@
                 // 暂时使用占位文本
                 contentDiv.innerHTML = '<p>内容加载中...</p>';
             }
+        }
+
+        // 返回首页（显示小说介绍）
+        function showHome() {
+            // 隐藏所有章节
+            document.querySelectorAll('.chapter').forEach(chapter => {
+                chapter.classList.remove('active');
+            });
+            
+            // 移除所有按钮active状态
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 显示小说介绍区域和开始阅读按钮
+            const introSection = document.querySelector('.novel-intro');
+            const startBtn = document.querySelector('.start-reading-btn');
+            if (introSection) introSection.style.display = 'block';
+            if (startBtn) startBtn.style.display = 'block';
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
