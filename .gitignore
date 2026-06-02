@@ -1,31 +1,29 @@
-# 排除所有依赖和构建垃圾
+# 依赖和构建垃圾
 node_modules/
 dist/
+build/
 .vscode/
 .lingma/
 
-# 排除 Python 脚本和临时文件
+# Python 脚本和临时文件
 *.py
 *.bat
-*.txt
-*.md
-!项目说明.md
+__pycache__/
 
-# 排除旧项目文件夹
+# 体脂秤数据和训练报告（个人隐私数据）
+体脂秤数据/
+训练报告存档/
+其他/
+数据分析工具/
+
+# 旧项目文件夹（如果存在）
 personal-fitness-tracker/
 fitness-knowledge-base/
-public/
-scripts/
-src/
+
+# 海报文件夹（已有独立仓库）
 海报/
-体脂秤数据/
-*.js
-!vite.config.js
-tailwind.config.js
-postcss.config.js
-package.json
+
+# NPM/Node 相关文件
 package-lock.json
-*.html
-!index.html
-!portal.html
-!THE_GOAT_黄佳炀_球王传奇.html
+yarn.lock
+pnpm-lock.yaml
