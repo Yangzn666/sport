@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四皇传奇：从临安到世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 粒子背景 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* 头部 */
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b8b8b8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .author-info {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 15px;
+        }
+
+        /* 导航 */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #ffd700;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* 主要内容区 */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 章节卡片 */
+        .chapter {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .chapter.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chapter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .chapter-title {
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .chapter-content {
+            font-size: 1.1em;
+            line-height: 2;
+            color: #d0d0d0;
+            text-align: justify;
+        }
+
+        .chapter-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+
+        .chapter-content strong {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .chapter-content em {
+            color: #b8b8b8;
+            font-style: italic;
+        }
+
+        /* 分隔线 */
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #ffd700;
+            font-size: 1.5em;
+            letter-spacing: 10px;
+        }
+
+        /* 角色介绍卡片 */
+        .character-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .character-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .character-name {
+            font-size: 1.3em;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .character-trait {
+            font-size: 0.9em;
+            color: #b8b8b8;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .character-desc {
+            font-size: 0.95em;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #ffd700;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* 页脚 */
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            color: #b8b8b8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .chapter {
+                padding: 25px;
+            }
+
+            .chapter-title {
+                font-size: 1.5em;
+            }
+
+            .chapter-content {
+                font-size: 1em;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* 阅读进度条 */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 阅读进度条 -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- 头部 -->
+    <header>
+        <h1>四皇传奇</h1>
+        <p class="subtitle">从临安到世界</p>
+        <p style="color: #888; font-size: 0.9em;">一部融合陀思妥耶夫斯基心理深度与余华现实美学的足球史诗</p>
+        <div class="author-info">
+            <p>从临安中学到世界杯巅峰 | 一段关于友谊、成长与传承的故事</p>
+        </div>
+    </header>
+
+    <!-- 导航 -->
+    <nav>
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showChapter('intro')">故事简介</button>
+            <button class="nav-btn" onclick="showChapter('characters')">人物介绍</button>
+            <button class="nav-btn" onclick="showChapter('ch1')">第一章</button>
+            <button class="nav-btn" onclick="showChapter('ch2')">第二章</button>
+            <button class="nav-btn" onclick="showChapter('ch3')">第三章</button>
+            <button class="nav-btn" onclick="showChapter('ch4')">第四章</button>
+            <button class="nav-btn" onclick="showChapter('ch5')">第五章</button>
+            <button class="nav-btn" onclick="showChapter('ch6')">第六章</button>
+            <button class="nav-btn" onclick="showChapter('ch7')">第七章</button>
+            <button class="nav-btn" onclick="showChapter('ch8a')">第八章上</button>
+            <button class="nav-btn" onclick="showChapter('ch8b')">第八章下</button>
+            <button class="nav-btn" onclick="showChapter('ch9')">第九章</button>
+            <button class="nav-btn" onclick="showChapter('ch10')">第十章</button>
+            <button class="nav-btn" onclick="showChapter('ch11')">第十一章</button>
+            <button class="nav-btn" onclick="showChapter('ch12')">第十二章</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 故事简介 -->
+        <section id="intro" class="chapter active">
+            <h2 class="chapter-title">故事简介</h2>
+            <div class="chapter-content">
+                <p><strong>四皇传奇：从临安到世界</strong>讲述了一段关于友谊、成长、爱国与传承的足球史诗。</p>
+                        
+                <p>2018年，退役球员方毅回到家乡临安，成为临安中学的一名普通体育老师。这位曾经的贝肯鲍尔式自由人，光头形象鲜明，口头禅是“这球怎么踢踢的？”，喜欢摆大巴战术，常用541阵型，极端情况下甚至能摆出91神阵死防。</p>
+                        
+                <p>在这所学业压力巨大的重点高中，足球被视为“副科”，校队三年未获冠军。直到2021年秋天，四个性格迥异的少年出现了：</p>
+                        
+                <p><strong>叶泽辉</strong>——一个对足球充满热爱的左后卫，技术出色，意识优秀，只是有害怕点球和激烈对抗的弱点。但他从不逃避，一直在努力克服，是个很有魅力的人；</p>
+                        
+                <p><strong>黄佳炀</strong>——团队的领袖和精神核心，场上的指挥官。他与方毅有着两代临安球王的传承关系，沉稳冷静，是危机时刻的定海神针；</p>
+                        
+                <p><strong>陈家乐</strong>——曾经沉迷女色，但在兄弟们的开导下觉醒，最终戒掉了一切暧昧关系，成为了最愿意为团队奉献的人；</p>
+                        
+                <p><strong>杨臻宁</strong>——冷静的守护者，擅长不可思议的扑救。平时沉默专注，只在生死关头才会发出咆哮，更像布冯而非卡恩。</p>
+                        
+                <div class="divider">***</div>
+                        
+                <p>在方毅的指导下，四个少年帮助临安中学首次获得市级冠军，从此开启了一段传奇之旅。从校队到省队，从国青到国家队，他们一步步走来，最终站在了2026年世界杯的舞台上。</p>
+                        
+                <p>面对媒体的质疑、博彩集团的阴谋、VAR的误判、对手的歧视，他们用各自的方式诠释了足球的本质。方毅的541阵型和91神阵展现了战术的智慧，叶泽辉的魅力和努力赢得了队友的信任，黄佳炀的领袖气质稳定了军心，陈家乐的奉献精神感动了所有人，杨臻宁的不可思议扑救创造了奇迹。</p>
+                        
+                <div class="divider">***</div>
+                        
+                <p>这不仅是一个关于胜利的故事，更是一个关于<strong>友谊、成长、爱国与传承</strong>的故事。四个人从陌生到兄弟，从迷茫到坚定，从个人到集体，最终成为了中国足球的传奇。</p>
+                        
+                <p>方毅与黄佳炀的两代临安球王传承，更是整个故事的精神内核。正如方毅所说：“临安有两个球王：第一个是我，第二个是你。这不是荣誉，这是责任。”</p>
+                        
+                <p>而故事并没有结束。二十年后，他们回到临安中学，将这份精神传递给新一代的少年。因为<strong>黄金时代，已经来临。而这，仅仅是开始。</strong></p>
+            </div>
+        </section>
+
+        <!-- 人物介绍 -->
+        <section id="characters" class="chapter">
+            <h2 class="chapter-title">人物介绍</h2>
+            <div class="character-section">
+                <div class="character-grid">
+                    <div class="character-card">
+                        <h3 class="character-name">方毅</h3>
+                        <p class="character-trait">贝肯鲍尔式自由人 · 战术大师</p>
+                        <p class="character-desc">光头形象鲜明，曾是什么位置都能踢的全能球员。退役后回到临安中学任教，喜欢摆大巴，常用541阵型，极端情况下甚至能摆出91神阵。口头禅是“这球怎么踢踢的？”。他与黄佳炀有着两代临安球王的传承关系，是团队的精神导师。</p>
+                    </div>
+
+                    <div class="character-card">
+                        <h3 class="character-name">叶泽辉</h3>
+                        <p class="character-trait">闭眼防守 · 热爱足球的魅力左后卫</p>
+                        <p class="character-desc">临安中学左后卫，技术出色，意识优秀，传球精准。对足球充满热爱，只是有害怕点球和激烈对抗的弱点。但他从不逃避，一直在努力克服，是个很有魅力的人。队友们都说：“有叶泽辉在，我们就安心。”</p>
+                    </div>
+
+                    <div class="character-card">
+                        <h3 class="character-name">黄佳炀</h3>
+                        <p class="character-trait">时间静止 · 团队领袖</p>
+                        <p class="character-desc">临安中学中场核心，团队的精神核心和场上的指挥官。他的“省电模式”和“时间静止”让对手失去重心。与方毅有着两代临安球王的传承关系，沉稳冷静，是危机时刻的定海神针。被收养的身份让他陷入危机，但最终他明白：身份不重要，重要的是选择自己的道路。</p>
+                    </div>
+
+                    <div class="character-card">
+                        <h3 class="character-name">陈家乐</h3>
+                        <p class="character-trait">锦鲤属性 · 奉献精神</p>
+                        <p class="character-desc">临安中学前锋，身高一米九的校园偶像。曾经沉迷女色，但在兄弟们的开导下觉醒，最终戒掉了一切暧昧关系，成为了最愿意为团队奉献的人。他的“脚后跟进球”成为玄学传说。从迷茫到自由，他找到了真正的自己。</p>
+                    </div>
+
+                    <div class="character-card">
+                        <h3 class="character-name">杨臻宁</h3>
+                        <p class="character-trait">不可思议扑救 · 冷静守护者</p>
+                        <p class="character-desc">临安中学门将，身高只有一米八五。擅长不可思议的扑救，平时沉默专注，只在生死关头才会发出咆哮，更像布冯而非卡恩。从小被嘲笑身高不够，他用技术证明：身高不是决定门将水平的唯一因素。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一章 -->
+        <section id="ch1" class="chapter">
+            <h2 class="chapter-title">第一章：上古神人的召唤</h2>
+            <div class="chapter-content" id="content-ch1">
+                <!-- 内容将通过JavaScript加载 -->
+            </div>
+        </section>
+
+        <!-- 其他章节占位 -->
+        <section id="ch2" class="chapter">
+            <h2 class="chapter-title">第二章：小组赛的惊魂时刻</h2>
+            <div class="chapter-content" id="content-ch2"></div>
+        </section>
+
+        <section id="ch3" class="chapter">
+            <h2 class="chapter-title">第三章：死亡之组的突围</h2>
+            <div class="chapter-content" id="content-ch3"></div>
+        </section>
+
+        <section id="ch4" class="chapter">
+            <h2 class="chapter-title">第四章：宿命的对决</h2>
+            <div class="chapter-content" id="content-ch4"></div>
+        </section>
+
+        <section id="ch5" class="chapter">
+            <h2 class="chapter-title">第五章：中场休息室的秘密</h2>
+            <div class="chapter-content" id="content-ch5"></div>
+        </section>
+
+        <section id="ch6" class="chapter">
+            <h2 class="chapter-title">第六章：八强战的奇迹</h2>
+            <div class="chapter-content" id="content-ch6"></div>
+        </section>
+
+        <section id="ch7" class="chapter">
+            <h2 class="chapter-title">第七章：半决赛的阴影</h2>
+            <div class="chapter-content" id="content-ch7"></div>
+        </section>
+
+        <section id="ch8a" class="chapter">
+            <h2 class="chapter-title">第八章（上）：媒体风暴</h2>
+            <div class="chapter-content" id="content-ch8a"></div>
+        </section>
+
+        <section id="ch8b" class="chapter">
+            <h2 class="chapter-title">第八章（下）：阴谋浮现</h2>
+            <div class="chapter-content" id="content-ch8b"></div>
+        </section>
+
+        <section id="ch9" class="chapter">
+            <h2 class="chapter-title">第九章：巅峰之战（上）- 不公待遇</h2>
+            <div class="chapter-content" id="content-ch9"></div>
+        </section>
+
+        <section id="ch10" class="chapter">
+            <h2 class="chapter-title">第十章：巅峰之战（中）- 绝地反击</h2>
+            <div class="chapter-content" id="content-ch10"></div>
+        </section>
+
+        <section id="ch11" class="chapter">
+            <h2 class="chapter-title">第十一章：巅峰之战（下）- 新王登基</h2>
+            <div class="chapter-content" id="content-ch11"></div>
+        </section>
+
+        <section id="ch12" class="chapter">
+            <h2 class="chapter-title">第十二章：黄金时代的黎明</h2>
+            <div class="chapter-content" id="content-ch12"></div>
+        </section>
+    </main>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- 页脚 -->
+    <footer>
+        <p class="footer-quote">"临安有两个球王：第一个是我，第二个是你。这不是荣誉，这是责任。" —— 方毅</p>
+        <p>© 2026 四皇传奇：从临安到世界 | 谨以此书献给所有热爱足球的人</p>
+        <p style="margin-top: 10px; font-size: 0.8em;">这里，是传奇的起点。而这，仅仅是开始。</p>
+    </footer>
+
+    <script>
+        // 生成粒子背景
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 显示章节
+        function showChapter(chapterId) {
+            // 隐藏所有章节
+            document.querySelectorAll('.chapter').forEach(chapter => {
+                chapter.classList.remove('active');
+            });
+            
+            // 显示选中的章节
+            document.getElementById(chapterId).classList.add('active');
+            
+            // 更新导航按钮状态
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // 加载章节内容（如果是第一次访问）
+            loadChapterContent(chapterId);
+        }
+
+        // 加载章节内容
+        function loadChapterContent(chapterId) {
+            const contentDiv = document.getElementById('content-' + chapterId);
+            if (contentDiv && !contentDiv.innerHTML) {
+                // 这里应该从Markdown文件加载内容
+                // 暂时使用占位文本
+                contentDiv.innerHTML = '<p>内容加载中...</p>';
+            }
+        }
+
+        // 返回顶部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // 更新阅读进度条
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
