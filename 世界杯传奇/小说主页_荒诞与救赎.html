@@ -93,19 +93,8 @@
             z-index: 100;
             background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
-            padding: 15px 0;
+            padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-
-        nav.collapsed {
-            max-height: 60px;
-            padding: 10px 0;
-        }
-
-        nav.expanded {
-            max-height: 500px;
         }
 
         .nav-toggle {
@@ -397,6 +386,17 @@
             nav {
                 position: fixed;
                 width: 100%;
+                transition: max-height 0.3s ease;
+                overflow: hidden;
+            }
+
+            nav.collapsed {
+                max-height: 60px;
+                padding: 10px 0;
+            }
+
+            nav.expanded {
+                max-height: 500px;
             }
 
             .nav-toggle {
@@ -667,8 +667,11 @@
             createParticles();
         });
 
-        // 切换导航栏（移动端）
+        // 切换导航栏（仅移动端）
         function toggleNav() {
+            // 只在移动端生效
+            if (window.innerWidth > 768) return;
+            
             const nav = document.getElementById('mainNav');
             const toggle = document.getElementById('navToggle');
             
