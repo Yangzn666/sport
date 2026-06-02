@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
-    <title>杨臻宁 - 个人项目门户</title>
+    <title>杨臻宁的项目空间 - THE GOAT</title>
     <style>
         * {
             margin: 0;
@@ -13,18 +12,57 @@
         }
 
         body {
-            font-family: 'Microsoft YaHei', 'PingFang SC', 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景粒子效果 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         .container {
-            max-width: 900px;
-            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
@@ -46,21 +84,44 @@
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .header p {
             font-size: 1.2em;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
         }
 
         @keyframes fadeInUp {
@@ -72,33 +133,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
         }
 
         .project-card:hover {
@@ -116,14 +150,14 @@
             font-size: 1.8em;
             color: #333;
             margin-bottom: 15px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .project-description {
             color: #666;
-            font-size: 1em;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            font-size: 1em;
         }
 
         .project-tags {
@@ -134,7 +168,7 @@
         }
 
         .tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
@@ -144,31 +178,35 @@
 
         .project-link {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            text-decoration: none;
+            padding: 12px 30px;
             border-radius: 30px;
-            font-weight: bold;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
         .project-link:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
         }
 
         .footer {
             text-align: center;
             color: white;
             margin-top: 50px;
-            opacity: 0.8;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
+            opacity: 0.9;
         }
 
         .footer a {
-            color: white;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
             text-decoration: underline;
         }
 
@@ -176,11 +214,11 @@
             .header h1 {
                 font-size: 2em;
             }
-            
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .project-card {
                 padding: 30px;
             }
@@ -188,45 +226,47 @@
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+
     <div class="container">
         <div class="header">
-            <h1>👋 欢迎来到我的项目空间</h1>
+            <h1> 欢迎来到我的项目空间</h1>
             <p>探索我的个人项目和知识库</p>
         </div>
 
         <div class="projects-grid">
-            <!-- 健身知识库 -->
-            <div class="project-card" onclick="window.location.href='./fitness-knowledge-base/'">
-                <span class="project-icon">️</span>
-                <h2 class="project-title">健身与跑步科学知识库</h2>
-                <p class="project-description">
-                    基于React + Vite构建的专业健身知识管理系统。涵盖运动生理学、力量训练、有氧耐力、营养恢复等完整科学知识体系，引用40+篇2024-2026年最新研究文献。
+            <!-- 黄佳炀荣耀殿堂 -->
+            <div class="project-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border: 2px solid #FFD700;" onclick="window.location.href='./THE_GOAT_黄佳炀_球王传奇.html'">
+                <span class="project-icon" style="font-size: 5em;">🏆</span>
+                <h2 class="project-title" style="color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">黄佳炀 - 球王荣耀殿堂</h2>
+                <p class="project-description" style="color: #fff;">
+                    THE GOAT · 临安传奇 · 浙西天路征服者。展示65+项个人荣誉、梅开二度球王风采、C罗风格特效拉满的荣耀展示页面。
                 </p>
                 <div class="project-tags">
-                    <span class="tag">React 19</span>
-                    <span class="tag">Vite 8</span>
-                    <span class="tag">Tailwind CSS</span>
-                    <span class="tag">科学训练</span>
-                    <span class="tag">数据分析</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">⚽ 足球传奇</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> 个人成就</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">✨ 特效展示</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">🌟 荣耀时刻</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> THE GOAT</span>
                 </div>
-                <a href="./fitness-knowledge-base/" class="project-link">进入知识库 →</a>
+                <a href="./THE_GOAT_黄佳炀_球王传奇.html" class="project-link" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);">进入荣耀殿堂 →</a>
             </div>
-                    
-            <!-- 2026世界杯传奇（黄佳炀荣耀殿堂） -->
-            <div class="project-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border: 2px solid #FFD700;" onclick="window.location.href='./海报/THE_GOAT_黄佳炀_球王传奇.html'">
-                <span class="project-icon" style="font-size: 5em;">🏆</span>
-                <h2 class="project-title" style="color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">2026世界杯传奇</h2>
-                <p class="project-description" style="color: #fff;">
+
+            <!-- 世界杯传奇小说 -->
+            <div class="project-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" onclick="window.location.href='./小说主页/index.html'">
+                <span class="project-icon">📚</span>
+                <h2 class="project-title">2026世界杯传奇</h2>
+                <p class="project-description">
                     中国队勇夺世界杯冠军！四皇集结、神之教练方毅传授秘籍、互联网热梗拉满！从小组赛到决赛巅峰之战，十章史诗级足球小说！SIUUU！
                 </p>
                 <div class="project-tags">
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> THE GOAT</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">⚽ 足球小说</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">🏆 世界杯</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">🔥 互联网热梗</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">✨ 十章史诗</span>
+                    <span class="tag"> THE GOAT</span>
+                    <span class="tag">⚽ 足球小说</span>
+                    <span class="tag">🏆 世界杯</span>
+                    <span class="tag">🔥 互联网热梗</span>
+                    <span class="tag">✨ 十章史诗</span>
                 </div>
-                <a href="./海报/THE_GOAT_黄佳炀_球王传奇.html" class="project-link" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);">开始阅读 SIUUU! →</a>
+                <a href="./小说主页/index.html" class="project-link">开始阅读 SIUUU! →</a>
             </div>
         </div>
 
@@ -241,42 +281,15 @@
         function createParticles() {
             for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: fixed;
-                    width: ${Math.random() * 8 + 4}px;
-                    height: ${Math.random() * 8 + 4}px;
-                    background: rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1});
-                    border-radius: 50%;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation: float ${Math.random() * 15 + 10}s infinite;
-                    pointer-events: none;
-                `;
-                document.body.appendChild(particle);
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.width = particle.style.height = (Math.random() * 10 + 5) + 'px';
+                document.getElementById('particles').appendChild(particle);
             }
         }
-
-        // 添加CSS动画
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% {
-                    transform: translateY(0) translateX(0);
-                }
-                25% {
-                    transform: translateY(-80px) translateX(40px);
-                }
-                50% {
-                    transform: translateY(-40px) translateX(-40px);
-                }
-                75% {
-                    transform: translateY(-120px) translateX(30px);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        window.addEventListener('load', createParticles);
+        createParticles();
     </script>
 </body>
 </html>
