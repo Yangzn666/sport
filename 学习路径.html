@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习路径规划 - 个性化健身知识学习路线</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', 'SimSun', serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 3px solid #2c3e50;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .goal-selector {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .goal-selector h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .goal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .goal-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .goal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 8px 25px rgba(52,152,219,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .goal-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .goal-card.active {
+            border-color: #3498db;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+        }
+        
+        .goal-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .goal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .goal-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .goal-meta {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .learning-path {
+            display: none;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .learning-path.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .path-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .path-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .path-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #3498db 0%, #2c3e50 100%);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            width: 50%;
+            padding: 0 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            border-color: #3498db;
+            box-shadow: 0 6px 20px rgba(52,152,219,0.2);
+            transform: scale(1.02);
+        }
+        
+        .timeline-week {
+            font-size: 14px;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .timeline-doc {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #e0f2fe;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        
+        .timeline-reason {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        
+        .timeline-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-actions {
+            justify-content: flex-end;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'SimSun', serif;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+        }
+        
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .btn-secondary:hover {
+            background: #d5dbdb;
+        }
+        
+        .progress-tracker {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .progress-tracker h3 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px;
+                text-align: left !important;
+            }
+            
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+            
+            .timeline-actions {
+                justify-content: flex-start !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🗺️ 学习路径规划</h1>
+        <p class="subtitle">Personalized Learning Path for Fitness Knowledge</p>
+    </div>
+    
+    <div class="container">
+        <div class="goal-selector">
+            <h2>🎯 选择您的学习目标</h2>
+            <div class="goal-cards">
+                <div class="goal-card" onclick="selectGoal('beginner')">
+                    <div class="goal-icon">🌱</div>
+                    <div class="goal-title">健身新手入门</div>
+                    <div class="goal-desc">从零开始建立科学训练观念，掌握基础理论知识</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计2周</span>
+                        <span>📚 4个文档</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card" onclick="selectGoal('muscle')">
+                    <div class="goal-icon">💪</div>
+                    <div class="goal-title">增肌塑形专项</div>
+                    <div class="goal-desc">深入学习力量训练原理，优化肌肉增长策略</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计3周</span>
+                        <span>📚 5个文档</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card" onclick="selectGoal('endurance')">
+                    <div class="goal-icon">🏃</div>
+                    <div class="goal-title">耐力提升计划</div>
+                    <div class="goal-desc">系统学习有氧训练方法，提升心肺功能和耐力</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计3周</span>
+                        <span>📚 5个文档</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card" onclick="selectGoal('advanced')">
+                    <div class="goal-icon">🏆</div>
+                    <div class="goal-title">进阶运动员</div>
+                    <div class="goal-desc">突破瓶颈，优化训练周期，追求竞技表现</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计4周</span>
+                        <span>📚 6个文档</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card" onclick="selectGoal('coach')">
+                    <div class="goal-icon">👨‍🏫</div>
+                    <div class="goal-title">教练认证准备</div>
+                    <div class="goal-desc">全面掌握训练理论，为教练资格考试做准备</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计6周</span>
+                        <span>📚 全部文档</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card" onclick="selectGoal('research')">
+                    <div class="goal-icon">🔬</div>
+                    <div class="goal-title">科研深度学习</div>
+                    <div class="goal-desc">深入理解最新研究进展，培养批判性思维</div>
+                    <div class="goal-meta">
+                        <span>⏱️ 预计4周</span>
+                        <span>📚 7个文档</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="learning-path-container"></div>
+    </div>
+    
+    <script src="knowledge_data.js"></script>
+    <script>
+        const learningPaths = {
+            beginner: {
+                title: '健身新手入门之路',
+                description: '从零开始建立科学训练观念，循序渐进掌握核心知识',
+                estimatedTime: '2周',
+                steps: [
+                    { week: '第1-3天', title: '理解身体如何工作', doc: '运动生理学基础', reason: '首先了解能量系统、肌肉适应等基础生理机制，为后续学习打下理论基础' },
+                    { week: '第4-7天', title: '掌握基本训练方法', doc: '力量训练科学', reason: '学习超负荷原则、渐进式增加等核心训练原理，避免常见错误' },
+                    { week: '第8-10天', title: '学会合理饮食休息', doc: '营养与恢复科学', reason: '理解蛋白质、碳水化合物的作用，掌握睡眠和恢复的重要性' },
+                    { week: '第11-14天', title: '复习与总结', doc: 'README_快速导航', reason: '回顾所学内容，建立知识框架，制定个人训练计划' }
+                ]
+            },
+            muscle: {
+                title: '增肌塑形专项学习路径',
+                description: '深入学习力量训练原理，优化肌肉增长策略',
+                estimatedTime: '3周',
+                steps: [
+                    { week: '第1周', title: '力量训练核心理论', doc: '力量训练科学', reason: '深入理解肌肉肥大机制、神经适应原理，掌握科学训练方法' },
+                    { week: '第2周前半', title: '生理基础强化', doc: '运动生理学基础', reason: '理解ATP-CP系统和糖酵解系统在力量训练中的作用' },
+                    { week: '第2周后半', title: '营养支持策略', doc: '营养与恢复科学', reason: '学习如何通过营养最大化肌肉合成，优化恢复过程' },
+                    { week: '第3周前半', title: '训练周期规划', doc: '周期化训练高级理论', reason: '学习如何设计宏观和微观周期，避免平台期' },
+                    { week: '第3周后半', title: '心理素质培养', doc: '心理训练与认知表现', reason: '培养训练动机、注意力控制，克服心理障碍' }
+                ]
+            },
+            endurance: {
+                title: '耐力提升系统学习路径',
+                description: '系统学习有氧训练方法，提升心肺功能和耐力表现',
+                estimatedTime: '3周',
+                steps: [
+                    { week: '第1周', title: '有氧训练科学基础', doc: '有氧训练与耐力科学', reason: '理解VO2max、乳酸阈等核心概念，掌握有氧训练原理' },
+                    { week: '第2周前半', title: '能量代谢深入', doc: '运动生理学基础', reason: '深入了解有氧氧化系统的工作原理和适应机制' },
+                    { week: '第2周后半', title: '营养与补水策略', doc: '营养与恢复科学', reason: '学习长时运动的营养补给和水分管理' },
+                    { week: '第3周前半', title: '训练计划设计', doc: '周期化训练高级理论', reason: '学习如何安排基础期、进展期和巅峰期' },
+                    { week: '第3周后半', title: '心理耐力训练', doc: '心理训练与认知表现', reason: '培养长时运动的心理韧性和专注力' }
+                ]
+            },
+            advanced: {
+                title: '进阶运动员突破之路',
+                description: '突破训练瓶颈，优化周期安排，追求竞技表现巅峰',
+                estimatedTime: '4周',
+                steps: [
+                    { week: '第1周', title: '高级周期化理论', doc: '周期化训练高级理论', reason: '掌握非线性周期、共轭周期等高级训练规划方法' },
+                    { week: '第2周', title: '前沿研究综述', doc: '2024-2026前沿研究汇总', reason: '了解最新研究成果和技术突破，保持知识更新' },
+                    { week: '第3周前半', title: '心理表现优化', doc: '心理训练与认知表现', reason: '通过心理训练提升比赛表现和抗压能力' },
+                    { week: '第3周后半', title: '力量与耐力整合', doc: '力量训练科学 + 有氧训练与耐力科学', reason: '学习如何同时发展力量和耐力，避免干扰效应' },
+                    { week: '第4周', title: '综合应用与实践', doc: '知识库扩充总览', reason: '整合所有知识，设计个性化的高级训练方案' }
+                ]
+            },
+            coach: {
+                title: '教练认证全面学习路径',
+                description: '系统掌握所有训练理论知识，为专业教练资格做准备',
+                estimatedTime: '6周',
+                steps: [
+                    { week: '第1周', title: '生理学基础', doc: '运动生理学基础', reason: '建立完整的生理学知识框架' },
+                    { week: '第2周', title: '力量训练专精', doc: '力量训练科学', reason: '深入力量训练理论与方法' },
+                    { week: '第3周', title: '有氧耐力专精', doc: '有氧训练与耐力科学', reason: '掌握有氧训练的科学原理' },
+                    { week: '第4周', title: '营养恢复系统', doc: '营养与恢复科学', reason: '学习科学的营养和恢复策略' },
+                    { week: '第5周', title: '周期化与心理', doc: '周期化训练高级理论 + 心理训练与认知表现', reason: '掌握高级训练规划和心理技能' },
+                    { week: '第6周', title: '前沿研究与综合', doc: '2024-2026前沿研究汇总 + 知识库扩充总览', reason: '了解最新进展，整合全部知识' }
+                ]
+            },
+            research: {
+                title: '科研深度学习路径',
+                description: '深入理解最新研究进展，培养批判性思维能力',
+                estimatedTime: '4周',
+                steps: [
+                    { week: '第1周', title: '文献阅读基础', doc: '文献索引', reason: '学习如何高效阅读和理解科研文献' },
+                    { week: '第2周', title: '前沿研究分析', doc: '2024-2026前沿研究汇总', reason: '深入分析最新研究成果和方法论' },
+                    { week: '第3周', title: '跨学科整合', doc: '运动生理学基础 + 力量训练科学 + 有氧训练与耐力科学', reason: '从多角度理解同一现象的研究证据' },
+                    { week: '第4周', title: '批判性思维', doc: '知识库扩充总览', reason: '评估研究质量，识别研究空白，提出新问题' }
+                ]
+            }
+        };
+        
+        let currentPath = null;
+        
+        function selectGoal(goalKey) {
+            // 移除之前的激活状态
+            document.querySelectorAll('.goal-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // 添加新的激活状态
+            event.currentTarget.classList.add('active');
+            
+            // 显示学习路径
+            currentPath = goalKey;
+            displayLearningPath(goalKey);
+        }
+        
+        function displayLearningPath(goalKey) {
+            const path = learningPaths[goalKey];
+            const container = document.getElementById('learning-path-container');
+            
+            let html = `
+                <div class="learning-path active">
+                    <div class="path-header">
+                        <h2 class="path-title">${path.title}</h2>
+                        <p class="path-description">${path.description}</p>
+                        <p style="margin-top: 10px; color: #3498db; font-weight: 600;">预计用时：${path.estimatedTime}</p>
+                    </div>
+                    
+                    <div class="timeline">
+            `;
+            
+            path.steps.forEach((step, index) => {
+                html += `
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">${step.week}</div>
+                            <div class="timeline-title">${step.title}</div>
+                            <div class="timeline-doc">📖 ${step.doc}</div>
+                            <div class="timeline-reason">💡 ${step.reason}</div>
+                            <div class="timeline-actions">
+                                <button class="btn btn-primary" onclick="openDocument('${step.doc}')">开始学习 →</button>
+                                <button class="btn btn-secondary" onclick="markComplete(${index})">标记完成 ✓</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    
+                    <div class="progress-tracker">
+                        <h3>📊 学习进度追踪</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill">0%</div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="completed-count">0</div>
+                                <div class="stat-label">已完成</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="total-count">${path.steps.length}</div>
+                                <div class="stat-label">总步骤</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="remaining-count">${path.steps.length}</div>
+                                <div class="stat-label">待完成</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+            
+            // 加载保存的进度
+            loadProgress(goalKey);
+        }
+        
+        function openDocument(docName) {
+            window.open('知识库文档.html#' + encodeURIComponent(docName), '_blank');
+        }
+        
+        function markComplete(stepIndex) {
+            if (!currentPath) return;
+            
+            // 获取已完成的步骤
+            let completed = JSON.parse(localStorage.getItem('path-progress-' + currentPath) || '[]');
+            
+            if (!completed.includes(stepIndex)) {
+                completed.push(stepIndex);
+                localStorage.setItem('path-progress-' + currentPath, JSON.stringify(completed));
+            }
+            
+            // 更新显示
+            updateProgress();
+        }
+        
+        function loadProgress(goalKey) {
+            const completed = JSON.parse(localStorage.getItem('path-progress-' + goalKey) || '[]');
+            updateProgressDisplay(completed.length, learningPaths[goalKey].steps.length);
+        }
+        
+        function updateProgress() {
+            if (!currentPath) return;
+            
+            const completed = JSON.parse(localStorage.getItem('path-progress-' + currentPath) || '[]');
+            const total = learningPaths[currentPath].steps.length;
+            
+            updateProgressDisplay(completed.length, total);
+        }
+        
+        function updateProgressDisplay(completed, total) {
+            const percentage = Math.round((completed / total) * 100);
+            
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-fill').textContent = percentage + '%';
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('remaining-count').textContent = total - completed;
+        }
+    </script>
+</body>
+</html>

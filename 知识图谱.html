@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身知识图谱 - 概念关系可视化</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', 'SimSun', serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 3px solid #2c3e50;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .controls {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .control-group label {
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        select, button {
+            padding: 8px 15px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'SimSun', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        select:hover, button:hover {
+            border-color: #3498db;
+        }
+        
+        button {
+            background: #2c3e50;
+            color: white;
+            border: none;
+        }
+        
+        button:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44,62,80,0.3);
+        }
+        
+        #graph-container {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            height: 700px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .legend {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .legend h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .legend-text {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            #graph-container {
+                height: 500px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🕸️ 健身知识图谱</h1>
+        <p class="subtitle">Fitness Knowledge Graph - Concept Relationships Visualization</p>
+    </div>
+    
+    <div class="container">
+        <!-- 统计卡片 -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="node-count">0</div>
+                <div class="stat-label">核心概念节点</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="edge-count">0</div>
+                <div class="stat-label">概念关系连接</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="category-count">0</div>
+                <div class="stat-label">知识分类</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="doc-count">10</div>
+                <div class="stat-label">覆盖文档数</div>
+            </div>
+        </div>
+        
+        <!-- 控制面板 -->
+        <div class="controls">
+            <div class="control-group">
+                <label>筛选分类：</label>
+                <select id="category-filter" onchange="filterGraph()">
+                    <option value="all">全部分类</option>
+                    <option value="能量代谢">能量代谢</option>
+                    <option value="训练方法">训练方法</option>
+                    <option value="生理适应">生理适应</option>
+                    <option value="营养恢复">营养恢复</option>
+                    <option value="心理训练">心理训练</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>布局方式：</label>
+                <select id="layout-type" onchange="changeLayout()">
+                    <option value="force">力导向布局</option>
+                    <option value="circular">环形布局</option>
+                </select>
+            </div>
+            <button onclick="resetView()">🔄 重置视图</button>
+            <button onclick="exportGraph()">💾 导出图片</button>
+        </div>
+        
+        <!-- 图谱容器 -->
+        <div id="graph-container"></div>
+        
+        <!-- 图例 -->
+        <div class="legend">
+            <h3>📊 图例说明</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e74c3c;"></div>
+                    <div class="legend-text">能量代谢系统</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3498db;"></div>
+                    <div class="legend-text">训练方法与原则</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2ecc71;"></div>
+                    <div class="legend-text">生理适应机制</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <div class="legend-text">营养与恢复策略</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #9b59b6;"></div>
+                    <div class="legend-text">心理与认知因素</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1abc9c;"></div>
+                    <div class="legend-text">周期化与规划</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="knowledge_data.js"></script>
+    <script>
+        // 知识图谱数据
+        const knowledgeGraph = {
+            nodes: [
+                // 能量代谢系统
+                { id: 'ATP-CP', name: 'ATP-CP系统', category: '能量代谢', value: 10, doc: '运动生理学基础' },
+                { id: 'glycolysis', name: '糖酵解系统', category: '能量代谢', value: 9, doc: '运动生理学基础' },
+                { id: 'aerobic', name: '有氧氧化系统', category: '能量代谢', value: 10, doc: '运动生理学基础' },
+                { id: 'VO2max', name: '最大摄氧量', category: '能量代谢', value: 8, doc: '有氧训练与耐力科学' },
+                
+                // 训练方法
+                { id: 'strength', name: '力量训练', category: '训练方法', value: 10, doc: '力量训练科学' },
+                { id: 'endurance', name: '耐力训练', category: '训练方法', value: 9, doc: '有氧训练与耐力科学' },
+                { id: 'HIIT', name: '高强度间歇训练', category: '训练方法', value: 8, doc: '有氧训练与耐力科学' },
+                { id: 'overload', name: '超负荷原则', category: '训练方法', value: 9, doc: '力量训练科学' },
+                { id: 'specificity', name: '特异性原则', category: '训练方法', value: 7, doc: '力量训练科学' },
+                
+                // 生理适应
+                { id: 'muscle_hypertrophy', name: '肌肉肥大', category: '生理适应', value: 9, doc: '力量训练科学' },
+                { id: 'neural_adaptation', name: '神经适应', category: '生理适应', value: 8, doc: '力量训练科学' },
+                { id: 'cardiovascular', name: '心血管适应', category: '生理适应', value: 8, doc: '运动生理学基础' },
+                { id: 'mitochondria', name: '线粒体增生', category: '生理适应', value: 7, doc: '有氧训练与耐力科学' },
+                
+                // 营养恢复
+                { id: 'protein', name: '蛋白质摄入', category: '营养恢复', value: 9, doc: '营养与恢复科学' },
+                { id: 'carbs', name: '碳水化合物', category: '营养恢复', value: 8, doc: '营养与恢复科学' },
+                { id: 'sleep', name: '睡眠质量', category: '营养恢复', value: 9, doc: '营养与恢复科学' },
+                { id: 'recovery', name: '主动恢复', category: '营养恢复', value: 7, doc: '营养与恢复科学' },
+                
+                // 心理训练
+                { id: 'motivation', name: '动机激发', category: '心理训练', value: 7, doc: '心理训练与认知表现' },
+                { id: 'focus', name: '注意力控制', category: '心理训练', value: 7, doc: '心理训练与认知表现' },
+                { id: 'stress', name: '压力管理', category: '心理训练', value: 6, doc: '心理训练与认知表现' },
+                
+                // 周期化
+                { id: 'periodization', name: '周期化训练', category: '周期化', value: 9, doc: '周期化训练高级理论' },
+                { id: 'macrocycle', name: '宏观周期', category: '周期化', value: 7, doc: '周期化训练高级理论' },
+                { id: 'microcycle', name: '微观周期', category: '周期化', value: 7, doc: '周期化训练高级理论' },
+                { id: 'tapering', name: '减量调整', category: '周期化', value: 6, doc: '周期化训练高级理论' }
+            ],
+            edges: [
+                // 能量代谢关系
+                { source: 'ATP-CP', target: 'strength', label: '主要供能' },
+                { source: 'glycolysis', target: 'strength', label: '次要供能' },
+                { source: 'glycolysis', target: 'HIIT', label: '主要供能' },
+                { source: 'aerobic', target: 'endurance', label: '主要供能' },
+                { source: 'VO2max', target: 'aerobic', label: '衡量指标' },
+                { source: 'VO2max', target: 'endurance', label: '决定因素' },
+                
+                // 训练方法与生理适应
+                { source: 'strength', target: 'muscle_hypertrophy', label: '导致' },
+                { source: 'strength', target: 'neural_adaptation', label: '导致' },
+                { source: 'overload', target: 'muscle_hypertrophy', label: '必要条件' },
+                { source: 'endurance', target: 'mitochondria', label: '促进' },
+                { source: 'endurance', target: 'cardiovascular', label: '改善' },
+                { source: 'HIIT', target: 'VO2max', label: '提升' },
+                
+                // 营养恢复与训练
+                { source: 'protein', target: 'muscle_hypertrophy', label: '支持' },
+                { source: 'carbs', target: 'glycolysis', label: '燃料来源' },
+                { source: 'sleep', target: 'recovery', label: '关键因素' },
+                { source: 'recovery', target: 'muscle_hypertrophy', label: '必需' },
+                { source: 'recovery', target: 'neural_adaptation', label: '必需' },
+                
+                // 心理因素
+                { source: 'motivation', target: 'strength', label: '影响' },
+                { source: 'motivation', target: 'endurance', label: '影响' },
+                { source: 'focus', target: 'strength', label: '提升表现' },
+                { source: 'stress', target: 'recovery', label: '负面影响' },
+                
+                // 周期化
+                { source: 'periodization', target: 'macrocycle', label: '包含' },
+                { source: 'macrocycle', target: 'microcycle', label: '包含' },
+                { source: 'tapering', target: 'macrocycle', label: '最后阶段' },
+                { source: 'periodization', target: 'strength', label: '优化' },
+                { source: 'periodization', target: 'endurance', label: '优化' }
+            ]
+        };
+        
+        let myChart = null;
+        let currentOption = null;
+        
+        // 初始化图表
+        function initGraph() {
+            const chartDom = document.getElementById('graph-container');
+            myChart = echarts.init(chartDom);
+            
+            updateStats();
+            renderGraph('force');
+            
+            // 响应式
+            window.addEventListener('resize', () => {
+                myChart.resize();
+            });
+        }
+        
+        // 更新统计数据
+        function updateStats() {
+            document.getElementById('node-count').textContent = knowledgeGraph.nodes.length;
+            document.getElementById('edge-count').textContent = knowledgeGraph.edges.length;
+            
+            const categories = new Set(knowledgeGraph.nodes.map(n => n.category));
+            document.getElementById('category-count').textContent = categories.size;
+        }
+        
+        // 渲染图谱
+        function renderGraph(layoutType) {
+            const categoryFilter = document.getElementById('category-filter').value;
+            
+            let filteredNodes = knowledgeGraph.nodes;
+            if (categoryFilter !== 'all') {
+                filteredNodes = knowledgeGraph.nodes.filter(n => n.category === categoryFilter);
+            }
+            
+            const nodeIds = new Set(filteredNodes.map(n => n.id));
+            const filteredEdges = knowledgeGraph.edges.filter(e => 
+                nodeIds.has(e.source) && nodeIds.has(e.target)
+            );
+            
+            const categories = [
+                { name: '能量代谢' },
+                { name: '训练方法' },
+                { name: '生理适应' },
+                { name: '营养恢复' },
+                { name: '心理训练' },
+                { name: '周期化' }
+            ];
+            
+            const option = {
+                title: {
+                    text: '健身科学知识关系图谱',
+                    left: 'center',
+                    top: 10,
+                    textStyle: {
+                        fontSize: 20,
+                        fontFamily: 'Times New Roman, SimSun',
+                        color: '#2c3e50'
+                    }
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function(params) {
+                        if (params.dataType === 'node') {
+                            return `
+                                <div style="padding: 10px;">
+                                    <strong style="font-size: 16px;">${params.data.name}</strong><br/>
+                                    <span style="color: #666;">分类：${params.data.category}</span><br/>
+                                    <span style="color: #666;">来源：${params.data.doc}</span>
+                                </div>
+                            `;
+                        } else {
+                            return `<strong>${params.data.label}</strong>`;
+                        }
+                    },
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    borderColor: '#e0e0e0',
+                    borderWidth: 1,
+                    textStyle: {
+                        color: '#333',
+                        fontFamily: 'SimSun'
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                series: [{
+                    type: 'graph',
+                    layout: layoutType,
+                    data: filteredNodes.map(node => ({
+                        ...node,
+                        symbolSize: node.value * 5,
+                        itemStyle: {
+                            color: getCategoryColor(node.category),
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            shadowBlur: 10,
+                            shadowColor: 'rgba(0, 0, 0, 0.3)'
+                        },
+                        label: {
+                            show: true,
+                            position: 'right',
+                            formatter: '{b}',
+                            fontSize: 13,
+                            fontFamily: 'SimSun',
+                            color: '#2c3e50'
+                        }
+                    })),
+                    links: filteredEdges.map(edge => ({
+                        ...edge,
+                        lineStyle: {
+                            color: '#3498db',
+                            width: 2,
+                            curveness: 0.2
+                        },
+                        label: {
+                            show: true,
+                            formatter: edge.label,
+                            fontSize: 11,
+                            color: '#666',
+                            fontFamily: 'SimSun'
+                        }
+                    })),
+                    categories: categories,
+                    roam: true,
+                    draggable: true,
+                    emphasis: {
+                        focus: 'adjacency',
+                        lineStyle: {
+                            width: 4
+                        }
+                    },
+                    force: layoutType === 'force' ? {
+                        repulsion: 300,
+                        gravity: 0.1,
+                        edgeLength: 150,
+                        layoutAnimation: true
+                    } : undefined,
+                    circular: layoutType === 'circular' ? {
+                        rotateLabel: true
+                    } : undefined
+                }]
+            };
+            
+            currentOption = option;
+            myChart.setOption(option);
+        }
+        
+        // 获取分类颜色
+        function getCategoryColor(category) {
+            const colors = {
+                '能量代谢': '#e74c3c',
+                '训练方法': '#3498db',
+                '生理适应': '#2ecc71',
+                '营养恢复': '#f39c12',
+                '心理训练': '#9b59b6',
+                '周期化': '#1abc9c'
+            };
+            return colors[category] || '#95a5a6';
+        }
+        
+        // 筛选图谱
+        function filterGraph() {
+            const layoutType = document.getElementById('layout-type').value;
+            renderGraph(layoutType);
+        }
+        
+        // 切换布局
+        function changeLayout() {
+            const layoutType = document.getElementById('layout-type').value;
+            renderGraph(layoutType);
+        }
+        
+        // 重置视图
+        function resetView() {
+            document.getElementById('category-filter').value = 'all';
+            document.getElementById('layout-type').value = 'force';
+            renderGraph('force');
+        }
+        
+        // 导出图片
+        function exportGraph() {
+            const url = myChart.getDataURL({
+                type: 'png',
+                pixelRatio: 2,
+                backgroundColor: '#fff'
+            });
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `知识图谱_${new Date().toISOString().split('T')[0]}.png`;
+            a.click();
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', initGraph);
+    </script>
+</body>
+</html>

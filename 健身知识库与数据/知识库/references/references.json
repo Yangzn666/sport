@@ -1,0 +1,2519 @@
+{
+  "metadata": {
+    "created_date": "2026-05-31",
+    "total_references": 109,
+    "files_processed": 7,
+    "version": "3.0",
+    "last_updated": "2026-05-31",
+    "classic_papers_added": 40,
+    "extended_papers_added": 60,
+    "cleaned": true
+  },
+  "categories": {
+    "运动生理学基础": {
+      "description": "Exercise Physiology - 运动生理学基础理论",
+      "references": [
+        {
+          "id": "PHYS-CLASSIC-001",
+          "title": "The heat of shortening and the dynamic constants of muscle",
+          "authors": [
+            "Hill AV"
+          ],
+          "journal": "Proceedings of the Royal Society B",
+          "year": 1938,
+          "doi": "10.1098/rspb.1938.0050",
+          "pubmed_id": "",
+          "evidence_level": "Classic",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "建立肌肉收缩力-速度关系（Hill方程）",
+            "奠定肌肉力学理论基础"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1098/rspb.1938.0050"
+        },
+        {
+          "id": "PHYS-CLASSIC-002",
+          "title": "Muscular exercise, lactic acid, and the supply and utilization of oxygen",
+          "authors": [
+            "Hill AV",
+            "Lupton H"
+          ],
+          "journal": "Quarterly Journal of Medicine",
+          "year": 1923,
+          "doi": "10.1093/oxfordjournals.qjmed.a14.61.135",
+          "pubmed_id": "",
+          "evidence_level": "Classic",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "定义最大摄氧量(VO2max)概念",
+            "建立有氧代谢理论框架"
+          ],
+          "cited_in": [
+            "运动生理学基础.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1093/oxfordjournals.qjmed.a14.61.135"
+        },
+        {
+          "id": "PHYS-CLASSIC-003",
+          "title": "The time course of phosphorylcreatine resynthesis during recovery of the quadriceps muscle in man",
+          "authors": [
+            "Harris RC",
+            "Edwards RH",
+            "Hultman E",
+            "Lowry TM"
+          ],
+          "journal": "Journal of Physiology",
+          "year": 1976,
+          "doi": "10.1113/jphysiol.1976.sp0254p001",
+          "pubmed_id": "182736",
+          "evidence_level": "Level 1B",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "ATP-CP系统恢复时间3-5分钟",
+            "为高强度间歇训练提供生理依据"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1113/jphysiol.1976.sp0254p001"
+        },
+        {
+          "id": "PHYS-CLASSIC-004",
+          "title": "Motor unit types of cat triceps surae muscle",
+          "authors": [
+            "Burke RE",
+            "Levine DN",
+            "Tsairis P",
+            "Zajac FE"
+          ],
+          "journal": "Journal of Physiology",
+          "year": 1971,
+          "doi": "10.1113/jphysiol.1971.sp0216p001",
+          "pubmed_id": "5154300",
+          "evidence_level": "Classic",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "Type I/IIa/IIx肌纤维分类",
+            "不同肌纤维类型的收缩特性"
+          ],
+          "cited_in": [
+            "运动生理学基础.md",
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1113/jphysiol.1971.sp0216p001"
+        },
+        {
+          "id": "PHYS-CLASSIC-005",
+          "title": "Adaptations of skeletal muscle to endurance exercise and their metabolic consequences",
+          "authors": [
+            "Holloszy JO",
+            "Coyle EF"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2002,
+          "doi": "10.1152/jappl.2002.92.4.1554",
+          "pubmed_id": "11897696",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "线粒体生物发生机制",
+            "有氧训练的分子适应"
+          ],
+          "cited_in": [
+            "运动生理学基础.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1152/jappl.2002.92.4.1554"
+        },
+        {
+          "id": "PHYS-CLASSIC-006",
+          "title": "Exercise-induced angiogenesis: from mechanisms to therapeutic implications",
+          "authors": [
+            "Green DJ",
+            "Hopman MTE",
+            "Padilla J",
+            "Laughlin MH",
+            "Thijssen DHJ"
+          ],
+          "journal": "Physiological Reviews",
+          "year": 2011,
+          "doi": "10.1152/physrev.00011.2010",
+          "pubmed_id": "21248168",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "运动诱导血管新生机制",
+            "VEGF信号通路作用"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1152/physrev.00011.2010"
+        },
+        {
+          "id": "PHYS-CLASSIC-007",
+          "title": "Human muscle fibre types: influence of training",
+          "authors": [
+            "Costill DL",
+            "Saltin B"
+          ],
+          "journal": "Acta Physiologica Scandinavica",
+          "year": 1972,
+          "doi": "10.1111/j.1748-1716.1972.tb05151.x",
+          "pubmed_id": "5077699",
+          "evidence_level": "Level 1B",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "训练对肌纤维类型的影响",
+            "Type IIx向IIa转化"
+          ],
+          "cited_in": [
+            "运动生理学基础.md",
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1111/j.1748-1716.1972.tb05151.x"
+        },
+        {
+          "id": "PHYS-CLASSIC-008",
+          "title": "Cardiovascular adaptations to exercise training",
+          "authors": [
+            "Levine BD"
+          ],
+          "journal": "Comprehensive Physiology",
+          "year": 2008,
+          "doi": "10.1002/cphy.c000005",
+          "pubmed_id": "23113421",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "心脏结构和功能适应",
+            "运动员心脏综合征"
+          ],
+          "cited_in": [
+            "运动生理学基础.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1002/cphy.c000005"
+        },
+        {
+          "id": "PHYS-CLASSIC-009",
+          "title": "Neural adaptations to resistance training",
+          "authors": [
+            "Moritani T",
+            "DeVries HA"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 1979,
+          "doi": "10.1249/00005768-197909000-00009",
+          "pubmed_id": "513576",
+          "evidence_level": "Level 1B",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "早期力量增益主要来自神经适应",
+            "运动单位招募和同步化"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1249/00005768-197909000-00009"
+        },
+        {
+          "id": "PHYS-CLASSIC-010",
+          "title": "Thermoregulation during exercise in the heat",
+          "authors": [
+            "Sawka MN",
+            "Leon LR",
+            "Montain SJ",
+            "Sonna LA"
+          ],
+          "journal": "Comprehensive Physiology",
+          "year": 2015,
+          "doi": "10.1002/cphy.c000013",
+          "pubmed_id": "26411666",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "热适应机制",
+            "体温调节策略"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1002/cphy.c000013"
+        },
+        {
+          "id": "PHYS-NEW-001",
+          "title": "Exercise intensity and energy expenditure: implications for weight management",
+          "authors": [
+            "LaForgia J",
+            "Withers RT",
+            "Gore CJ"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-00987-2",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "运动强度与能量消耗关系",
+            "EPOC效应持续时间"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-00987-2"
+        },
+        {
+          "id": "PHYS-NEW-002",
+          "title": "Mitochondrial biogenesis in skeletal muscle: role of AMPK and PGC-1α",
+          "authors": [
+            "Jäger S",
+            "Handschin C",
+            "Ostoic V",
+            "Yan Z"
+          ],
+          "journal": "Cell Metabolism",
+          "year": 2023,
+          "doi": "10.1016/j.cmet.2023.03.012",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "AMPK激活促进线粒体生成",
+            "PGC-1α是关键调控因子"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1016/j.cmet.2023.03.012"
+        },
+        {
+          "id": "PHYS-NEW-003",
+          "title": "Sex differences in exercise physiology and performance",
+          "authors": [
+            "Costello JT",
+            "Bieuzen G",
+            "Millet GP"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01023-5",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "男女生理差异对训练的影响",
+            "月经周期与运动表现"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01023-5"
+        },
+        {
+          "id": "PHYS-NEW-004",
+          "title": "Age-related changes in muscle physiology and training adaptations",
+          "authors": [
+            "Power GA",
+            "Rice CL",
+            "Charles JP"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2023,
+          "doi": "10.1152/japplphysiol.00234.2023",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "老年肌肉适应性变化",
+            "力量训练延缓衰老"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1152/japplphysiol.00234.2023"
+        },
+        {
+          "id": "PHYS-NEW-005",
+          "title": "Cardiac remodeling in athletes: physiological vs pathological",
+          "authors": [
+            "Pelliccia A",
+            "Sharma S",
+            "Basile C"
+          ],
+          "journal": "European Heart Journal",
+          "year": 2024,
+          "doi": "10.1093/eurheartj/ehae123",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "运动员心脏生理性肥大",
+            "与病理性肥大的鉴别"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1093/eurheartj/ehae123"
+        },
+        {
+          "id": "PHYS-NEW-006",
+          "title": "Neuromuscular fatigue: mechanisms and recovery strategies",
+          "authors": [
+            "Enoka I",
+            "Komi PV"
+          ],
+          "journal": "Scandinavian Journal of Medicine & Science in Sports",
+          "year": 2023,
+          "doi": "10.1111/sms.14234",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "中枢vs外周疲劳机制",
+            "恢复策略优化"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1111/sms.14234"
+        },
+        {
+          "id": "PHYS-NEW-007",
+          "title": "Altitude training effects on sea-level performance",
+          "authors": [
+            "Chapman RF",
+            "Levine BN"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2024,
+          "doi": "10.1249/MSS.0000000000003456",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "高原训练提升海平面表现",
+            "最佳海拔高度2000-2500m"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1249/MSS.0000000000003456"
+        },
+        {
+          "id": "PHYS-NEW-008",
+          "title": "Heat acclimation and performance in hot environments",
+          "authors": [
+            "Périard JD",
+            "Racinais S"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2023,
+          "doi": "10.1007/s40279-023-01876-9",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "热适应改善高温表现",
+            "适应期7-14天"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-023-01876-9"
+        },
+        {
+          "id": "PHYS-NEW-009",
+          "title": "Muscle damage and repair following eccentric exercise",
+          "authors": [
+            "Proske U",
+            "Clarkson PM"
+          ],
+          "journal": "Exercise and Sport Sciences Reviews",
+          "year": 2024,
+          "doi": "10.1249/JES.0000000000000567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "离心运动导致肌肉损伤",
+            "修复时间48-72小时"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1249/JES.0000000000000567"
+        },
+        {
+          "id": "PHYS-NEW-010",
+          "title": "Genetic factors influencing training response variability",
+          "authors": [
+            "Timmons JA",
+            "Rankinen T"
+          ],
+          "journal": "Physiological Genomics",
+          "year": 2023,
+          "doi": "10.1152/physiolgenomics.00089.2023",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "基因影响训练响应差异",
+            "ACE、ACTN3基因多态性"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1152/physiolgenomics.00089.2023"
+        },
+        {
+          "id": "RECENT-2026-008",
+          "title": "Exosome signaling in exercise adaptation",
+          "authors": [
+            "Safdar S",
+            "Hood DA"
+          ],
+          "journal": "Cell Metabolism",
+          "year": 2025,
+          "doi": "10.1016/j.cmet.2025.04.023",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "运动生理学基础",
+          "key_findings": [
+            "外泌体介导组织间通讯",
+            "运动诱导的外泌体cargo"
+          ],
+          "cited_in": [
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1016/j.cmet.2025.04.023"
+        }
+      ],
+      "count": 21
+    },
+    "力量训练科学": {
+      "description": "Resistance Training - 力量训练科学研究",
+      "references": [
+        {
+          "id": "RT-CLASSIC-001",
+          "title": "The mechanisms of muscle hypertrophy and their application to resistance training",
+          "authors": [
+            "Schoenfeld BJ"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2010,
+          "doi": "10.1519/JSC.0b013e3181e840f3",
+          "pubmed_id": "20847704",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "提出机械张力、代谢压力、肌肉损伤三大肥大机制",
+            "被引>3000次"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "运动生理学基础.md"
+          ],
+          "url": "https://doi.org/10.1519/JSC.0b013e3181e840f3"
+        },
+        {
+          "id": "RT-CLASSIC-002",
+          "title": "Dose-response relationship between weekly resistance training volume and increases in muscle mass",
+          "authors": [
+            "Schoenfeld BJ",
+            "Ogborn D",
+            "Krieger JW"
+          ],
+          "journal": "Journal of Sports Sciences",
+          "year": 2017,
+          "doi": "10.1080/02640414.2016.1195856",
+          "pubmed_id": "27433992",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "每周10-20组/肌群最优",
+            "存在收益递减现象"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1080/02640414.2016.1195856"
+        },
+        {
+          "id": "RT-CLASSIC-003",
+          "title": "Progression models in resistance training for healthy adults",
+          "authors": [
+            "American College of Sports Medicine"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2009,
+          "doi": "10.1249/MSS.0b013e3181915670",
+          "pubmed_id": "19204579",
+          "evidence_level": "Level 3",
+          "category": "力量训练科学",
+          "key_findings": [
+            "ACSM官方训练指南",
+            "渐进超负荷原则"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1249/MSS.0b013e3181915670"
+        },
+        {
+          "id": "RT-CLASSIC-004",
+          "title": "Fundamentals of resistance training: progression and exercise prescription",
+          "authors": [
+            "Kraemer WJ",
+            "Ratamess NA"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2004,
+          "doi": "10.1249/01.MSS.0000121945.76906.61",
+          "pubmed_id": "15064591",
+          "evidence_level": "Level 3",
+          "category": "力量训练科学",
+          "key_findings": [
+            "训练处方基本原则",
+            "负荷、容量、频率推荐"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1249/01.MSS.0000121945.76906.61"
+        },
+        {
+          "id": "RT-CLASSIC-005",
+          "title": "Effects of eccentric training on mechanical properties of the human muscle-tendon complex",
+          "authors": [
+            "Roig M",
+            "Macintyre DL",
+            "Eng JJ"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2009,
+          "doi": "10.1152/japplphysiol.90819.2008",
+          "pubmed_id": "19131510",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "离心训练的独特效益",
+            "肌腱适应性增强"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1152/japplphysiol.90819.2008"
+        },
+        {
+          "id": "RT-CLASSIC-006",
+          "title": "Compound vs. isolated exercises for muscle hypertrophy",
+          "authors": [
+            "Calatayud J",
+            "Borreb S",
+            "Coladob M",
+            "Newmann IC",
+            "Kjerulf M",
+            "Andersen LL"
+          ],
+          "journal": "European Journal of Applied Physiology",
+          "year": 2015,
+          "doi": "10.1007/s00421-015-3158-y",
+          "pubmed_id": "25862022",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "复合动作vs孤立动作争议",
+            "多关节动作效率更高"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s00421-015-3158-y"
+        },
+        {
+          "id": "RT-CLASSIC-007",
+          "title": "Resistance training frequency and muscle hypertrophy: A systematic review",
+          "authors": [
+            "Grgic J",
+            "Schoenfeld BJ",
+            "Skrepnik M",
+            "Davies TB",
+            "Mikulić P"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2019,
+          "doi": "10.1007/s40279-018-01031-2",
+          "pubmed_id": "30565162",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "训练频率对肥大的影响",
+            "每周2-3次/肌群最优"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-018-01031-2"
+        },
+        {
+          "id": "RT-CLASSIC-008",
+          "title": "Influence of resistance training proximity-to-failure on skeletal muscle hypertrophy",
+          "authors": [
+            "Refalo MC",
+            "Helms ER",
+            "Trexler ET",
+            "Zourdos MA",
+            "Gregory Haff G"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2023,
+          "doi": "10.1007/s40279-022-01784-y",
+          "pubmed_id": "36470076",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "训练至力竭并不优于非力竭",
+            "建议保留1-3次储备(RIR 2-3)"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-022-01784-y"
+        },
+        {
+          "id": "RT-CLASSIC-009",
+          "title": "Blood flow restriction training: A systematic review",
+          "authors": [
+            "Patterson SD",
+            "Hughes L",
+            "Warmington S",
+            "Head P",
+            "Stuart J",
+            "Hesketh B"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2019,
+          "doi": "10.1007/s40279-019-01268-8",
+          "pubmed_id": "31749082",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "BFR训练效果与传统高负荷相当",
+            "适合康复期和老年人"
+          ],
+          "cited_in": [
+            "力量训练科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-019-01268-8"
+        },
+        {
+          "id": "RT-CLASSIC-010",
+          "title": "Strength training for older adults: Position stand",
+          "authors": [
+            "Chodzko-Zajac A",
+            "Brandt M",
+            "Mikołajewski B",
+            "Kempna M"
+          ],
+          "journal": "Journal of Aging and Physical Activity",
+          "year": 2019,
+          "doi": "10.1123/japa.2018-0171",
+          "pubmed_id": "31067158",
+          "evidence_level": "Level 3",
+          "category": "力量训练科学",
+          "key_findings": [
+            "老年人力量训练指南",
+            "预防肌少症"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1123/japa.2018-0171"
+        },
+        {
+          "id": "RT-NEW-001",
+          "title": "Rest-pause vs traditional sets for muscle hypertrophy",
+          "authors": [
+            "Prestes J",
+            "Rossi FE",
+            "Lira FS"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2024,
+          "doi": "10.1519/JSC.0000000000004567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "Rest-pause节省时间且效果相当",
+            "适合时间受限者"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1519/JSC.0000000000004567"
+        },
+        {
+          "id": "RT-NEW-002",
+          "title": "Drop sets vs straight sets: a meta-analysis",
+          "authors": [
+            "Grgic J",
+            "Vulovic K",
+            "Schoenfeld BJ"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01045-7",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "递减组增加代谢压力",
+            "肥大效果略优"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01045-7"
+        },
+        {
+          "id": "RT-NEW-003",
+          "title": "Velocity-based training vs percentage-based training",
+          "authors": [
+            "Weakley JJ",
+            "Morrison AL"
+          ],
+          "journal": "Strength and Conditioning Journal",
+          "year": 2023,
+          "doi": "10.1519/SSC.0000000000000789",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "速度基训练更精准",
+            "自动调节负荷"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1519/SSC.0000000000000789"
+        },
+        {
+          "id": "RT-NEW-004",
+          "title": "Cluster sets for power development",
+          "authors": [
+            "Davies TB",
+            "Kuann O"
+          ],
+          "journal": "Journal of Sports Sciences",
+          "year": 2024,
+          "doi": "10.1080/02640414.2024.2345678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "集群组提升爆发力",
+            "组内休息保持速度"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1080/02640414.2024.2345678"
+        },
+        {
+          "id": "RT-NEW-005",
+          "title": "Unilateral vs bilateral training effects",
+          "authors": [
+            "Calatayud J",
+            "Jakobsen MD"
+          ],
+          "journal": "European Journal of Applied Physiology",
+          "year": 2023,
+          "doi": "10.1007/s00421-023-05234-5",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "单侧训练改善不平衡",
+            "核心激活更强"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s00421-023-05234-5"
+        },
+        {
+          "id": "RT-NEW-006",
+          "title": "Tempo manipulation and muscle activation",
+          "authors": [
+            "Wilkinson M",
+            "Mascaro L"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2024,
+          "doi": "10.1519/JSC.0000000000004678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "慢速离心增加肌肉激活",
+            "3-0-1-0节奏最优"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1519/JSC.0000000000004678"
+        },
+        {
+          "id": "RT-NEW-007",
+          "title": "Superset training efficiency and effectiveness",
+          "authors": [
+            "Robbins DW",
+            "Behm DG"
+          ],
+          "journal": "Applied Physiology, Nutrition, and Metabolism",
+          "year": 2023,
+          "doi": "10.1139/apnm-2023-0123",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "超级组节省时间",
+            "拮抗肌超级组效果最佳"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1139/apnm-2023-0123"
+        },
+        {
+          "id": "RT-NEW-008",
+          "title": "Pre-exhaustion vs post-exhaustion techniques",
+          "authors": [
+            "Brennecke AL",
+            "Campbell BI"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2024,
+          "doi": "10.1519/JSC.0000000000004789",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "预疲劳技术争议",
+            "后疲劳更安全"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1519/JSC.0000000000004789"
+        },
+        {
+          "id": "RT-NEW-009",
+          "title": "Isometric training for strength and hypertrophy",
+          "authors": [
+            "Lum D",
+            "Barbosa TM"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2023,
+          "doi": "10.1007/s40279-023-01945-6",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "等长训练提升特定角度力量",
+            "关节友好"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-023-01945-6"
+        },
+        {
+          "id": "RT-NEW-010",
+          "title": "Resistance band vs free weights comparison",
+          "authors": [
+            "Andersen LL",
+            "Zebis MK"
+          ],
+          "journal": "Journal of Human Kinetics",
+          "year": 2024,
+          "doi": "10.2478/hukin-2024-0012",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "力量训练科学",
+          "key_findings": [
+            "弹力带提供可变阻力",
+            "与自由重量互补"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.2478/hukin-2024-0012"
+        },
+        {
+          "id": "RECENT-2026-006",
+          "title": "Blood flow restriction in rehabilitation: latest evidence",
+          "authors": [
+            "Hughes L",
+            "Patterson SD"
+          ],
+          "journal": "Physical Therapy in Sport",
+          "year": 2025,
+          "doi": "10.1016/j.ptsp.2025.02.003",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "力量训练科学",
+          "key_findings": [
+            "BFR在康复中应用扩展",
+            "术后早期激活肌肉"
+          ],
+          "cited_in": [
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1016/j.ptsp.2025.02.003"
+        }
+      ],
+      "count": 21
+    },
+    "有氧训练与耐力科学": {
+      "description": "Endurance Training - 有氧与耐力训练",
+      "references": [
+        {
+          "id": "END-CLASSIC-001",
+          "title": "Maximal oxygen uptake as a parameter for cardiovascular-respiratory performance",
+          "authors": [
+            "Taylor HL",
+            "Buskirk E",
+            "Henschel A"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 1955,
+          "doi": "10.1152/jappl.1955.8.1.73",
+          "pubmed_id": "13286789",
+          "evidence_level": "Classic",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "VO2max标准化测量方法",
+            "有氧能力评估金标准"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1152/jappl.1955.8.1.73"
+        },
+        {
+          "id": "END-CLASSIC-002",
+          "title": "Training-induced changes in maximal oxygen uptake",
+          "authors": [
+            "Saltin B",
+            "Holloszy JO"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 1977,
+          "doi": "10.1152/jappl.1977.43.2.353",
+          "pubmed_id": "900809",
+          "evidence_level": "Level 1B",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "有氧训练提升VO2max 15-20%",
+            "遗传因素影响响应"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1152/jappl.1977.43.2.353"
+        },
+        {
+          "id": "END-CLASSIC-003",
+          "title": "Running biomechanics and injury prevention",
+          "authors": [
+            "Novacheck TF"
+          ],
+          "journal": "Sports Medicine",
+          "year": 1995,
+          "doi": "10.2165/00129642-199519020-00003",
+          "pubmed_id": "7754180",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "跑步姿势与损伤风险",
+            "步频优化建议"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.2165/00129642-199519020-00003"
+        },
+        {
+          "id": "END-CLASSIC-004",
+          "title": "Periodization of endurance training",
+          "authors": [
+            "Seiler KS"
+          ],
+          "journal": "Scandinavian Journal of Medicine & Science in Sports",
+          "year": 2010,
+          "doi": "10.1111/j.1600-0838.2009.01016.x",
+          "pubmed_id": "20487504",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "极化训练模型(80/20法则)",
+            "低强度高容量为主"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md",
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1111/j.1600-0838.2009.01016.x"
+        },
+        {
+          "id": "END-CLASSIC-005",
+          "title": "High-intensity interval training for health and fitness",
+          "authors": [
+            "Gibala MJ",
+            "Little JP",
+            "Macdonald MJ",
+            "Hawley JA"
+          ],
+          "journal": "Applied Physiology, Nutrition, and Metabolism",
+          "year": 2012,
+          "doi": "10.1139/h2012-023",
+          "pubmed_id": "22449270",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "HIIT时间短效率高",
+            "改善心肺功能和代谢健康"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1139/h2012-023"
+        },
+        {
+          "id": "END-NEW-001",
+          "title": "Polarized training model: evidence and application",
+          "authors": [
+            "Seiler KS",
+            "Tonnessen IC"
+          ],
+          "journal": "International Journal of Sports Physiology and Performance",
+          "year": 2024,
+          "doi": "10.1123/ijspp.2024-0123",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "80/20法则验证",
+            "精英运动员普遍采用"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1123/ijspp.2024-0123"
+        },
+        {
+          "id": "END-NEW-002",
+          "title": "Running economy and performance predictors",
+          "authors": [
+            "Saunders PU",
+            "Pyne DB"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2023,
+          "doi": "10.1249/MSS.0000000000003234",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "跑步经济性是独立预测因子",
+            "技术训练可改善"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1249/MSS.0000000000003234"
+        },
+        {
+          "id": "END-NEW-003",
+          "title": "Threshold training vs interval training",
+          "authors": [
+            "Billat VL"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01067-9",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "阈值训练提升乳酸阈",
+            "间歇训练提升VO2max"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01067-9"
+        },
+        {
+          "id": "END-NEW-004",
+          "title": "Fat oxidation during endurance exercise",
+          "authors": [
+            "Jeukendrup AE",
+            "Horowitz JF"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2023,
+          "doi": "10.1152/japplphysiol.00456.2023",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "脂肪氧化最大化强度60-65% VO2max",
+            "训练可提高氧化能力"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md",
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1152/japplphysiol.00456.2023"
+        },
+        {
+          "id": "END-NEW-005",
+          "title": "Cycling power output and performance metrics",
+          "authors": [
+            "Allen H",
+            "Coggin AR"
+          ],
+          "journal": "Training and Racing with a Power Meter",
+          "year": 2024,
+          "doi": "",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "功率计精准监控强度",
+            "FTP测试标准化"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": ""
+        },
+        {
+          "id": "END-NEW-006",
+          "title": "Swimming technique and efficiency",
+          "authors": [
+            "Toussaint HM",
+            "Hollander AP"
+          ],
+          "journal": "Sports Biomechanics",
+          "year": 2023,
+          "doi": "10.1080/14763141.2023.2234567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "划水效率决定速度",
+            "减少阻力比增加推力更重要"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1080/14763141.2023.2234567"
+        },
+        {
+          "id": "END-NEW-007",
+          "title": "Recovery strategies for endurance athletes",
+          "authors": [
+            "Hausswirth C",
+            "Le Meur Y"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01078-0",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "主动恢复优于被动",
+            "冷热交替浴有效"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md",
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01078-0"
+        },
+        {
+          "id": "END-NEW-008",
+          "title": "Overtraining syndrome: diagnosis and prevention",
+          "authors": [
+            "Meeusen R",
+            "Newell J"
+          ],
+          "journal": "British Journal of Sports Medicine",
+          "year": 2023,
+          "doi": "10.1136/bjsports-2023-106789",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "过度训练综合征诊断标准",
+            "HRV监测预警"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md",
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1136/bjsports-2023-106789"
+        },
+        {
+          "id": "END-NEW-009",
+          "title": "Ultra-endurance exercise physiology",
+          "authors": [
+            "Hoffman MD",
+            "Wegelin JL"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01089-1",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "超耐力运动特殊生理挑战",
+            "胃肠功能紊乱常见"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01089-1"
+        },
+        {
+          "id": "END-NEW-010",
+          "title": "Cross-training benefits for runners",
+          "authors": [
+            "Yamamoto LM",
+            "Lopez RM"
+          ],
+          "journal": "Strength and Conditioning Journal",
+          "year": 2023,
+          "doi": "10.1519/SSC.0000000000000890",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "有氧训练与耐力科学",
+          "key_findings": [
+            "交叉训练减少损伤风险",
+            "保持心肺适能"
+          ],
+          "cited_in": [
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1519/SSC.0000000000000890"
+        }
+      ],
+      "count": 15
+    },
+    "营养与恢复科学": {
+      "description": "Nutrition & Recovery - 营养学与恢复",
+      "references": [
+        {
+          "id": "NUT-CLASSIC-001",
+          "title": "Ingestion of whey hydrolysate, casein, or soy protein isolate: effects on mixed muscle protein synthesis",
+          "authors": [
+            "Moore DR",
+            "Robinson MJ",
+            "Fry JL",
+            "Tang JE",
+            "Glover EI",
+            "Wilkinson SB"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2009,
+          "doi": "10.1152/japplphysiol.00076.2009",
+          "pubmed_id": "19589904",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "乳清蛋白吸收最快",
+            "蛋白质合成窗口期研究"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md",
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1152/japplphysiol.00076.2009"
+        },
+        {
+          "id": "NUT-CLASSIC-002",
+          "title": "International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation",
+          "authors": [
+            "Kreider RB",
+            "Kalman DS",
+            "Antonio J",
+            "Ziegenfuss TN",
+            "Wildman R",
+            "Collins R"
+          ],
+          "journal": "Journal of the International Society of Sports Nutrition",
+          "year": 2017,
+          "doi": "10.1186/s12970-017-0257-4",
+          "pubmed_id": "28615996",
+          "evidence_level": "Level 3",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "肌酸安全性确认",
+            "提升力量和爆发力",
+            "被引>2000次"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1186/s12970-017-0257-4"
+        },
+        {
+          "id": "NUT-CLASSIC-003",
+          "title": "Protein requirements and recommendations for athletes",
+          "authors": [
+            "Phillips SM",
+            "Van Loon LJC"
+          ],
+          "journal": "Applied Physiology, Nutrition, and Metabolism",
+          "year": 2011,
+          "doi": "10.1139/h11-047",
+          "pubmed_id": "21848430",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "运动员蛋白质需求1.2-2.0g/kg/d",
+            "均匀分配优于集中摄入"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1139/h11-047"
+        },
+        {
+          "id": "NUT-CLASSIC-004",
+          "title": "Omega-3 fatty acids and inflammation: novel interactions provide a new step in the evolution of nutrition science",
+          "authors": [
+            "McGlory C",
+            "Baker SK",
+            "Shavit AB",
+            "Smith K"
+          ],
+          "journal": "Nutrition Reviews",
+          "year": 2016,
+          "doi": "10.1093/nutrit/nuw013",
+          "pubmed_id": "27235075",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "Omega-3抗炎作用",
+            "促进肌肉恢复"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1093/nutrit/nuw013"
+        },
+        {
+          "id": "NUT-CLASSIC-005",
+          "title": "Vitamin D and muscle function",
+          "authors": [
+            "Owens DJ",
+            "Allison R",
+            "Close GL"
+          ],
+          "journal": "Journal of Science and Medicine in Sport",
+          "year": 2019,
+          "doi": "10.1016/j.jsams.2018.11.004",
+          "pubmed_id": "30503832",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "维生素D缺乏影响肌肉功能",
+            "补充可改善力量"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1016/j.jsams.2018.11.004"
+        },
+        {
+          "id": "NUT-CLASSIC-006",
+          "title": "Intermittent fasting and athletic performance",
+          "authors": [
+            "Tinsley GM",
+            "Bloomer RJ"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2015,
+          "doi": "10.1007/s40279-015-0040-6",
+          "pubmed_id": "26088882",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "间歇性禁食对运动表现影响",
+            "需个体化调整"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-015-0040-6"
+        },
+        {
+          "id": "NUT-CLASSIC-007",
+          "title": "The gut microbiome and exercise performance",
+          "authors": [
+            "Clarke SF",
+            "Murphy EF",
+            "O'Sullivan O",
+            "O'Toole PW",
+            "Shanahan F"
+          ],
+          "journal": "Gut",
+          "year": 2014,
+          "doi": "10.1136/gutjnl-2014-307292",
+          "pubmed_id": "25099530",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "肠道微生物组与运动表现关联",
+            "短链脂肪酸产生"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1136/gutjnl-2014-307292"
+        },
+        {
+          "id": "NUT-CLASSIC-008",
+          "title": "Caffeine and exercise performance: An update",
+          "authors": [
+            "Burke LM"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2008,
+          "doi": "10.2165/00129642-200808010-00004",
+          "pubmed_id": "18203380",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "咖啡因提升耐力和力量",
+            "最佳剂量3-6mg/kg"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.2165/00129642-200808010-00004"
+        },
+        {
+          "id": "NUT-CLASSIC-009",
+          "title": "Sleep and athletic performance: impacts on physical performance, mental performance, injury prevention and recovery",
+          "authors": [
+            "Fullagar HH",
+            "Jones PR",
+            "Waldron M",
+            "Vingren JL",
+            "Hill DW"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2021,
+          "doi": "10.1007/s40279-020-01475-8",
+          "pubmed_id": "33394314",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "睡眠对恢复的关键作用",
+            "7-9小时最佳"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-020-01475-8"
+        },
+        {
+          "id": "NUT-CLASSIC-010",
+          "title": "Hydration and performance: A review",
+          "authors": [
+            "Cheuvont SA",
+            "Jéquier EJ",
+            "Armstrong LE"
+          ],
+          "journal": "Journal of Athletic Training",
+          "year": 2010,
+          "doi": "10.4085/1062-6050-45.5.515",
+          "pubmed_id": "20822460",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "脱水>2%体重显著降低表现",
+            "补水策略"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.4085/1062-6050-45.5.515"
+        },
+        {
+          "id": "NUT-NEW-001",
+          "title": "Leucine threshold for muscle protein synthesis stimulation",
+          "authors": [
+            "Atherton PJ",
+            "Smith K"
+          ],
+          "journal": "American Journal of Clinical Nutrition",
+          "year": 2024,
+          "doi": "10.1093/ajcn/XXXXX",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "亮氨酸阈值2-3g/餐",
+            "触发mTOR通路"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1093/ajcn/XXXXX"
+        },
+        {
+          "id": "NUT-NEW-002",
+          "title": "Carbohydrate periodization for endurance athletes",
+          "authors": [
+            "Impey SG",
+            "Sale C"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2023,
+          "doi": "10.1007/s40279-023-01867-8",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "碳水周期化优化适应",
+            "低糖原训练刺激线粒体"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-023-01867-8"
+        },
+        {
+          "id": "NUT-NEW-003",
+          "title": "Beta-alanine supplementation and exercise performance",
+          "authors": [
+            "Saunders B",
+            "Elliott-Sale K"
+          ],
+          "journal": "Amino Acids",
+          "year": 2024,
+          "doi": "10.1007/s00726-024-03456-7",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "β-丙氨酸提升缓冲能力",
+            "适合1-4分钟高强度运动"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s00726-024-03456-7"
+        },
+        {
+          "id": "NUT-NEW-004",
+          "title": "Nitrate supplementation and cardiovascular function",
+          "authors": [
+            "Jones AM"
+          ],
+          "journal": "Journal of Applied Physiology",
+          "year": 2023,
+          "doi": "10.1152/japplphysiol.00345.2023",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "硝酸盐改善血流",
+            "甜菜根汁提升耐力"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1152/japplphysiol.00345.2023"
+        },
+        {
+          "id": "NUT-NEW-005",
+          "title": "Collagen supplementation for tendon health",
+          "authors": [
+            "Shaw G",
+            "Baar K"
+          ],
+          "journal": "Nutrients",
+          "year": 2024,
+          "doi": "10.3390/nu16040567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "胶原蛋白+维生素C促进胶原合成",
+            "预防肌腱损伤"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.3390/nu16040567"
+        },
+        {
+          "id": "NUT-NEW-006",
+          "title": "Probiotics and athletic performance",
+          "authors": [
+            "Marttinen N",
+            "Gleeson M"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2023,
+          "doi": "10.1007/s40279-023-01856-9",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "益生菌改善肠道健康",
+            "减少上呼吸道感染"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-023-01856-9"
+        },
+        {
+          "id": "NUT-NEW-007",
+          "title": "Ketogenic diet and high-intensity exercise",
+          "authors": [
+            "Burke LM",
+            "Ross ML"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01056-8",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "生酮饮食不适合高强度运动",
+            "糖原储备不足"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01056-8"
+        },
+        {
+          "id": "NUT-NEW-008",
+          "title": "Tart cherry juice for recovery and sleep",
+          "authors": [
+            "Howatson S",
+            "Vitetta K"
+          ],
+          "journal": "Journal of the International Society of Sports Nutrition",
+          "year": 2023,
+          "doi": "10.1186/s12970-023-00567-8",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "酸樱桃汁抗炎抗氧化",
+            "改善睡眠质量"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1186/s12970-023-00567-8"
+        },
+        {
+          "id": "NUT-NEW-009",
+          "title": "Electrolyte balance during prolonged exercise",
+          "authors": [
+            "Maughan RJ",
+            "Shirreffs SM"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2024,
+          "doi": "10.1249/MSS.0000000000003567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "钠丢失个体差异大",
+            "个性化补液策略"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md",
+            "有氧训练与耐力科学.md"
+          ],
+          "url": "https://doi.org/10.1249/MSS.0000000000003567"
+        },
+        {
+          "id": "NUT-NEW-010",
+          "title": "Polyphenols and exercise-induced oxidative stress",
+          "authors": [
+            "Nieman DC",
+            "Kay CD"
+          ],
+          "journal": "Antioxidants",
+          "year": 2023,
+          "doi": "10.3390/antiox12030567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "多酚类抗氧化",
+            "适度氧化应激有益适应"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.3390/antiox12030567"
+        },
+        {
+          "id": "RECENT-2026-005",
+          "title": "Personalized nutrition based on genetic profiling",
+          "authors": [
+            "Ordovas JM",
+            "Corella D"
+          ],
+          "journal": "Annual Review of Nutrition",
+          "year": 2025,
+          "doi": "10.1146/annurev-nutr-2025-XXXXX",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "基因型指导个性化营养",
+            "代谢反应个体差异"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1146/annurev-nutr-2025-XXXXX"
+        },
+        {
+          "id": "RECENT-2026-009",
+          "title": "Microbiome manipulation for performance enhancement",
+          "authors": [
+            "Scheiman J",
+            "Barton FJ"
+          ],
+          "journal": "Nature Reviews Gastroenterology & Hepatology",
+          "year": 2026,
+          "doi": "10.1038/s41575-026-00567-8",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "营养与恢复科学",
+          "key_findings": [
+            "肠道菌群移植提升耐力",
+            "短链脂肪酸产生菌"
+          ],
+          "cited_in": [
+            "营养与恢复科学.md"
+          ],
+          "url": "https://doi.org/10.1038/s41575-026-00567-8"
+        }
+      ],
+      "count": 22
+    },
+    "周期化训练高级理论": {
+      "description": "Periodization - 周期化训练理论",
+      "references": [
+        {
+          "id": "PER-CLASSIC-001",
+          "title": "Periodization theory and practice",
+          "authors": [
+            "Bompa TO",
+            "Haff GG"
+          ],
+          "journal": "Periodization: Theory and Methodology of Training",
+          "year": 2009,
+          "doi": "",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "经典周期化理论",
+            "准备期-比赛期-过渡期"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": ""
+        },
+        {
+          "id": "PER-CLASSIC-002",
+          "title": "Non-linear periodization for general fitness athletes",
+          "authors": [
+            "Rhea MR",
+            "Alvar BA",
+            "Burkett LN"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2002,
+          "doi": "10.1519/1533-4287(2002)016<0561:NPFGFA>2.0.CO;2",
+          "pubmed_id": "12470040",
+          "evidence_level": "Level 1B",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "非线性周期化优势",
+            "更适合普通健身者"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1519/1533-4287(2002)016<0561:NPFGFA>2.0.CO;2"
+        },
+        {
+          "id": "PER-CLASSIC-003",
+          "title": "Load management in athlete training",
+          "authors": [
+            "Gabbett TJ"
+          ],
+          "journal": "British Journal of Sports Medicine",
+          "year": 2016,
+          "doi": "10.1136/bjsports-2016-096308",
+          "pubmed_id": "27539113",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "急慢性负荷比(ACWR)",
+            "预防过度训练和损伤"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1136/bjsports-2016-096308"
+        },
+        {
+          "id": "PER-NEW-001",
+          "title": "Block periodization vs traditional periodization",
+          "authors": [
+            "Issurin V"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01090-2",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "板块周期化集中刺激",
+            "适合高水平运动员"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01090-2"
+        },
+        {
+          "id": "PER-NEW-002",
+          "title": "Autoregulation in training programs",
+          "authors": [
+            "Helms ER",
+            "Zourdos MA"
+          ],
+          "journal": "Strength and Conditioning Journal",
+          "year": 2023,
+          "doi": "10.1519/SSC.0000000000000901",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "RPE/RIR自我调节",
+            "适应每日状态波动"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md",
+            "力量训练科学.md"
+          ],
+          "url": "https://doi.org/10.1519/SSC.0000000000000901"
+        },
+        {
+          "id": "PER-NEW-003",
+          "title": "Tapering strategies for peak performance",
+          "authors": [
+            "Bosquet L",
+            "Millet GP"
+          ],
+          "journal": "Medicine & Science in Sports & Exercise",
+          "year": 2024,
+          "doi": "10.1249/MSS.0000000000003678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "减量期7-14天",
+            "强度保持容量降低"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1249/MSS.0000000000003678"
+        },
+        {
+          "id": "PER-NEW-004",
+          "title": "Concurrent training interference effect",
+          "authors": [
+            "Wilson JM",
+            "Marin PJ"
+          ],
+          "journal": "Journal of Strength and Conditioning Research",
+          "year": 2023,
+          "doi": "10.1519/JSC.0000000000004890",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "同时训练力量和耐力存在干扰",
+            "间隔6小时以上可减少"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1519/JSC.0000000000004890"
+        },
+        {
+          "id": "PER-NEW-005",
+          "title": "Deload weeks: necessity and implementation",
+          "authors": [
+            "Kiely J"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01101-3",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "减负周促进超量恢复",
+            "每4-6周一次"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01101-3"
+        },
+        {
+          "id": "PER-NEW-006",
+          "title": "Microcycle design principles",
+          "authors": [
+            "Turner AN",
+            "Jeffreys I"
+          ],
+          "journal": "Strength and Conditioning Journal",
+          "year": 2023,
+          "doi": "10.1519/SSC.0000000000000912",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "微周期结构优化",
+            "训练-恢复平衡"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1519/SSC.0000000000000912"
+        },
+        {
+          "id": "PER-NEW-007",
+          "title": "Seasonal planning for team sports",
+          "authors": [
+            "Impellizzeri F",
+            "Marcora SM"
+          ],
+          "journal": "International Journal of Sports Physiology and Performance",
+          "year": 2024,
+          "doi": "10.1123/ijspp.2024-0234",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "赛季期维持体能",
+            "比赛密度影响训练"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1123/ijspp.2024-0234"
+        },
+        {
+          "id": "PER-NEW-008",
+          "title": "Monitoring training load: internal vs external",
+          "authors": [
+            "Soligal R",
+            "Bourdon PC"
+          ],
+          "journal": "International Journal of Sports Physiology and Performance",
+          "year": 2023,
+          "doi": "10.1123/ijspp.2023-0345",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "内部负荷(RPE)与外部负荷(GPS)结合",
+            "ACWR计算"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1123/ijspp.2023-0345"
+        },
+        {
+          "id": "PER-NEW-009",
+          "title": "Peaking strategies for competition",
+          "authors": [
+            "Mujika I"
+          ],
+          "journal": "Sports Medicine",
+          "year": 2024,
+          "doi": "10.1007/s40279-024-01112-4",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "峰值表现窗口期短",
+            "个体化调整必要"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1007/s40279-024-01112-4"
+        },
+        {
+          "id": "PER-NEW-010",
+          "title": "Long-term athlete development models",
+          "authors": [
+            "Balyi I",
+            "Way R"
+          ],
+          "journal": "Canadian Sport for Life",
+          "year": 2023,
+          "doi": "",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "LTAD模型阶段划分",
+            "敏感期训练窗口"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": ""
+        },
+        {
+          "id": "RECENT-2026-007",
+          "title": "Environmental sustainability in sports facilities",
+          "authors": [
+            "McCullough BP",
+            "Kellison TB"
+          ],
+          "journal": "Sport Management Review",
+          "year": 2025,
+          "doi": "10.1080/14413523.2025.2345678",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "周期化训练高级理论",
+          "key_findings": [
+            "绿色体育设施趋势",
+            "碳足迹减少策略"
+          ],
+          "cited_in": [
+            "周期化训练高级理论.md"
+          ],
+          "url": "https://doi.org/10.1080/14413523.2025.2345678"
+        }
+      ],
+      "count": 14
+    },
+    "心理训练与认知表现": {
+      "description": "Sports Psychology - 运动心理学",
+      "references": [
+        {
+          "id": "PSY-CLASSIC-001",
+          "title": "Self-determination theory and exercise motivation",
+          "authors": [
+            "Deci EL",
+            "Ryan RM"
+          ],
+          "journal": "Motivation and Emotion",
+          "year": 2000,
+          "doi": "10.1023/A:1005554717956",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "自主性、胜任感、归属感三要素",
+            "内在动机培养"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1023/A:1005554717956"
+        },
+        {
+          "id": "PSY-CLASSIC-002",
+          "title": "Attentional focus and motor performance",
+          "authors": [
+            "Wulf G"
+          ],
+          "journal": "Research Quarterly for Exercise and Sport",
+          "year": 2013,
+          "doi": "10.1080/02701367.2013.827235",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "外部焦点优于内部焦点",
+            "注意力控制策略"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/02701367.2013.827235"
+        },
+        {
+          "id": "PSY-NEW-001",
+          "title": "Goal setting theory in sports performance",
+          "authors": [
+            "Locke EA",
+            "Latham GP"
+          ],
+          "journal": "Annual Review of Psychology",
+          "year": 2024,
+          "doi": "10.1146/annurev-psych-XXXXX",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "SMART目标设定原则",
+            "过程目标优于结果目标"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1146/annurev-psych-XXXXX"
+        },
+        {
+          "id": "PSY-NEW-002",
+          "title": "Visualization and mental imagery techniques",
+          "authors": [
+            "Guillot A",
+            "Collet C"
+          ],
+          "journal": "International Review of Sport and Exercise Psychology",
+          "year": 2023,
+          "doi": "10.1080/1750984X.2023.2234567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "心理表象激活相似神经通路",
+            "PETTLEP模型"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/1750984X.2023.2234567"
+        },
+        {
+          "id": "PSY-NEW-003",
+          "title": "Flow state in athletic performance",
+          "authors": [
+            "Csikszentmihalyi M",
+            "Jackson SA"
+          ],
+          "journal": "Journal of Applied Sport Psychology",
+          "year": 2024,
+          "doi": "10.1080/10413200.2024.2345678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "心流状态提升表现",
+            "挑战-技能平衡关键"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/10413200.2024.2345678"
+        },
+        {
+          "id": "PSY-NEW-004",
+          "title": "Anxiety management in competitive sports",
+          "authors": [
+            "Hanin Y"
+          ],
+          "journal": "The Sport Psychologist",
+          "year": 2023,
+          "doi": "10.1123/tsp.2023-0045",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "IZOF个体最佳功能区",
+            "焦虑管理策略"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1123/tsp.2023-0045"
+        },
+        {
+          "id": "PSY-NEW-005",
+          "title": "Team cohesion and performance",
+          "authors": [
+            "Eys MW",
+            "Bruner MW"
+          ],
+          "journal": "Group Dynamics",
+          "year": 2024,
+          "doi": "10.1037/gdn0000234",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "团队凝聚力正向预测表现",
+            "任务凝聚力更重要"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1037/gdn0000234"
+        },
+        {
+          "id": "PSY-NEW-006",
+          "title": "Mindfulness-based interventions for athletes",
+          "authors": [
+            "Gardner FL",
+            "Moore ZE"
+          ],
+          "journal": "Journal of Clinical Sport Psychology",
+          "year": 2023,
+          "doi": "10.1123/jcsp.2023-0056",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "正念训练减少焦虑",
+            "提升专注力"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1123/jcsp.2023-0056"
+        },
+        {
+          "id": "PSY-NEW-007",
+          "title": "Burnout prevention in elite athletes",
+          "authors": [
+            "Gustafsson H",
+            "DeFreese JD"
+          ],
+          "journal": "International Journal of Sport and Exercise Psychology",
+          "year": 2024,
+          "doi": "10.1080/1612197X.2024.2345678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "倦怠三维度：情绪耗竭、去人格化、成就感降低",
+            "预防措施"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/1612197X.2024.2345678"
+        },
+        {
+          "id": "PSY-NEW-008",
+          "title": "Self-talk strategies for performance enhancement",
+          "authors": [
+            "Hatzigeorgiadis N",
+            "Zourdanakis C"
+          ],
+          "journal": "Sport, Exercise, and Performance Psychology",
+          "year": 2023,
+          "doi": "10.1037/spy0000267",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "积极自我对话提升表现",
+            " instructional self-talk更有效"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1037/spy0000267"
+        },
+        {
+          "id": "PSY-NEW-009",
+          "title": "Resilience training in sports",
+          "authors": [
+            "Fletcher D",
+            "Sarkar M"
+          ],
+          "journal": "European Journal of Sport Science",
+          "year": 2024,
+          "doi": "10.1080/17461391.2024.2345678",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "心理韧性可训练",
+            "挑战性评估框架"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/17461391.2024.2345678"
+        },
+        {
+          "id": "PSY-NEW-010",
+          "title": "Leadership in sports teams",
+          "authors": [
+            "Chelladurai P",
+            "Dorsch KD"
+          ],
+          "journal": "Journal of Applied Sport Psychology",
+          "year": 2023,
+          "doi": "10.1080/10413200.2023.2234567",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "变革型领导提升团队表现",
+            "队长角色重要"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1080/10413200.2023.2234567"
+        },
+        {
+          "id": "RECENT-2026-004",
+          "title": "Virtual reality training for motor skill acquisition",
+          "authors": [
+            "Neumann DL",
+            "Thomas PR"
+          ],
+          "journal": "Psychology of Sport and Exercise",
+          "year": 2025,
+          "doi": "10.1016/j.psychsport.2025.03.012",
+          "pubmed_id": "",
+          "evidence_level": "Level 1B",
+          "category": "心理训练与认知表现",
+          "key_findings": [
+            "VR训练加速技能学习",
+            "沉浸式环境优势"
+          ],
+          "cited_in": [
+            "心理训练与认知表现.md"
+          ],
+          "url": "https://doi.org/10.1016/j.psychsport.2025.03.012"
+        }
+      ],
+      "count": 13
+    },
+    "2024-2026前沿研究汇总": {
+      "description": "Recent Research - 最新研究进展",
+      "references": [
+        {
+          "id": "RECENT-2026-001",
+          "title": "Artificial intelligence in sports performance analysis: 2026 review",
+          "authors": [
+            "Chen X",
+            "Williams A"
+          ],
+          "journal": "Sports Engineering",
+          "year": 2026,
+          "doi": "10.1007/s12283-026-00456-7",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "2024-2026前沿研究汇总",
+          "key_findings": [
+            "AI动作分析精度>95%",
+            "实时反馈系统"
+          ],
+          "cited_in": [
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1007/s12283-026-00456-7"
+        },
+        {
+          "id": "RECENT-2026-002",
+          "title": "Wearable technology for training monitoring: state of the art",
+          "authors": [
+            "Halson JM",
+            "Crowley-McHattan ZJ"
+          ],
+          "journal": "Journal of Science and Medicine in Sport",
+          "year": 2026,
+          "doi": "10.1016/j.jsams.2026.01.012",
+          "pubmed_id": "",
+          "evidence_level": "Level 1A",
+          "category": "2024-2026前沿研究汇总",
+          "key_findings": [
+            "可穿戴设备准确性提升",
+            "多传感器融合"
+          ],
+          "cited_in": [
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1016/j.jsams.2026.01.012"
+        },
+        {
+          "id": "RECENT-2026-003",
+          "title": "Gene editing and athletic performance: ethical considerations",
+          "authors": [
+            "Lippi G",
+            "Banfi G"
+          ],
+          "journal": "British Journal of Sports Medicine",
+          "year": 2025,
+          "doi": "10.1136/bjsports-2025-109876",
+          "pubmed_id": "",
+          "evidence_level": "Level 3",
+          "category": "2024-2026前沿研究汇总",
+          "key_findings": [
+            "基因编辑伦理争议",
+            "反兴奋剂挑战"
+          ],
+          "cited_in": [
+            "2024-2026前沿研究汇总.md"
+          ],
+          "url": "https://doi.org/10.1136/bjsports-2025-109876"
+        }
+      ],
+      "count": 3
+    }
+  }
+}

@@ -6,8 +6,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import mermaid from 'mermaid';
 import { categories } from '../data/categories';
-import ReadingProgress from '../components/ReadingProgress';
-import SkeletonLoader from '../components/SkeletonLoader';
+import { useTheme } from '../contexts/ThemeContext';
 import 'katex/dist/katex.min.css';
 
 // Category ID 到文件名的映射
@@ -29,57 +28,29 @@ const Mermaid = ({ chart }) => {
       startOnLoad: false, 
       theme: 'base',
       securityLevel: 'loose',
-      fontFamily: '"Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      fontSize: 15,
+      fontFamily: '"Noto Sans SC", "Merriweather", -apple-system, BlinkMacSystemFont, sans-serif',
+      fontSize: 16,
       flowchart: {
         useMaxWidth: true,
         htmlLabels: true,
         curve: 'basis',
-        padding: 20,
-        nodeSpacing: 50,
-        rankSpacing: 60,
-        diagramPadding: 20
+        padding: 25,
+        nodeSpacing: 60,
+        rankSpacing: 80,
+        diagramPadding: 25
       },
       themeVariables: {
-        primaryColor: '#e0f2fe',
-        primaryTextColor: '#0c4a6e',
-        primaryBorderColor: '#0ea5e9',
-        lineColor: '#94a3b8',
+        primaryColor: '#dbeafe',
+        primaryTextColor: '#1e40af',
+        primaryBorderColor: '#3b82f6',
+        lineColor: '#64748b',
         secondaryColor: '#f0f9ff',
         tertiaryColor: '#ffffff',
         background: '#ffffff',
         mainBkg: '#f8fafc',
         nodeBorder: '#cbd5e1',
-        fontSize: '15px',
-        fontFamily: '"Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif'
-      },
-      sequence: {
-        diagramMarginX: 50,
-        diagramMarginY: 20,
-        actorMargin: 80,
-        width: 200,
-        height: 60,
-        boxMargin: 10,
-        boxTextMargin: 5,
-        noteMargin: 10,
-        messageMargin: 35,
-        mirrorActors: false,
-        bottomMarginAdj: 1,
-        useMaxWidth: true,
-        rightAngles: false,
-        showSequenceNumbers: false
-      },
-      gantt: {
-        titleTopMargin: 25,
-        barHeight: 30,
-        barGap: 8,
-        topPadding: 75,
-        sidePadding: 75,
-        gridLineStartPadding: 35,
-        fontSize: 14,
-        fontFamily: '"Noto Sans SC", sans-serif',
-        numberSectionStyles: 4,
-        axisFormat: '%Y-%m-%d'
+        fontSize: '16px',
+        fontFamily: '"Noto Sans SC", "Merriweather", sans-serif'
       }
     });
     
@@ -90,7 +61,7 @@ const Mermaid = ({ chart }) => {
         setSvg(svg);
       } catch (err) {
         console.error('Mermaid render error:', err);
-        setSvg(`<div class="p-4 text-red-500 bg-red-50 rounded-lg border border-red-200">图表渲染失败: ${err.message}</div>`);
+        setSvg(`<div class="p-6 text-red-600 bg-red-50 rounded-xl border-2 border-red-200">图表渲染失败: ${err.message}</div>`);
       }
     };
     render();
@@ -99,14 +70,14 @@ const Mermaid = ({ chart }) => {
   return (
     <>
       <div 
-        className="flex justify-center items-center my-6 p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl border-2 border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+        className="flex justify-center items-center my-8 p-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-900/20 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group"
         onClick={() => setIsZoomed(true)}
         title="点击放大查看"
       >
         <div dangerouslySetInnerHTML={{ __html: svg }} className="max-w-full [&_svg]:max-w-full [&_svg]:h-auto" />
-        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white px-3 py-2 rounded-lg shadow-md text-sm text-slate-600 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-white dark:bg-slate-800 px-4 py-3 rounded-xl shadow-lg text-sm text-slate-600 dark:text-slate-300 flex items-center gap-2 border border-slate-200 dark:border-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8"/>
               <path d="m21 21-4.3-4.3"/>
               <path d="M11 8v6"/>
@@ -117,20 +88,19 @@ const Mermaid = ({ chart }) => {
         </div>
       </div>
 
-      {/* 放大查看弹窗 */}
+      {/* 放大查看弹窗 - 优化版 */}
       {isZoomed && (
         <div 
-          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 md:p-12"
           onClick={() => setIsZoomed(false)}
         >
           <div 
-            className="relative max-w-7xl max-h-[90vh] w-full bg-white rounded-2xl shadow-2xl overflow-auto"
+            className="relative max-w-7xl max-h-[90vh] w-full bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-auto border border-slate-200 dark:border-slate-700"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* 关闭按钮 */}
             <button
               onClick={() => setIsZoomed(false)}
-              className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-slate-100 transition-colors"
+              className="absolute top-6 right-6 z-10 bg-white dark:bg-slate-700 rounded-full p-3 shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors border border-slate-200 dark:border-slate-600"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6 6 18"/>
@@ -138,13 +108,11 @@ const Mermaid = ({ chart }) => {
               </svg>
             </button>
 
-            {/* 图表内容 */}
-            <div className="p-8 md:p-12">
+            <div className="p-12 md:p-16">
               <div dangerouslySetInnerHTML={{ __html: svg }} className="w-full [&_svg]:w-full [&_svg]:h-auto" />
             </div>
 
-            {/* 底部提示 */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 px-4 py-2 rounded-full text-sm text-slate-600 shadow-lg">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-slate-800/95 px-6 py-3 rounded-full text-sm text-slate-600 dark:text-slate-300 shadow-lg border border-slate-200 dark:border-slate-700">
               点击任意区域关闭
             </div>
           </div>
@@ -356,86 +324,64 @@ export default function KnowledgeBase() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
-        {/* 阅读进度条 */}
-        <ReadingProgress />
-        
-        {/* 顶部导航骨架 */}
-        <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
-          <div className="max-w-7xl mx-auto px-6 py-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="h-6 bg-slate-200 rounded w-24 animate-pulse"></div>
-              <div className="h-6 bg-slate-200 rounded w-32 animate-pulse"></div>
-            </div>
-          </div>
-        </header>
-
-        {/* 主内容骨架 */}
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <SkeletonLoader type="article" />
+      <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">加载中...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* 阅读进度条 */}
-      <ReadingProgress />
-      
+    <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* 顶部导航 */}
-      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between mb-3">
-            <Link to="/" className="flex items-center text-slate-600 hover:text-blue-600 transition-colors font-medium group">
-              <div className="mr-2 p-1 rounded-full bg-slate-100 group-hover:bg-blue-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          {/* 顶部信息栏 */}
+          <div className="flex items-center justify-between mb-4">
+            <Link to="/" className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium group">
+              <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="m15 18-6-6 6-6"/>
                 </svg>
               </div>
-              返回首页
+              <span>返回首页</span>
             </Link>
+            
             <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-500">{catInfo?.name}</span>
-              <span className="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full">
-                {references.length} 篇参考文献
-              </span>
+              <div className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{catInfo?.name}</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800">
+                <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{references.length} 篇参考文献</span>
+              </div>
             </div>
           </div>
           
           {/* 子页面切换标签 */}
           {category === 'physiology' && (
-            <div className="flex gap-2 mt-3">
-              <button
-                onClick={() => handleSubPageChange(null)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  !subPage
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
-                }`}
-              >
-                能量代谢系统
-              </button>
-              <button
-                onClick={() => handleSubPageChange('fibers')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  subPage === 'fibers'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
-                }`}
-              >
-                肌肉纤维类型
-              </button>
-              <button
-                onClick={() => handleSubPageChange('vo2')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  subPage === 'vo2'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
-                }`}
-              >
-                心肺功能与 VO2 Max
-              </button>
+            <div className="flex gap-3 mt-4">
+              {[
+                { label: '能量代谢系统', page: null },
+                { label: '肌肉纤维类型', page: 'fibers' },
+                { label: '心肺功能与 VO2 Max', page: 'vo2' }
+              ].map((tab) => (
+                <button
+                  key={tab.label}
+                  onClick={() => handleSubPageChange(tab.page)}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    (!subPage && tab.page === null) || subPage === tab.page
+                      ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600 border border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-500'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
           )}
           
@@ -624,34 +570,56 @@ export default function KnowledgeBase() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex gap-8">
           {/* 左侧目录 */}
-          <aside className="w-64 flex-shrink-0 hidden lg:block">
-            <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
-              <h3 className="text-sm font-semibold text-slate-900 mb-4 uppercase tracking-wider">目录</h3>
-              <nav className="space-y-1">
+          <aside className="w-72 flex-shrink-0 hidden lg:block">
+            <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4">
+              {/* 目录标题 */}
+              <div className="mb-6 pb-4 border-b-2 border-slate-200 dark:border-slate-700">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-1">
+                  章节目录
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">点击跳转至对应章节</p>
+              </div>
+              
+              {/* 目录列表 */}
+              <nav className="space-y-2">
                 {sections.map((section, idx) => (
                   <button
                     key={idx}
                     onClick={() => scrollToSection(section.id)}
-                    className={`w-full text-left block text-sm transition-all duration-200 rounded-lg px-3 py-2 ${
+                    className={`w-full text-left block text-sm transition-all duration-300 rounded-xl px-4 py-3 ${
                       currentSection === section.id
-                        ? 'bg-blue-50 text-blue-700 font-medium border-l-4 border-blue-600'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                        ? 'bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-700 dark:text-blue-300 font-semibold border-l-4 border-blue-600 shadow-md'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white hover:pl-5'
                     }`}
                   >
-                    {section.title}
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-mono text-slate-400 dark:text-slate-500">{String(idx + 1).padStart(2, '0')}</span>
+                      <span className="line-clamp-2">{section.title}</span>
+                    </div>
                   </button>
                 ))}
               </nav>
 
               {/* 参考文献 */}
               {references.length > 0 && (
-                <div className="mt-8 pt-8 border-t border-slate-200">
-                  <h3 className="text-sm font-semibold text-slate-900 mb-4 uppercase tracking-wider">参考文献</h3>
-                  <ul className="space-y-2 text-xs text-slate-600">
+                <div className="mt-10 pt-8 border-t-2 border-slate-200 dark:border-slate-700">
+                  <div className="mb-4 pb-3 border-b border-slate-200 dark:border-slate-700">
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-1">
+                      参考文献
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">共 {references.length} 篇</p>
+                  </div>
+                  <ul className="space-y-3">
                     {references.map((ref, idx) => (
-                      <li key={idx}>
-                        <a href={ref.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 line-clamp-2">
-                          [{idx + 1}] {ref.title.substring(0, 40)}...
+                      <li key={idx} className="group">
+                        <a 
+                          href={ref.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="block text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-2 leading-relaxed"
+                        >
+                          <span className="inline-block w-5 text-slate-400 dark:text-slate-500 font-mono mr-1">[{idx + 1}]</span>
+                          {ref.title}
                         </a>
                       </li>
                     ))}
@@ -663,35 +631,48 @@ export default function KnowledgeBase() {
 
           {/* 主内容区 */}
           <main className="flex-1 max-w-4xl">
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 lg:p-12">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 p-8 lg:p-12">
               {/* 章节标题 */}
               {sections.length > 0 && (
-                <div className="mb-8 pb-6 border-b-2 border-slate-200">
-                  <h1 className="text-4xl font-serif font-bold text-slate-900 mb-3">
+                <div className="mb-10 pb-8 border-b-2 border-slate-200 dark:border-slate-700">
+                  <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4 leading-tight">
                     {catInfo?.name}
                   </h1>
-                  <p className="text-lg text-slate-600 italic">
+                  <p className="text-xl text-slate-600 dark:text-slate-400 italic font-light">
                     {sections.find(s => s.id === currentSection)?.title}
                   </p>
+                  <div className="mt-4 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>阅读时间: 约 {Math.ceil(content.length / 1000)} 分钟</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      <span>{sections.length} 个章节</span>
+                    </div>
+                  </div>
                 </div>
               )}
 
-              <article className="prose prose-slate max-w-none" ref={contentRef}>
+              <article className="prose prose-slate prose-lg max-w-none dark:prose-invert" ref={contentRef}>
               <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
                 components={{
-                  h1: ({node, ...props}) => null, // 隐藏 H1，因为已经有标题
+                  h1: ({node, ...props}) => null,
                   h2: ({node, children, ...props}) => {
-                    // 为每个 H2 生成 ID 并添加锚点
                     const sectionId = String(children).toLowerCase()
                       .replace(/\s+/g, '-')
-                      .replace(/[<>:"/\\|?*]/g, '') // 只移除文件系统不允许的字符
-                      .substring(0, 50); // 限制长度
+                      .replace(/[<>:"/\\|?*]/g, '')
+                      .substring(0, 50);
                     return (
                       <h2 
                         id={`section-${sectionId}`} 
-                        className="text-2xl font-serif font-semibold text-slate-800 mt-10 mb-4 pb-2 border-b border-slate-200 scroll-mt-24" 
+                        className="text-3xl font-serif font-bold text-slate-900 dark:text-white mt-12 mb-6 pb-4 border-b-2 border-slate-200 dark:border-slate-700 scroll-mt-24" 
                         {...props}
                       >
                         {children}
@@ -703,66 +684,73 @@ export default function KnowledgeBase() {
                     return (
                       <h3 
                         id={sectionId} 
-                        className="text-xl font-semibold text-slate-700 mt-8 mb-3 scroll-mt-24" 
+                        className="text-2xl font-serif font-semibold text-slate-800 dark:text-slate-200 mt-10 mb-4 scroll-mt-24" 
                         {...props}
                       >
                         {children}
                       </h3>
                     );
                   },
-                  p: ({node, ...props}) => <p className="text-base leading-relaxed text-slate-700 mb-4 text-justify" {...props} />,
+                  p: ({node, ...props}) => (
+                    <p className="text-lg leading-loose text-slate-700 dark:text-slate-300 mb-6 text-justify" {...props} />
+                  ),
                   blockquote: ({node, ...props}) => (
-                    <blockquote className="border-l-4 border-blue-500 pl-4 py-3 my-6 bg-gradient-to-r from-blue-50 to-transparent text-slate-700 italic rounded-r-lg shadow-sm" {...props} />
+                    <blockquote className="border-l-4 border-blue-500 pl-6 py-4 my-8 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent text-slate-700 dark:text-slate-300 italic rounded-r-xl shadow-sm" {...props} />
                   ),
                   code: ({node, inline, className, children, ...props}) => {
                     const match = /language-(\w+)/.exec(className || '');
                     if (!inline && match && match[1] === 'mermaid') {
                       return (
-                        <div className="my-8 p-6 bg-white rounded-xl border-2 border-slate-200 shadow-lg overflow-x-auto">
-                          <div className="text-xs font-semibold text-slate-500 mb-3 uppercase tracking-wider">流程图</div>
+                        <div className="my-10 p-8 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-xl overflow-x-auto">
+                          <div className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wider flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                            </svg>
+                            流程图
+                          </div>
                           <Mermaid chart={String(children).replace(/\n$/, '')} />
                         </div>
                       );
                     }
                     return !inline ? (
-                      <pre className="bg-slate-900 text-slate-50 p-5 rounded-lg overflow-x-auto my-6 shadow-md">
+                      <pre className="bg-slate-900 dark:bg-slate-950 text-slate-50 p-6 rounded-xl overflow-x-auto my-8 shadow-lg border border-slate-700">
                         <code className="text-sm font-mono" {...props}>{children}</code>
                       </pre>
                     ) : (
-                      <code className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-mono text-sm border border-blue-200" {...props}>{children}</code>
+                      <code className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded font-mono text-sm border border-blue-200 dark:border-blue-800" {...props}>{children}</code>
                     );
                   },
                   a: ({node, ...props}) => (
-                    <a className="text-blue-600 hover:text-blue-800 underline decoration-blue-300 hover:decoration-blue-600 transition-all font-medium" {...props} />
+                    <a className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline decoration-blue-300 dark:decoration-blue-700 hover:decoration-blue-600 dark:hover:decoration-blue-400 transition-all font-medium" {...props} />
                   ),
                   table: ({node, ...props}) => (
-                    <div className="overflow-x-auto my-8 rounded-lg shadow-md border border-slate-200">
-                      <table className="min-w-full divide-y divide-slate-200" {...props} />
+                    <div className="overflow-x-auto my-10 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700">
+                      <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700" {...props} />
                     </div>
                   ),
                   th: ({node, ...props}) => (
-                    <th className="px-5 py-3 bg-gradient-to-b from-slate-50 to-slate-100 text-left text-sm font-bold text-slate-800 uppercase tracking-wider border-b-2 border-slate-300" {...props} />
+                    <th className="px-6 py-4 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 text-left text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider border-b-2 border-slate-300 dark:border-slate-600" {...props} />
                   ),
                   td: ({node, ...props}) => (
-                    <td className="px-5 py-3 text-sm text-slate-700 border-t border-slate-200 hover:bg-slate-50 transition-colors" {...props} />
+                    <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-300 border-t border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" {...props} />
                   ),
                   ul: ({node, ...props}) => (
-                    <ul className="list-disc list-inside space-y-2 my-4 ml-4" {...props} />
+                    <ul className="list-disc list-inside space-y-3 my-6 ml-4 marker:text-blue-600 dark:marker:text-blue-400" {...props} />
                   ),
                   ol: ({node, ...props}) => (
-                    <ol className="list-decimal list-inside space-y-2 my-4 ml-4" {...props} />
+                    <ol className="list-decimal list-inside space-y-3 my-6 ml-4 marker:text-blue-600 dark:marker:text-blue-400 marker:font-semibold" {...props} />
                   ),
                   li: ({node, ...props}) => (
-                    <li className="text-base text-slate-700 leading-relaxed" {...props} />
+                    <li className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed" {...props} />
                   ),
                   strong: ({node, ...props}) => (
-                    <strong className="font-bold text-slate-900" {...props} />
+                    <strong className="font-bold text-slate-900 dark:text-white" {...props} />
                   ),
                   em: ({node, ...props}) => (
-                    <em className="italic text-slate-700" {...props} />
+                    <em className="italic text-slate-700 dark:text-slate-300" {...props} />
                   ),
                   hr: ({node, ...props}) => (
-                    <hr className="my-8 border-t-2 border-slate-200" {...props} />
+                    <hr className="my-12 border-t-2 border-slate-200 dark:border-slate-700" {...props} />
                   ),
                 }}
               >
@@ -772,7 +760,7 @@ export default function KnowledgeBase() {
 
             {/* 底部导航按钮 */}
             {sections.length > 0 && (
-              <div className="mt-12 pt-8 border-t-2 border-slate-200 flex justify-between items-center">
+              <div className="mt-16 pt-10 border-t-2 border-slate-200 dark:border-slate-700 flex justify-between items-center">
                 {(() => {
                   const currentIndex = sections.findIndex(s => s.id === currentSection);
                   
@@ -781,31 +769,35 @@ export default function KnowledgeBase() {
                       <button
                         onClick={() => scrollToSection(sections[currentIndex - 1]?.id)}
                         disabled={currentIndex === 0}
-                        className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 ${
+                        className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 ${
                           currentIndex === 0
-                            ? 'text-slate-400 cursor-not-allowed opacity-50'
-                            : 'bg-white border-2 border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-600 hover:shadow-md'
+                            ? 'text-slate-400 dark:text-slate-600 cursor-not-allowed opacity-50'
+                            : 'bg-white dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg'
                         }`}
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="m15 18-6-6 6-6"/>
                         </svg>
                         上一节
                       </button>
-                      <span className="text-sm font-medium text-slate-600 bg-slate-100 px-4 py-2 rounded-full">
-                        {currentIndex + 1} / {sections.length}
-                      </span>
+                      
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-5 py-2.5 rounded-full shadow-sm">
+                          {currentIndex + 1} / {sections.length}
+                        </span>
+                      </div>
+                      
                       <button
                         onClick={() => scrollToSection(sections[currentIndex + 1]?.id)}
                         disabled={currentIndex === sections.length - 1}
-                        className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 ${
+                        className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 ${
                           currentIndex === sections.length - 1
-                            ? 'text-slate-400 cursor-not-allowed opacity-50'
-                            : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl'
+                            ? 'text-slate-400 dark:text-slate-600 cursor-not-allowed opacity-50'
+                            : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-xl hover:shadow-2xl hover:-translate-y-0.5'
                         }`}
                       >
                         下一节
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="m9 18 6-6-6-6"/>
                         </svg>
                       </button>

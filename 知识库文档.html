@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身与跑步科学知识库</title>
+    <!-- 思源宋体和思源黑体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', 'SimSun', Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            color: #2d3748;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            position: relative;
+            font-size: 16px;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(52,152,219,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(44,62,80,0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .header {
+            background: white;
+            padding: 60px 20px 50px 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 50%, #2c3e50 100%);
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(52,152,219,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .header h1 {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', 'SimSun', Georgia, serif;
+            font-size: 38px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header .subtitle {
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .section-title {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', 'SimSun', Georgia, serif;
+            font-size: 30px;
+            color: #1e293b;
+            margin-bottom: 45px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #e2e8f0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+            perspective: 1000px;
+        }
+        
+        .knowledge-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .knowledge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .knowledge-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(52,152,219,0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: 0;
+        }
+        
+        .knowledge-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .knowledge-card:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+        
+        .knowledge-card:hover {
+            background: white;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(52,152,219,0.15);
+            border-color: #cbd5e1;
+            transform: translateY(-6px) scale(1.02);
+        }
+        
+        .knowledge-title {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', 'SimSun', Georgia, serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+        
+        .knowledge-card:hover .knowledge-title {
+            color: #2c3e50;
+            transform: translateX(4px);
+        }
+        
+        .knowledge-desc {
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+            min-height: 70px;
+        }
+        
+        .knowledge-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 13px;
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tag {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-right: 6px;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(3,105,161,0.1);
+        }
+        
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(3,105,161,0.2);
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 45px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 2px 8px rgba(52,152,219,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 50%, #2c3e50 100%);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px 20px;
+            border-right: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+        }
+        
+        .stat-item:last-child {
+            border-right: none;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-4px);
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .stat-item:last-child {
+            border-right: none;
+        }
+        
+        .stat-number {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', Georgia, serif;
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
+        }
+        
+        .stat-label {
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+        
+        .viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f7fafc;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .viewer-header {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .viewer-title {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', Georgia, serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            letter-spacing: 0.5px;
+        }
+        
+        .close-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+        }
+        
+        /* 分页按钮 */
+        .page-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .page-btn:hover:not(:disabled) {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+        
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        
+        /* 侧边栏目录 */
+        .toc-sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 30px 20px;
+            position: sticky;
+            top: 70px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-sidebar.collapsed {
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .toc-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 0;
+        }
+        
+        .toc-toggle {
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-toggle:hover {
+            background: #f7fafc;
+        }
+        
+        .toc-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc-nav li {
+            margin: 8px 0;
+        }
+        
+        .toc-nav a {
+            display: block;
+            padding: 8px 12px;
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.5;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .toc-nav a:hover {
+            background: #f7fafc;
+            color: #667eea;
+            border-left-color: #667eea;
+        }
+        
+        .toc-nav a.active {
+            background: linear-gradient(90deg, rgba(102,126,234,0.1) 0%, transparent 100%);
+            color: #667eea;
+            border-left-color: #667eea;
+            font-weight: 600;
+        }
+        
+        .toc-nav .level-2 {
+            padding-left: 20px;
+            font-size: 13px;
+        }
+        
+        .toc-nav .level-3 {
+            padding-left: 35px;
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        /* 术语提示样式 */
+        .term-tooltip {
+            border-bottom: 2px dotted #667eea;
+            cursor: help;
+            position: relative;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .term-tooltip:hover::after {
+            content: attr(data-term);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: normal;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+        }
+        
+        /* 打印优化 */
+        @media print {
+            .toc-sidebar, .close-btn, .viewer-header {
+                display: none !important;
+            }
+            
+            .viewer-content {
+                max-width: 100% !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            a {
+                text-decoration: underline !important;
+                color: black !important;
+            }
+            
+            .mermaid-container {
+                page-break-inside: avoid;
+            }
+            
+            h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .viewer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 60px;
+            background: white;
+            min-height: calc(100vh - 70px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            line-height: 1.9;
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', 'SimSun', Georgia, serif;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+        
+        .viewer-content h1 {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', Georgia, serif;
+            font-size: 36px;
+            color: #1e293b;
+            margin-bottom: 35px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #e2e8f0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content h2 {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', Georgia, serif;
+            font-size: 26px;
+            color: #1e293b;
+            margin: 40px 0 22px;
+            font-weight: 600;
+            padding-left: 18px;
+            border-left: 4px solid #2c3e50;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content h3 {
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', 'STSong', Georgia, serif;
+            font-size: 22px;
+            color: #334155;
+            margin: 32px 0 18px;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content h4 {
+            font-size: 19px;
+            color: #475569;
+            margin: 26px 0 14px;
+            font-weight: 600;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 2;
+            font-size: 17px;
+            color: #334155;
+            letter-spacing: 0.5px;
+            text-indent: 0;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content ul, .viewer-content ol {
+            margin-left: 25px;
+            margin-bottom: 22px;
+            padding-left: 10px;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', sans-serif;
+        }
+        
+        .viewer-content li {
+            margin-bottom: 12px;
+            line-height: 1.9;
+            font-size: 16px;
+            color: #334155;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', sans-serif;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content pre {
+            background: #f8fafc;
+            padding: 16px 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #2c3e50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            max-width: 100%;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        
+        .viewer-content code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #0369a1;
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 100%;
+            display: inline-block;
+        }
+        
+        .viewer-content pre code {
+            background: transparent;
+            padding: 0;
+            color: #1e293b;
+        }
+        
+        .viewer-content blockquote {
+            border-left: 3px solid #3b82f6;
+            padding: 10px 16px;
+            margin: 12px 0;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            font-style: italic;
+            color: #334155;
+            border-radius: 0 6px 6px 0;
+            font-family: 'Noto Serif SC', 'Source Han Serif CN', Georgia, serif;
+            font-size: 15px;
+            line-height: 1.7;
+            box-shadow: 0 1px 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .viewer-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border-radius: 8px;
+            font-family: 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', sans-serif;
+            table-layout: fixed;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        
+        /* 表格滚动容器 */
+        .viewer-content .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .viewer-content .table-wrapper table {
+            margin: 0;
+            border-radius: 0;
+        }
+        
+        .viewer-content table thead {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        .viewer-content table th {
+            background: transparent;
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-bottom: none;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        
+        .viewer-content table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            line-height: 1.6;
+            color: #334155;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+        
+        .viewer-content table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .viewer-content table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .viewer-content table tbody tr:hover {
+            background: #f1f5f9;
+            transform: translateX(4px);
+        }
+        
+        /* Mermaid图表容器优化 */
+        .mermaid-container {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        .mermaid-wrapper {
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .mermaid-wrapper:hover {
+            transform: scale(1.02);
+        }
+        
+        .mermaid-wrapper::after {
+            content: '🔍 点击放大';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(44,62,80,0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .mermaid-wrapper:hover::after {
+            opacity: 1;
+        }
+        
+        /* 链接样式 */
+        .viewer-content a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content a:hover {
+            color: #1e40af;
+            border-bottom-color: #2563eb;
+        }
+        
+        /* 图片样式 */
+        .viewer-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* 水平线 */
+        .viewer-content hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 40px 0;
+        }
+        .mermaid-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0;
+            position: relative;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        .mermaid-wrapper {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mermaid-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+        }
+        
+        .mermaid-wrapper:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            border-color: #3498db;
+        }
+        
+        .mermaid-wrapper:hover::after {
+            content: '🔍 点击放大';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(44,62,80,0.9);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: 'SimSun', serif;
+            letter-spacing: 1px;
+            z-index: 10;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .mermaid {
+            min-width: 300px;
+            min-height: 200px;
+        }
+        
+        /* Mermaid图表标题 */
+        .mermaid-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            font-family: 'SimSun', serif;
+        }
+        
+        /* 全屏放大遮罩 */
+        .mermaid-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .mermaid-lightbox.active {
+            display: flex;
+        }
+        
+        .mermaid-lightbox-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: scaleIn 0.3s ease;
+        }
+        
+        .mermaid-lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+        }
+        
+        .mermaid-lightbox-close:hover {
+            background: #e74c3c;
+            transform: rotate(90deg);
+        }
+        
+        .mermaid-lightbox-title {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            font-family: 'Times New Roman', 'SimSun', serif;
+        }
+        
+        /* 引用块增强 */
+        .viewer-content blockquote {
+            border-left: 3px solid #3b82f6;
+            padding: 10px 16px;
+            margin: 12px 0;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            font-style: italic;
+            color: #334155;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(59, 130, 246, 0.1);
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .viewer-content blockquote::before {
+            content: '"';
+            position: absolute;
+            top: -5px;
+            left: 8px;
+            font-size: 36px;
+            color: #3b82f6;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        
+        /* 代码块增强 */
+        .viewer-content pre {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f4f8 100%);
+            padding: 16px 18px;
+            border-radius: 0;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
+            line-height: 1.8;
+            max-width: 100%;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        
+        .viewer-content code {
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 15px;
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 0;
+            color: #e74c3c;
+            word-wrap: break-word;
+            word-break: break-all;
+            max-width: 100%;
+            display: inline-block;
+        }
+        
+        .viewer-content pre code {
+            background: transparent;
+            padding: 0;
+            color: #2c3e50;
+        }
+        
+        /* 列表增强 */
+        .viewer-content ul, .viewer-content ol {
+            margin-left: 35px;
+            margin-bottom: 25px;
+            padding-left: 10px;
+        }
+        
+        .viewer-content li {
+            margin-bottom: 12px;
+            line-height: 2;
+            font-size: 16px;
+            font-family: 'SimSun', serif;
+            position: relative;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content ul li::marker {
+            color: #3498db;
+            font-size: 1.2em;
+        }
+        
+        /* 水平线美化 */
+        .viewer-content hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #2c3e50 50%, transparent 100%);
+            margin: 40px 0;
+        }
+        
+        /* 链接样式 */
+        .viewer-content a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content a:hover {
+            color: #2c3e50;
+            border-bottom-style: solid;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 50px 20px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+            
+            .header .subtitle {
+                font-size: 17px;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .knowledge-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .knowledge-card {
+                padding: 30px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px;
+            }
+            
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding: 20px;
+            }
+            
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+            
+            .stat-number {
+                font-size: 40px;
+            }
+            
+            .viewer-header {
+                padding: 20px 25px;
+            }
+            
+            .viewer-title {
+                font-size: 18px;
+            }
+            
+            .close-btn {
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+            
+            .viewer-content {
+                padding: 30px 20px;
+                overflow-x: hidden;
+            }
+            
+            .viewer-content h1 {
+                font-size: 28px;
+            }
+            
+            .viewer-content h2 {
+                font-size: 22px;
+            }
+            
+            .viewer-content h3 {
+                font-size: 20px;
+            }
+            
+            .viewer-content p {
+                font-size: 15px;
+                line-height: 2;
+            }
+            
+            .mermaid-wrapper {
+                padding: 20px;
+            }
+            
+            .mermaid-lightbox-content {
+                padding: 20px;
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 26px;
+            }
+            
+            .header .subtitle {
+                font-size: 15px;
+            }
+            
+            .knowledge-card {
+                padding: 25px;
+            }
+            
+            .knowledge-title {
+                font-size: 20px;
+            }
+            
+            .stats {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .viewer-content {
+                padding: 20px 15px;
+            }
+            
+            .mermaid-wrapper {
+                padding: 15px;
+            }
+            
+            .mermaid-lightbox-content {
+                padding: 15px;
+            }
+            
+            .mermaid-lightbox-close {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-left: 1px solid #e0e0e0;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #888 0%, #666 100%);
+            border-radius: 0;
+            border: 2px solid #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #555 0%, #444 100%);
+        }
+        
+        /* 图片增强 */
+        .viewer-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .viewer-content img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        
+        /* 强调文本 */
+        .viewer-content strong {
+            color: #2c3e50;
+            font-weight: 700;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .viewer-content em {
+            color: #34495e;
+            font-style: italic;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* 实用方案卡片 */
+        .practice-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        
+        .practice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+        }
+        
+        .practice-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            border-left-color: #2c3e50;
+        }
+        
+        .practice-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Times New Roman', 'SimSun', serif;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .practice-card-title::before {
+            content: '💡';
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .practice-card-content {
+            font-size: 16px;
+            line-height: 2;
+            color: #444;
+            font-family: 'SimSun', serif;
+        }
+        
+        .practice-card-tags {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .practice-tag {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            color: #0c4a6e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'SimSun', serif;
+            border: 1px solid #7dd3fc;
+        }
+        
+        /* 链接卡片 */
+        .link-card {
+            display: block;
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-card::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #3498db;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 6px 20px rgba(52,152,219,0.2);
+            transform: translateX(5px);
+            padding-right: 50px;
+        }
+        
+        .link-card:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+        
+        .link-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-family: 'Times New Roman', 'SimSun', serif;
+        }
+        
+        .link-card-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+            font-family: 'SimSun', serif;
+        }
+        
+        /* 打印优化 */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .knowledge-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            
+            .viewer {
+                position: static;
+                display: block !important;
+            }
+            
+            .close-btn {
+                display: none;
+            }
+        }
+        
+        /* 加载动画 */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .knowledge-card {
+            animation: fadeInUp 0.7s ease-out backwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="font-size: 64px; margin-bottom: 20px;">📚</div>
+        <h1>健身与跑步科学知识库</h1>
+        <p class="subtitle">Evidence-Based Fitness & Running Science Knowledge Base</p>
+        <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <span style="background: rgba(44,62,80,0.08); color: #2c3e50; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;">🔬 科学研究</span>
+            <span style="background: rgba(44,62,80,0.08); color: #2c3e50; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;">💪 训练方法</span>
+            <span style="background: rgba(44,62,80,0.08); color: #2c3e50; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;">🏃 跑步科学</span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- 统计信息 -->
+        <div class="stats">
+            <div class="stat-item">
+                <div style="font-size: 32px; margin-bottom: 10px;">📖</div>
+                <div class="stat-number">10</div>
+                <div class="stat-label">核心知识文档</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 32px; margin-bottom: 10px;">📚</div>
+                <div class="stat-number">40+</div>
+                <div class="stat-label">权威参考文献</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 32px; margin-bottom: 10px;">🔬</div>
+                <div class="stat-number">2024-2026</div>
+                <div class="stat-label">最新研究文献</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 32px; margin-bottom: 10px;">🎯</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">核心研究领域</div>
+            </div>
+        </div>
+        
+        <!-- 参考文献数据库入口 -->
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="健身知识库与数据/知识库/references/index.html" 
+               target="_blank"
+               style="display: inline-block; padding: 15px 35px; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 12px rgba(44,62,80,0.2); transition: all 0.3s ease;">
+                📚 浏览参考文献数据库
+            </a>
+            <p style="margin-top: 15px; color: #64748b; font-size: 14px; font-family: 'Noto Sans SC', sans-serif;">
+                查看所有可点击跳转的学术文献 · DOI/PubMed链接 · 证据等级标注
+            </p>
+        </div>
+        
+        <!-- 知识文档 -->
+        <h2 class="section-title">知识文档库</h2>
+        
+        <div class="knowledge-grid" id="knowledgeGrid">
+            <!-- 知识卡片将通过JavaScript动态生成 -->
+        </div>
+    </div>
+    
+    <!-- 查看器 -->
+    <div class="viewer" id="viewer">
+        <div class="viewer-header">
+            <span class="viewer-title" id="viewer-title"></span>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <!-- 分页导航 -->
+                <div id="page-nav" style="display: none; align-items: center; gap: 8px;">
+                    <button class="page-btn" onclick="prevPage()" id="prev-btn">← 上一页</button>
+                    <span id="page-indicator" style="font-size: 14px; color: #64748b;">1 / 3</span>
+                    <button class="page-btn" onclick="nextPage()" id="next-btn">下一页 →</button>
+                </div>
+                <button class="close-btn" onclick="closeViewer()">← 返回列表</button>
+            </div>
+        </div>
+        <div style="display: flex; max-width: 1400px; margin: 0 auto;">
+            <!-- 侧边栏目录 -->
+            <div class="toc-sidebar" id="toc-sidebar">
+                <div class="toc-header">
+                    <h3>📑 目录</h3>
+                    <button onclick="toggleTOC()" class="toc-toggle">收起</button>
+                </div>
+                <nav class="toc-nav" id="toc-nav"></nav>
+            </div>
+            <!-- 内容区域 -->
+            <div class="viewer-content" id="viewer-content" style="flex: 1;"></div>
+        </div>
+    </div>
+    
+    <!-- 嵌入的知识库数据 -->
+    <script src="knowledge_data.js"></script>
+    
+    <!-- Mermaid图表库（本地文件，完全离线可用） -->
+    <script src="./assets/js/mermaid.min.js"></script>
+    
+    
+    
+    <script>
+        // 调试信息：检查数据是否加载
+        console.log('=== 知识库页面调试信息 ===');
+        console.log('knowledgeContents 是否存在:', typeof knowledgeContents !== 'undefined');
+        if (typeof knowledgeContents !== 'undefined') {
+            console.log('knowledgeContents 包含的文档数量:', Object.keys(knowledgeContents).length);
+            console.log('文档列表:', Object.keys(knowledgeContents));
+        } else {
+            console.error('❌ knowledgeContents 未定义！knowledge_data.js 可能加载失败');
+        }
+        
+        // 等待DOM加载完成后再生成卡片
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM已加载完成');
+        
+        // 检查Mermaid是否加载成功
+        if (typeof mermaid === 'undefined') {
+            console.warn('Mermaid库加载失败，将跳过图表渲染');
+            window.mermaidAvailable = false;
+        } else {
+            window.mermaidAvailable = true;
+            // 初始化Mermaid
+            mermaid.initialize({ 
+                startOnLoad: false,
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#e0f2fe',
+                    primaryTextColor: '#0c4a6e',
+                    primaryBorderColor: '#0ea5e9',
+                    lineColor: '#0ea5e9',
+                    secondaryColor: '#f0f9ff',
+                    tertiaryColor: '#ffffff',
+                    fontFamily: 'Noto Sans SC, SimSun, sans-serif',
+                    fontSize: '15px',
+                    noteBkgColor: '#fff8e1',
+                    noteTextColor: '#5d4037',
+                    actorBkgColor: '#e3f2fd',
+                    actorBorderColor: '#1976d2',
+                    actorTextColor: '#0d47a1'
+                },
+                flowchart: {
+                    useMaxWidth: false,
+                    htmlLabels: true,
+                    curve: 'basis',
+                    nodeSpacing: 50,
+                    rankSpacing: 60,
+                    padding: 15
+                },
+                sequence: {
+                    useMaxWidth: false,
+                    boxMargin: 10,
+                    mirrorActors: false
+                },
+                gantt: {
+                    useMaxWidth: false,
+                    leftPadding: 75,
+                    rightPadding: 20
+                }
+            });
+        }
+        // 知识库文件列表
+        const knowledgeFiles = [
+            { 
+                file: '运动生理学基础', 
+                icon: '🫀', 
+                title: '运动生理学基础', 
+                desc: '运动对人体各系统的生理适应机制，包括心血管、呼吸、肌肉骨骼系统的运动响应与长期适应',
+                tags: ['生理学', '基础理论'],
+                category: '核心基础'
+            },
+            { 
+                file: '力量训练科学', 
+                icon: '💪', 
+                title: '力量训练科学', 
+                desc: '力量训练的生理学原理、训练方法、负荷安排与神经肌肉适应机制，基于最新研究证据',
+                tags: ['力量训练', '肌肉适应'],
+                category: '训练方法'
+            },
+            { 
+                file: '有氧训练与耐力科学', 
+                icon: '🏃', 
+                title: '有氧训练与耐力科学', 
+                desc: '有氧运动的能量代谢、心肺功能提升机制、耐力训练周期化与运动表现优化策略',
+                tags: ['有氧训练', '耐力'],
+                category: '训练方法'
+            },
+            { 
+                file: '营养与恢复科学', 
+                icon: '🥗', 
+                title: '营养与恢复科学', 
+                desc: '运动营养学原理、宏量营养素需求、运动前后营养策略、睡眠与主动恢复机制',
+                tags: ['营养学', '恢复'],
+                category: '营养恢复'
+            },
+            { 
+                file: '周期化训练高级理论', 
+                icon: '📊', 
+                title: '周期化训练高级理论', 
+                desc: '训练周期化的理论基础、宏观周期与微观周期设计、竞技状态调控与巅峰表现规划',
+                tags: ['周期化', '训练规划'],
+                category: '训练方法'
+            },
+            { 
+                file: '心理训练与认知表现', 
+                icon: '🧠', 
+                title: '心理训练与认知表现', 
+                desc: '运动心理学应用、注意力控制、动机激发、压力管理与认知功能优化',
+                tags: ['心理学', '认知'],
+                category: '心理训练'
+            },
+            { 
+                file: '2024-2026前沿研究汇总', 
+                icon: '🚀', 
+                title: '2024-2026前沿研究汇总', 
+                desc: '近三年运动科学领域最新研究进展、技术突破与未来趋势分析',
+                tags: ['前沿研究', '文献综述'],
+                category: '研究进展'
+            },
+            { 
+                file: '文献索引', 
+                icon: '📑', 
+                title: '文献索引', 
+                desc: '知识库引用文献的完整索引，包含PubMed、Web of Science等数据库的原始文献信息',
+                tags: ['文献', '索引'],
+                category: '参考资料'
+            },
+            { 
+                file: '知识库扩充总览', 
+                icon: '🗺️', 
+                title: '知识库扩充总览', 
+                desc: '知识库整体架构、内容体系、更新机制与未来扩展规划',
+                tags: ['知识库', '架构'],
+                category: '参考资料'
+            },
+            { 
+                file: 'README_快速导航', 
+                icon: '🧭', 
+                title: 'README 快速导航', 
+                desc: '知识库使用指南、快速入门、内容导航与检索方法',
+                tags: ['导航', '指南'],
+                category: '参考资料'
+            }
+        ];
+        
+        // 生成知识卡片
+        const grid = document.getElementById('knowledgeGrid');
+        console.log('开始生成知识卡片，共', knowledgeFiles.length, '个文档');
+        console.log('knowledgeGrid元素:', grid);
+        
+        if (grid) {
+            knowledgeFiles.forEach((item, index) => {
+            const card = document.createElement('a');
+            card.className = 'knowledge-card';
+            card.href = '#';
+            card.setAttribute('data-file', item.file); // 添加data-file属性
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.onclick = (e) => {
+                e.preventDefault();
+                openViewer(item);
+            };
+            
+            card.innerHTML = `
+                <div style="font-size: 40px; margin-bottom: 15px;">${item.icon || '📄'}</div>
+                <div class="knowledge-title">${item.title}</div>
+                <div class="knowledge-desc">${item.desc}</div>
+                <div class="knowledge-meta">
+                    <div>
+                        ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <span>${item.category}</span>
+                </div>
+            `;
+            
+                grid.appendChild(card);
+            });
+            
+            console.log('✅ 知识卡片生成完成，共生成', knowledgeFiles.length, '张卡片');
+            console.log('knowledgeGrid 当前子元素数量:', grid.children.length);
+        } else {
+            console.error('❌ knowledgeGrid 元素未找到，无法生成卡片');
+        }
+        }); // 结束 DOMContentLoaded
+        
+        // 全局变量
+        let currentPage = 0;
+        let totalPages = 1;
+        let currentContent = '';
+        let contentSections = [];
+        
+        // 打开查看器（支持分页）
+        async function openViewer(item) {
+            console.log('\n\n' + '='*50);
+            console.log(' OPENVIEWER START');
+            console.log('='*50);
+            console.log(' item:', item);
+            console.log(' item.file:', item.file);
+            
+            // 保存当前查看的文档到URL（防止刷新返回首页）
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('doc', item.file);
+            urlParams.set('page', '0'); // 重置页码
+            window.history.replaceState({}, '', '?' + urlParams.toString());
+            
+            // 重置所有状态
+            currentPage = 0;
+            totalPages = 1;
+            contentSections = [];
+            currentContent = '';
+            console.log(' openViewer被调用, item:', item);
+            console.log('📥 item.file:', item.file);
+            console.log('📥 knowledgeContents存在:', typeof knowledgeContents !== 'undefined');
+            console.log(' knowledgeContents keys:', knowledgeContents ? Object.keys(knowledgeContents) : 'undefined');
+            
+            const viewer = document.getElementById('viewer');
+            const viewerTitle = document.getElementById('viewer-title');
+            const viewerContent = document.getElementById('viewer-content');
+            
+            viewerTitle.textContent = item.title;
+            viewer.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // 直接从嵌入的数据中获取内容
+            const content = knowledgeContents[item.file];
+            console.log('📥 获取到的content:', content ? `存在，长度${content.length}` : 'undefined/null');
+            
+            if (!content) {
+                console.error('❌ 内容未找到!');
+                console.log('  knowledgeContents的keys:', Object.keys(knowledgeContents));
+                viewerContent.innerHTML = '<div style="text-align:center;padding:60px;"><p style="color:#e74c3c;">❌ 内容未找到</p></div>';
+                return;
+            }
+            
+            currentContent = content;
+            
+            // 按H2标题分割内容
+            contentSections = splitContentByHeadings(content);
+            console.log('\n📊 分割结果:');
+            console.log('  contentSections.length:', contentSections.length);
+            console.log('  contentSections[0]:', contentSections[0] ? `存在，长度${contentSections[0].length}` : 'undefined/null');
+            console.log('  contentSections[0]前50字符:', contentSections[0] ? contentSections[0].substring(0, 50) : 'N/A');
+            
+            totalPages = contentSections.length;
+            currentPage = 0;
+            
+            console.log('\n📄 设置完成:');
+            console.log('  currentPage =', currentPage);
+            console.log('  totalPages =', totalPages);
+            console.log('='*50 + '\n\n');
+            
+            // 显示/隐藏分页导航
+            const pageNav = document.getElementById('page-nav');
+            if (totalPages > 1) {
+                pageNav.style.display = 'flex';
+            } else {
+                pageNav.style.display = 'none';
+            }
+            
+            // 渲染当前页
+            await renderPage(0);
+        }
+        
+        // 按H2标题分割内容
+        function splitContentByHeadings(markdown) {
+            console.log('🔪 splitContentByHeadings被调用, 输入长度:', markdown ? markdown.length : 'undefined');
+            
+            const lines = markdown.split('\n');
+            console.log('📝 总行数:', lines.length);
+            
+            const sections = [];
+            let currentSection = [];
+            let inSection = false;
+            let h1Content = []; // 存储H1标题
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                
+                // 检测H1标题（只收集，不分页）
+                if (line.match(/^# /) && !line.match(/^## /)) {
+                    h1Content.push(line);
+                    continue; // 跳过，不加入任何章节
+                }
+                
+                // 检测H2标题
+                if (line.match(/^## /)) {
+                    // 保存前一个章节
+                    if (inSection && currentSection.length > 0) {
+                        sections.push(currentSection.join('\n'));
+                    }
+                    // 开始新章节（如果有H1标题，先加入第一个章节）
+                    if (sections.length === 0 && h1Content.length > 0) {
+                        currentSection = [...h1Content, line];
+                    } else {
+                        currentSection = [line];
+                    }
+                    inSection = true;
+                } else if (inSection) {
+                    currentSection.push(line);
+                } else {
+                    // H2之前的内容（除了H1）也收集起来
+                    if (!line.match(/^# /)) {
+                        currentSection.push(line);
+                    }
+                    inSection = true;
+                }
+            }
+            
+            // 保存最后一个章节
+            if (currentSection.length > 0) {
+                sections.push(currentSection.join('\n'));
+            }
+            
+            // 过滤掉空章节（0字符的章节）和目录章节
+            const filteredSections = sections.filter(sec => {
+                const trimmed = sec.trim();
+                // 过滤掉空章节
+                if (trimmed.length === 0) return false;
+                // 过滤掉只有目录的章节（长度<200且包含"目录"）
+                if (trimmed.length < 200 && trimmed.includes('## 目录')) return false;
+                return true;
+            });
+            
+            console.log(' 分割完成, sections数量:', filteredSections.length);
+            filteredSections.forEach((sec, idx) => {
+                console.log(`  Section ${idx}: ${sec.length} 字符, 前50字符: ${sec.substring(0, 50)}`);
+            });
+            
+            // 如果只有一个章节且太长，尝试按字符数分割
+            if (filteredSections.length === 1 && filteredSections[0].length > 3000) {
+                return splitByLength(filteredSections[0]);
+            }
+            
+            return filteredSections;
+        }
+        
+        // 按长度分割内容
+        function splitByLength(content) {
+            const maxLength = 3000;
+            const sections = [];
+            let start = 0;
+            
+            while (start < content.length) {
+                let end = Math.min(start + maxLength, content.length);
+                
+                // 尝试在段落边界切割
+                if (end < content.length) {
+                    const paragraphBreak = content.lastIndexOf('\n\n', end);
+                    if (paragraphBreak > start + maxLength * 0.7) {
+                        end = paragraphBreak;
+                    }
+                }
+                
+                sections.push(content.substring(start, end));
+                start = end;
+            }
+            
+            return sections;
+        }
+        
+        // 渲染指定页面
+        async function renderPage(pageIndex) {
+            console.log('🎯 renderPage被调用, pageIndex:', pageIndex);
+            console.log('📄 contentSections数量:', contentSections ? contentSections.length : 'undefined');
+            console.log('📄 currentPage:', currentPage);
+            console.log('📄 totalPages:', totalPages);
+            
+            const viewerContent = document.getElementById('viewer-content');
+            console.log('📦 viewerContent元素:', viewerContent);
+            const pageIndicator = document.getElementById('page-indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (pageIndex < 0 || pageIndex >= totalPages) return;
+            
+            currentPage = pageIndex;
+            
+            // 更新页码指示器
+            pageIndicator.textContent = `${currentPage + 1} / ${totalPages}`;
+            
+            // 更新按钮状态
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage === totalPages - 1;
+            
+            // 渲染内容
+            const sectionContent = contentSections[currentPage];
+            console.log('📝 sectionContent长度:', sectionContent ? sectionContent.length : 'undefined');
+            console.log('📝 sectionContent前100字符:', sectionContent ? sectionContent.substring(0, 100) : 'undefined');
+            
+            const html = markdownToHTML(sectionContent);
+            console.log('🔄 HTML转换后长度:', html ? html.length : 'undefined');
+            console.log('🔄 HTML前100字符:', html ? html.substring(0, 100) : 'undefined');
+            
+            viewerContent.innerHTML = html;
+            console.log('✅ viewerContent.innerHTML已设置');
+            console.log('📊 viewerContent子元素数量:', viewerContent.children.length);
+            
+            // 添加页码标记
+            const pageInfo = document.createElement('div');
+            pageInfo.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: rgba(44,62,80,0.9); color: white; padding: 8px 16px; border-radius: 6px; font-size: 13px; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2);';
+            pageInfo.textContent = `第 ${currentPage + 1}/${totalPages} 页`;
+            document.body.appendChild(pageInfo);
+            
+            // 3秒后移除页码标记
+            setTimeout(() => {
+                pageInfo.remove();
+            }, 3000);
+            
+            // 渲染Mermaid图表
+            await renderMermaidDiagrams();
+            
+            // 添加术语提示
+            addTermTooltips();
+            
+            // 生成目录
+            generateTOC();
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 上一页
+        function prevPage() {
+            if (currentPage > 0) {
+                renderPage(currentPage - 1);
+                // 更新URL中的页码
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', String(currentPage - 1));
+                window.history.replaceState({}, '', '?' + urlParams.toString());
+            }
+        }
+        
+        // 下一页
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                renderPage(currentPage + 1);
+                // 更新URL中的页码
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', String(currentPage + 1));
+                window.history.replaceState({}, '', '?' + urlParams.toString());
+            }
+        }
+        
+        // 关闭查看器
+        function closeViewer() {
+            const viewer = document.getElementById('viewer');
+            viewer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // 清除URL参数（防止刷新后自动打开）
+            window.history.replaceState({}, '', window.location.pathname);
+            
+            // 移除键盘事件监听
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+        
+        // 键盘快捷键处理
+        function handleKeyPress(e) {
+            const viewer = document.getElementById('viewer');
+            if (viewer.style.display === 'none') return;
+            
+            // ESC关闭
+            if (e.key === 'Escape') {
+                closeViewer();
+                return;
+            }
+            
+            // 左箭头 - 上一页
+            if (e.key === 'ArrowLeft' && currentPage > 0) {
+                prevPage();
+            }
+            
+            // 右箭头 - 下一页
+            if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                nextPage();
+            }
+        }
+        
+        // 打开查看器时添加键盘监听
+        const originalOpenViewer = openViewer;
+        openViewer = async function(item) {
+            await originalOpenViewer(item);
+            document.addEventListener('keydown', handleKeyPress);
+        };
+        
+        // 生成目录（改进版 - 等待DOM完全渲染）
+        function generateTOC() {
+            const content = document.getElementById('viewer-content');
+            const tocNav = document.getElementById('toc-nav');
+            
+            // 延迟执行，确保Mermaid图表渲染完成
+            setTimeout(() => {
+                const headings = content.querySelectorAll('h2, h3');
+                
+                if (headings.length === 0) {
+                    tocNav.innerHTML = '<p style="color: #a0aec0; font-size: 14px;">暂无目录</p>';
+                    return;
+                }
+                
+                // 检测是否是目录页（第一页）
+                const isTocPage = headings.length > 0 && headings[0].textContent.includes('目录');
+                
+                if (isTocPage) {
+                    // 目录页不显示左侧目录
+                    tocNav.innerHTML = '<p style="color: #a0aec0; font-size: 14px; text-align: center; padding: 20px;">📑 目录页<br><small>请翻阅下方内容</small></p>';
+                    return;
+                }
+                
+                // 普通页面的左侧目录
+                let html = '<ul>';
+                    headings.forEach((heading, index) => {
+                        // 为每个标题添加唯一ID
+                        const headingId = 'section-' + index;
+                        heading.id = headingId;
+                        
+                        const level = heading.tagName.toLowerCase();
+                        const text = heading.textContent.trim();
+                        
+                        html += `<li class="${level}">`;
+                        html += `<a href="#${headingId}" onclick="scrollToHeading('${headingId}'); return false;">${text}</a>`;
+                        html += '</li>';
+                    });
+                    html += '</ul>';
+                    
+                    tocNav.innerHTML = html;
+                    
+                    console.log(`📑 生成目录：${headings.length} 个章节`);
+                    
+                    // 设置滚动监听
+                    setupScrollSpy();
+            }, 500); // 等待500ms确保内容完全渲染
+        }
+        
+        // 滚动到指定标题
+        function scrollToHeading(headingId) {
+            const heading = document.getElementById(headingId);
+            if (heading) {
+                heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // 切换目录显示/隐藏
+        function toggleTOC() {
+            const sidebar = document.getElementById('toc-sidebar');
+            const toggle = document.querySelector('.toc-toggle');
+            sidebar.classList.toggle('collapsed');
+            toggle.textContent = sidebar.classList.contains('collapsed') ? '展开' : '收起';
+        }
+        
+        // 滚动监听高亮当前章节
+        function setupScrollSpy() {
+            const content = document.getElementById('viewer-content');
+            const headings = content.querySelectorAll('h2, h3');
+            const tocLinks = document.querySelectorAll('.toc-nav a');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 移除所有active类
+                        tocLinks.forEach(link => link.classList.remove('active'));
+                        
+                        // 添加active类到当前标题对应的链接
+                        const activeLink = document.querySelector(`.toc-nav a[href="#${entry.target.id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, { 
+                root: null,
+                rootMargin: '-100px 0px -70% 0px',
+                threshold: 0 
+            });
+            
+            headings.forEach(heading => {
+                observer.observe(heading);
+            });
+        }
+        
+        // 添加术语提示
+        function addTermTooltips() {
+            const glossary = {
+                'VO2max': '最大摄氧量，衡量心肺耐力的金标准指标，单位ml/kg/min。优秀跑者通常>50',
+                'VO₂max': '最大摄氧量，衡量心肺耐力的金标准指标',
+                'RM': 'Repetition Maximum，最大重复次数。1RM表示只能完成1次的重量，用于衡量力量水平',
+                'ATP-CP': '磷酸原系统，0-10秒高强度运动的主要供能系统，无需氧气参与',
+                '乳酸阈': '血乳酸浓度开始急剧上升的运动强度点，通常为最大心率的80-85%',
+                'HIIT': 'High Intensity Interval Training，高强度间歇训练，短时间内交替高强度和低强度运动',
+                'LSD': 'Long Slow Distance，长距离慢跑，有氧基础训练方法',
+                'RPE': 'Rating of Perceived Exertion，主观疲劳度评分，6-20分或0-10分量表',
+                'HRmax': 'Maximum Heart Rate，最大心率，估算公式：220-年龄',
+                '糖酵解': '无氧代谢过程，将葡萄糖分解为乳酸并产生ATP，持续30秒-2分钟',
+                '线粒体': '细胞的能量工厂，有氧运动中负责产生大量ATP',
+                '超量恢复': '训练后身体机能超过原有水平的现象，是肌肉增长的基础',
+                '周期化': 'Periodization，将训练分为不同阶段以优化表现的系统方法'
+            };
+            
+            const content = document.getElementById('viewer-content');
+            if (!content) return;
+            
+            // 遍历术语字典
+            Object.keys(glossary).forEach(term => {
+                const regex = new RegExp(`\\b${term}\\b`, 'g');
+                const html = content.innerHTML;
+                
+                // 只替换不在HTML标签内的文本
+                const newHtml = html.replace(regex, (match) => {
+                    // 检查是否在标签内
+                    const beforeMatch = html.substring(0, html.indexOf(match));
+                    const lastOpenTag = beforeMatch.lastIndexOf('<');
+                    const lastCloseTag = beforeMatch.lastIndexOf('>');
+                    
+                    if (lastOpenTag > lastCloseTag) {
+                        return match; // 在标签内，不替换
+                    }
+                    
+                    return `<span class="term-tooltip" data-term="${glossary[term]}">${match}</span>`;
+                });
+                
+                content.innerHTML = newHtml;
+            });
+            
+            console.log('📖 术语提示已添加');
+        }
+        
+        // Markdown转HTML（增强版）
+        // 转义Mermaid代码中的特殊字符
+        function sanitizeMermaidCode(code) {
+            let sanitized = code;
+            
+            // 1. 处理节点标签: 节点[标签] -> 节点["标签"]
+            sanitized = sanitized.replace(/(\w+)\[([^\[\]]+)\]/g, function(match, node, label) {
+                const trimmedLabel = label.trim();
+                // 如果标签包含特殊字符或空格，用引号包裹
+                if (/[\?=<>{}\s]/.test(trimmedLabel)) {
+                    return `${node}["${trimmedLabel.replace(/"/g, '\\"')}"]`;
+                }
+                return match;
+            });
+            
+            // 2. 处理箭头后的文本标签: -->标签 节点
+            // 匹配: -->文本 节点 或 -->文本{
+            sanitized = sanitized.replace(/-->([^\n\[\{\w]*?)\s+(\w)/g, function(match, label, nextChar) {
+                const trimmedLabel = label.trim();
+                if (trimmedLabel && /[\?=<>\s]/.test(trimmedLabel)) {
+                    return `-->["${trimmedLabel.replace(/"/g, '\\"')}"] ${nextChar}`;
+                }
+                return match;
+            });
+            
+            // 3. 处理箭头后的标签带条件: -->标签{
+            sanitized = sanitized.replace(/-->([^\n\[\{]*?)\{/g, function(match, label) {
+                const trimmedLabel = label.trim();
+                if (trimmedLabel && /[\?=<>]/.test(trimmedLabel)) {
+                    return `-->["${trimmedLabel.replace(/"/g, '\\"')}"] {`;
+                }
+                return match;
+            });
+            
+            console.log('✨ 转义后的Mermaid代码:', sanitized.substring(0, 200));
+            return sanitized;
+        }
+        
+        // 将Mermaid流程图转换为HTML
+        function convertMermaidToHTML(code) {
+            console.log('🔄 转换Mermaid流程图:', code.substring(0, 100));
+            
+            // 提取方向
+            const dirMatch = code.match(/^(graph|flowchart)\s+(TD|LR|TB|RL)/i);
+            const direction = dirMatch ? dirMatch[2].toUpperCase() : 'TD';
+            
+            // 提取所有节点定义
+            const nodeRegex = /(\w+)\[([^\]]+)\]/g;
+            const nodes = {};
+            let match;
+            while ((match = nodeRegex.exec(code)) !== null) {
+                nodes[match[1]] = match[2];
+            }
+            
+            // 提取所有连接
+            const linkRegex = /(\w+)\s*-->\s*(?:\[([^\]]+)\])?\s*(\w+)/g;
+            const links = [];
+            while ((match = linkRegex.exec(code)) !== null) {
+                links.push({
+                    from: match[1],
+                    label: match[2] || '',
+                    to: match[3]
+                });
+            }
+            
+            // 生成HTML
+            let html = '<div class="flowchart-container">';
+            html += '<div class="flowchart" data-direction="' + direction + '">';
+            
+            // 生成节点
+            Object.keys(nodes).forEach(id => {
+                html += `<div class="flowchart-node" data-id="${id}">
+                    <span class="node-text">${nodes[id]}</span>
+                </div>`;
+            });
+            
+            // 生成连接线（用SVG）
+            if (links.length > 0) {
+                html += '<svg class="flowchart-links">';
+                links.forEach((link, idx) => {
+                    const labelHtml = link.label ? `<text class="link-label">${link.label}</text>` : '';
+                    html += `<g class="link-group" data-from="${link.from}" data-to="${link.to}">
+                        <line class="link-line" x1="0" y1="0" x2="0" y2="0"/>
+                        ${labelHtml}
+                    </g>`;
+                });
+                html += '</svg>';
+            }
+            
+            html += '</div></div>';
+            
+            // 添加CSS样式
+            const styleId = 'flowchart-style';
+            if (!document.getElementById(styleId)) {
+                const style = document.createElement('style');
+                style.id = styleId;
+                style.textContent = `
+                    .flowchart-container {
+                        margin: 24px 0;
+                        padding: 28px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        border-radius: 16px;
+                        overflow-x: auto;
+                        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+                    }
+                    .flowchart {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 30px;
+                        min-height: 200px;
+                        position: relative;
+                    }
+                    .flowchart[data-direction="LR"] {
+                        flex-direction: row;
+                    }
+                    .flowchart-node {
+                        background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+                        padding: 16px 24px;
+                        border-radius: 12px;
+                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(102, 126, 234, 0.15);
+                        border: 3px solid transparent;
+                        background-clip: padding-box;
+                        position: relative;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #1e293b;
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        cursor: pointer;
+                        z-index: 2;
+                        min-width: 120px;
+                        text-align: center;
+                    }
+                    .flowchart-node::before {
+                        content: '';
+                        position: absolute;
+                        top: -3px;
+                        left: -3px;
+                        right: -3px;
+                        bottom: -3px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        border-radius: 14px;
+                        z-index: -1;
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                    }
+                    .flowchart-node:hover {
+                        transform: translateY(-4px) scale(1.08);
+                        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.35), 0 6px 16px rgba(118, 75, 162, 0.25);
+                    }
+                    .flowchart-node:hover::before {
+                        opacity: 1;
+                    }
+                    .flowchart-links {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        z-index: 1;
+                    }
+                    .link-line {
+                        stroke: #667eea;
+                        stroke-width: 2;
+                        fill: none;
+                    }
+                    .link-label {
+                        font-size: 12px;
+                        fill: #64748b;
+                        font-weight: 500;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // 延迟计算连线位置
+            setTimeout(() => {
+                positionFlowchartLinks();
+            }, 100);
+            
+            return html;
+        }
+        
+        // 定位流程图连线
+        function positionFlowchartLinks() {
+            const flowcharts = document.querySelectorAll('.flowchart');
+            flowcharts.forEach(flowchart => {
+                const nodes = flowchart.querySelectorAll('.flowchart-node');
+                const links = flowchart.querySelectorAll('.link-group');
+                
+                const nodePositions = {};
+                nodes.forEach(node => {
+                    const id = node.dataset.id;
+                    const rect = node.getBoundingClientRect();
+                    const containerRect = flowchart.getBoundingClientRect();
+                    nodePositions[id] = {
+                        x: rect.left - containerRect.left + rect.width / 2,
+                        y: rect.top - containerRect.top + rect.height / 2
+                    };
+                });
+                
+                links.forEach(link => {
+                    const fromId = link.dataset.from;
+                    const toId = link.dataset.to;
+                    if (nodePositions[fromId] && nodePositions[toId]) {
+                        const line = link.querySelector('.link-line');
+                        const from = nodePositions[fromId];
+                        const to = nodePositions[toId];
+                        line.setAttribute('x1', from.x);
+                        line.setAttribute('y1', from.y);
+                        line.setAttribute('x2', to.x);
+                        line.setAttribute('y2', to.y);
+                    }
+                });
+            });
+        }
+        
+        
+        function markdownToHTML(markdown) {
+            console.log('🔧 markdownToHTML被调用, 输入长度:', markdown ? markdown.length : 'undefined');
+            let html = markdown;
+            
+            // Mermaid代码块（支持多种格式）
+            const mermaidBlocks = [];
+            
+            // 格式1: ```mermaid\n...``` - 转换为HTML流程图
+            html = html.replace(/```mermaid\s*\n([\s\S]*?)```/g, function(match, code) {
+                const trimmedCode = code.trim();
+                
+                // 检测是否是流程图（graph/flowchart开头）
+                if (/^(graph|flowchart)\s+(TD|LR|TB|RL)/i.test(trimmedCode)) {
+                    // 转换为HTML流程图
+                    return convertMermaidToHTML(trimmedCode);
+                }
+                
+                // 其他类型的Mermaid图表保留原样
+                const id = 'mermaid-' + mermaidBlocks.length;
+                mermaidBlocks.push(trimmedCode);
+                return `<div class="mermaid-container" data-mermaid-id="${id}">
+                    <div class="mermaid-wrapper" onclick="openMermaidLightbox('${id}')">
+                        <div class="mermaid" id="${id}">${trimmedCode}</div>
+                    </div>
+                </div>`;
+            });
+            
+            // 格式1.5: 处理引用块中的mermaid代码块 - 转换为HTML流程图
+            html = html.replace(/(>[ \t]*)?```mermaid\s*\n([\s\S]*?)```/g, function(match, prefix, code) {
+                // 彻底清理所有 > 符号和缩进
+                const lines = code.split('\n');
+                const cleanedLines = lines.map(line => {
+                    let cleaned = line.replace(/^>[ \t]*/, '');
+                    while (cleaned.startsWith('>')) {
+                        cleaned = cleaned.replace(/^>[ \t]*/, '');
+                    }
+                    return cleaned;
+                });
+                const cleanedCode = cleanedLines.join('\n').trim();
+                
+                // 检测是否是流程图
+                if (/^(graph|flowchart)\s+(TD|LR|TB|RL)/i.test(cleanedCode)) {
+                    return convertMermaidToHTML(cleanedCode);
+                }
+                
+                // 其他类型继续使用Mermaid渲染
+                const sanitizedCode = sanitizeMermaidCode(cleanedCode);
+                const id = 'mermaid-' + mermaidBlocks.length;
+                mermaidBlocks.push(sanitizedCode);
+                return `<div class="mermaid-container" data-mermaid-id="${id}">
+                    <div class="mermaid-wrapper" onclick="openMermaidLightbox('${id}')">
+                        <div class="mermaid" id="${id}">${sanitizedCode}</div>
+                    </div>
+                </div>`;
+            });
+            
+            // 格式2: graph TD ... (无代码块标记的纯文本)
+            html = html.replace(/^(graph (TD|LR|TB|RL)[\s\S]*?)(?=\n\n|\n#|$)/gm, function(match, code) {
+                // 检查是否已经被处理过
+                if (match.includes('mermaid-container')) {
+                    return match;
+                }
+                
+                const id = 'mermaid-' + mermaidBlocks.length;
+                mermaidBlocks.push(code.trim());
+                return `<div class="mermaid-container" data-mermaid-id="${id}">
+                    <div class="mermaid-wrapper" onclick="openMermaidLightbox('${id}')">
+                        <div class="mermaid" id="${id}">${code.trim()}</div>
+                    </div>
+                </div>`;
+            });
+            
+            // 普通代码块
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+            
+            // 标题（按顺序处理，避免冲突）
+            html = html.replace(/^#### (.*$)/gm, '<h4>$1</h4>');
+            html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+            
+            // 粗体和斜体
+            html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // 引用
+            html = html.replace(/^> (.*$)/gm, '<blockquote>$1</blockquote>');
+            
+            // 无序列表
+            html = html.replace(/^[\-\*] (.*$)/gm, '<li>$1</li>');
+            html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+            
+            // 有序列表
+            html = html.replace(/^\d+\. (.*$)/gm, '<li>$1</li>');
+            
+            // 链接
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #667eea;">$1</a>');
+            
+            // 图片
+            html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; display: block; margin: 20px auto;">');
+            
+            // 表格
+            html = html.replace(/\|(.+)\|/g, function(match, content) {
+                if (content.match(/^[\-\|:]+$/)) {
+                    return '</tr><tr>';
+                }
+                const cells = content.split('|').map(cell => cell.trim());
+                if (cells.every(cell => !cell)) return '';
+                const tag = cells[0].match(/^#+/) ? 'th' : 'td';
+                return cells.map(cell => `<${tag}>${cell}</${tag}>`).join('');
+            });
+            html = html.replace(/((?:<td>.*<\/td>\n?)+)/g, '<table><tr>$1</tr></table>');
+            
+            // 水平线
+            html = html.replace(/^---$/gm, '<hr style="border: none; border-top: 2px solid #e2e8f0; margin: 30px 0;">');
+            
+            // 实用方案卡片（自定义语法）
+            html = html.replace(/:::tip\s*\n([\s\S]*?)\n:::/g, function(match, content) {
+                const lines = content.split('\n');
+                let title = '';
+                let body = '';
+                let tags = '';
+                
+                lines.forEach(line => {
+                    if (line.startsWith('title:')) {
+                        title = line.replace('title:', '').trim();
+                    } else if (line.startsWith('tags:')) {
+                        const tagList = line.replace('tags:', '').trim().split(',');
+                        tags = tagList.map(tag => `<span class="practice-tag">${tag.trim()}</span>`).join('');
+                    } else {
+                        body += line + '\n';
+                    }
+                    });
+                
+                    return `<div class="practice-card">
+                    <div class="practice-card-title">${title}</div>
+                    <div class="practice-card-content">${body.trim()}</div>
+                    ${tags ? `<div class="practice-card-tags">${tags}</div>` : ''}
+                    </div>`;
+                    });
+            
+                    // 链接卡片（自定义语法）
+                    html = html.replace(/:::link\s+url=([^\s]+)\s+title=([^\n]+)\s+desc=([^\n]+)\n:::/g, function(match, url, title, desc) {
+                    return `<a href="${url}" class="link-card" target="_blank">
+                    <div class="link-card-title">${title.trim()}</div>
+                    <div class="link-card-desc">${desc.trim()}</div>
+                    </a>`;
+                    });
+            
+                    // 段落
+                    html = html.replace(/\n\n/g, '</p><p>');
+                    html = '<p>' + html + '</p>';
+            
+                    // 清理多余的空段落
+                    html = html.replace(/<p><\/p>/g, '');
+                    html = html.replace(/<p><(h[1-6]|ul|ol|pre|blockquote|table|hr)/g, '<$1');
+                    html = html.replace(/<\/(h[1-6]|ul|ol|pre|blockquote|table)><\/p>/g, '<\/$1>');
+                                        
+                    // 将表格包装在滚动容器中
+                    html = html.replace(/(<table[\s\S]*?<\/table>)/g, '<div class="table-wrapper">$1</div>');
+            
+                    return html;
+                    }
+        
+                    // ESC键关闭查看器
+                    document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                    closeViewer();
+                    closeMermaidLightbox();
+                    }
+                    });
+        
+                    // 渲染Mermaid图表（改进版）
+                    async function renderMermaidDiagrams() {
+                    // 检查Mermaid是否可用
+                    if (!window.mermaidAvailable) {
+                    console.log('Mermaid不可用，跳过图表渲染');
+                    return;
+                    }
+            
+                    try {
+                    const mermaidElements = document.querySelectorAll('.mermaid');
+                
+                    for (let i = 0; i < mermaidElements.length; i++) {
+                    const element = mermaidElements[i];
+                    const graphDefinition = element.textContent.trim();
+                    const id = element.id;
+                    
+                    // 延迟渲染，确保DOM就绪
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    try {
+                        // 清除之前的内容
+                        element.innerHTML = '';
+                        
+                        // 重新初始化
+                        const { svg } = await mermaid.render('mermaid-svg-' + i, graphDefinition);
+                        element.innerHTML = svg;
+                        
+                        console.log(`✅ 图表 ${i+1}/${mermaidElements.length} 渲染成功`);
+                    } catch (err) {
+                        console.error('❌ Mermaid渲染错误:', err);
+                        // 显示原始文本作为备选
+                        element.innerHTML = `
+                            <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 6px;">
+                                <p style="color: #92400e; margin: 0; font-size: 14px;">
+                                    <strong>⚠️ 图表渲染失败</strong><br>
+                                    <pre style="margin-top: 10px; background: white; padding: 10px; overflow-x: auto; font-size: 12px;">${graphDefinition}</pre>
+                                </p>
+                            </div>
+                        `;
+                    }
+                    }
+                
+                    console.log(`📊 总共渲染 ${mermaidElements.length} 个图表`);
+                    } catch (err) {
+                    console.error('Mermaid初始化错误:', err);
+                    }
+                    }
+        
+                    // 打开Mermaid全屏放大
+                    function openMermaidLightbox(mermaidId) {
+                    const mermaidElement = document.getElementById(mermaidId);
+                    if (!mermaidElement) return;
+            
+                    // 创建lightbox
+                    let lightbox = document.getElementById('mermaid-lightbox');
+                    if (!lightbox) {
+                    lightbox = document.createElement('div');
+                    lightbox.id = 'mermaid-lightbox';
+                    lightbox.className = 'mermaid-lightbox';
+                    lightbox.innerHTML = `
+                    <button class="mermaid-lightbox-close" onclick="closeMermaidLightbox()">&times;</button>
+                    <div class="mermaid-lightbox-content">
+                        <div class="mermaid-lightbox-title">图表详情</div>
+                        <div id="mermaid-lightbox-svg"></div>
+                    </div>
+                    `;
+                    document.body.appendChild(lightbox);
+                    }
+            
+                    // 复制SVG内容
+                    const svgContent = mermaidElement.innerHTML;
+                    document.getElementById('mermaid-lightbox-svg').innerHTML = svgContent;
+            
+                    // 显示lightbox
+                    lightbox.classList.add('active');
+                    }
+        
+                    // 关闭Mermaid全屏放大
+                    function closeMermaidLightbox() {
+                    const lightbox = document.getElementById('mermaid-lightbox');
+                    if (lightbox) {
+                    lightbox.classList.remove('active');
+                    }
+                    }
+        
+                    // 点击lightbox背景关闭
+                    document.addEventListener('click', function(e) {
+                    const lightbox = document.getElementById('mermaid-lightbox');
+                    if (lightbox && e.target === lightbox) {
+                    closeMermaidLightbox();
+                    }
+                    });
+                    
+                    // 拦截浏览器后退按钮，防止跳出当前页面
+                    window.addEventListener('popstate', function(e) {
+                        const viewer = document.getElementById('viewer');
+                        if (viewer && viewer.style.display === 'block') {
+                            // 如果查看器正在显示，阻止后退，改为关闭查看器
+                            e.preventDefault();
+                            closeViewer();
+                            // 重新添加当前状态到历史记录
+                            window.history.pushState({}, '', window.location.href);
+                            return false;
+                        }
+                    });
+                            
+                    // 页面加载时添加初始历史记录（用于拦截后退）
+                    window.addEventListener('DOMContentLoaded', function() {
+                        // 只在没有历史记录时才添加（防止重复）
+                        if (window.history.length <= 1) {
+                            window.history.pushState({}, '', window.location.href);
+                        }
+                    });
+                            
+                    // 页面加载时检查URL参数，自动恢复上次查看的文档
+                    window.addEventListener('DOMContentLoaded', function() {
+                        console.log('🔍 DOM加载完成，检查URL参数...');
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const docName = urlParams.get('doc');
+                        const pageNum = urlParams.get('page');
+                        
+                        console.log('📋 URL参数:', { doc: docName, page: pageNum });
+                        console.log('📚 knowledgeContents存在:', typeof knowledgeContents !== 'undefined');
+                        
+                        if (docName && typeof knowledgeContents !== 'undefined' && knowledgeContents[docName]) {
+                            console.log('🔄 检测到上次查看的文档:', docName, '页码:', pageNum);
+                            
+                            // 查找对应的文档对象
+                            const targetItem = knowledgeFiles.find(item => item.file === docName);
+                            if (targetItem) {
+                                console.log('✅ 找到文档对象，直接打开');
+                                
+                                // 直接调用openViewer，不经过卡片点击
+                                setTimeout(() => {
+                                    openViewer(targetItem).then(() => {
+                                        // 如果有页码参数，跳转到对应页
+                                        if (pageNum !== null && !isNaN(pageNum)) {
+                                            const targetPage = parseInt(pageNum);
+                                            console.log('⏳ 等待500ms后跳转到第', targetPage + 1, '页');
+                                            setTimeout(() => {
+                                                console.log('📄 当前totalPages:', totalPages);
+                                                if (targetPage >= 0 && targetPage < totalPages) {
+                                                    console.log('📄 恢复到第', targetPage + 1, '页');
+                                                    renderPage(targetPage);
+                                                    
+                                                    // 更新页码显示
+                                                    const pageInfo = document.getElementById('page-info');
+                                                    if (pageInfo) {
+                                                        pageInfo.textContent = `${targetPage + 1} / ${totalPages}`;
+                                                    }
+                                                    
+                                                    // 更新按钮状态
+                                                    const prevBtn = document.getElementById('prev-btn');
+                                                    const nextBtn = document.getElementById('next-btn');
+                                                    if (prevBtn) prevBtn.disabled = targetPage === 0;
+                                                    if (nextBtn) nextBtn.disabled = targetPage >= totalPages - 1;
+                                                } else {
+                                                    console.warn('⚠️ 页码超出范围:', targetPage, '总页数:', totalPages);
+                                                }
+                                            }, 500); // 等待文档渲染完成
+                                        }
+                                    });
+                                }, 300);
+                            } else {
+                                console.warn('⚠️ 未找到文档对象:', docName);
+                            }
+                        } else {
+                            console.log('ℹ️ 没有需要恢复的文档');
+                        }
+                    });
+                    </script>
+                    </body>
+                    </html>

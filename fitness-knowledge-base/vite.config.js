@@ -83,16 +83,27 @@ export default defineConfig({
   },
   build: {
     // 启用压缩
-    minify: 'esbuild', // 使用esbuild更快
+    minify: 'terser', // 使用 terser 获得更好的压缩
     // 增加chunk大小警告限制
     chunkSizeWarningLimit: 1000,
     // 启用sourcemap用于调试(生产环境可关闭)
     sourcemap: false,
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          markdown: ['react-markdown', 'remark-gfm', 'remark-math', 'rehype-katex'],
+          charts: ['recharts', 'mermaid']
+        }
+      }
+    },
   },
   server: {
+    host: '127.0.0.1', // 明确指定IPv4地址
     port: 5173,
+    strictPort: true, // 端口被占用时直接报错而不是自动切换
     // 允许访问 data 文件夹
     fs: {
       allow: ['.', './data'],

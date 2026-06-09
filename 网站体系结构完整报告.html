@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身知识库 - 完整体系结构报告</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'STSong', Georgia, serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            color: #2d3748;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .header .meta {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e2e8f0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .section h3 {
+            font-size: 24px;
+            color: #34495e;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 16px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f8fafc;
+            border-left: 4px solid #3498db;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-list li:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+        
+        .feature-list li::before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+        
+        .architecture-diagram {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        
+        .file-tree {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #f39c12;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            border-color: #3498db;
+            box-shadow: 0 4px 12px rgba(52,152,219,0.2);
+        }
+        
+        .tech-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .stat-card {
+                break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ 健身知识库</h1>
+            <div class="subtitle">完整体系结构报告</div>
+            <div class="meta">
+                Fitness & Running Science Knowledge Base - Architecture Report v3.0
+            </div>
+            <div class="meta">
+                生成日期：2026年5月31日 | 状态：✅ 完整文档
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- 项目概览 -->
+            <div class="section">
+                <h2>📋 项目概览</h2>
+                <p><strong>项目名称：</strong>健身与跑步科学知识库</p>
+                <p><strong>项目定位：</strong>一个基于证据的健身科学知识库，整合运动生理学、力量训练、有氧耐力、营养恢复等领域的权威学术文献，提供可追溯、可验证的科学训练指导。</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">核心主题文档</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">81</div>
+                        <div class="stat-label">学术文献</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">94K</div>
+                        <div class="stat-label">总字数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">主题分类</div>
+                    </div>
+                </div>
+                
+                <h3>核心价值</h3>
+                <ul class="feature-list">
+                    <li>权威性：所有内容由81+篇正式学术文献支持</li>
+                    <li>可追溯：每个论点都可点击跳转到原始文献</li>
+                    <li>美观性：学术风格设计，思源宋体排版</li>
+                    <li>易用性：响应式设计，支持桌面和移动端</li>
+                    <li>可扩展：模块化架构，易于维护和扩展</li>
+                </ul>
+            </div>
+            
+            <!-- 整体架构 -->
+            <div class="section">
+                <h2>🏗️ 整体架构</h2>
+                <div class="architecture-diagram">
+健身知识库系统
+├── 📄 前端展示层 (HTML/CSS/JS)
+│   ├── 知识库文档.html (主入口)
+│   ├── 知识图谱.html (可视化)
+│   ├── 学习路径.html (个性化)
+│   └── portal.html (门户页面)
+│
+├── 📊 数据层
+│   ├── knowledge_data.js (嵌入数据)
+│   ├── references/references.json (文献数据库)
+│   └── Markdown源文件 (10个主题)
+│
+├── 🔧 工具层
+│   ├── extract_references.py (文献提取)
+│   ├── add_classic_papers.py (添加经典文献)
+│   ├── add_citation_links.py (添加引用链接)
+│   └── embed_knowledge.py (数据嵌入)
+│
+├── 📁 内容层
+│   ├── 运动生理学基础.md
+│   ├── 力量训练科学.md
+│   ├── 有氧训练与耐力科学.md
+│   ├── 营养与恢复科学.md
+│   ├── 周期化训练高级理论.md
+│   ├── 心理训练与认知表现.md
+│   └── ... (共10个文档)
+│
+└── 🎨 资源层
+    ├── Google Fonts (Noto Serif/Sans SC)
+    ├── Mermaid.js (图表渲染)
+    └── 自定义CSS样式
+                </div>
+            </div>
+            
+            <!-- 参考文献系统 -->
+            <div class="section">
+                <h2>📚 参考文献系统</h2>
+                
+                <div class="highlight-box">
+                    <strong>🎯 核心成果：</strong>建立了包含81篇学术文献的结构化数据库，涵盖7个主题领域，100%标注证据等级，支持实时搜索和一键跳转。
+                </div>
+                
+                <h3>文献分布</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>主题分类</th>
+                            <th>文献数量</th>
+                            <th>占比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>营养与恢复科学</td>
+                            <td>18篇</td>
+                            <td>22%</td>
+                        </tr>
+                        <tr>
+                            <td>运动生理学基础</td>
+                            <td>15篇</td>
+                            <td>19%</td>
+                        </tr>
+                        <tr>
+                            <td>力量训练科学</td>
+                            <td>15篇</td>
+                            <td>19%</td>
+                        </tr>
+                        <tr>
+                            <td>有氧训练与耐力科学</td>
+                            <td>10篇</td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td>周期化训练高级理论</td>
+                            <td>10篇</td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td>心理训练与认知表现</td>
+                            <td>9篇</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td>2024-2026前沿研究</td>
+                            <td>4篇</td>
+                            <td>5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>证据等级分布</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>证据等级</th>
+                            <th>类型</th>
+                            <th>数量</th>
+                            <th>占比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>⭐ Classic</td>
+                            <td>经典文献（被引>1000次）</td>
+                            <td>40篇</td>
+                            <td>49%</td>
+                        </tr>
+                        <tr>
+                            <td>🟢 Level 1A</td>
+                            <td>Meta分析/系统评价</td>
+                            <td>25篇</td>
+                            <td>31%</td>
+                        </tr>
+                        <tr>
+                            <td>🔵 Level 1B</td>
+                            <td>大样本RCT</td>
+                            <td>12篇</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Level 3</td>
+                            <td>专家共识/立场声明</td>
+                            <td>4篇</td>
+                            <td>5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 技术栈 -->
+            <div class="section">
+                <h2>💻 技术栈</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h4>🎨 前端技术</h4>
+                        <p>HTML5 + CSS3 + JavaScript (ES6+)</p>
+                        <p>Marked.js (Markdown解析)</p>
+                        <p>Mermaid.js v10.6.1 (图表)</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>🔤 字体</h4>
+                        <p>Noto Serif SC (思源宋体)</p>
+                        <p>Noto Sans SC (思源黑体)</p>
+                        <p>来源：Google Fonts CDN</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>🐍 数据处理</h4>
+                        <p>Python 3.x</p>
+                        <p>JSON结构化存储</p>
+                        <p>Markdown内容格式</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>🚀 部署方式</h4>
+                        <p>纯静态部署</p>
+                        <p>本地HTTP服务器</p>
+                        <p>GitHub Pages (可选)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文件结构 -->
+            <div class="section">
+                <h2>📁 文件结构</h2>
+                <div class="file-tree">
+d:\学习\健身\
+│
+├── 📄 核心页面
+│   ├── 知识库文档.html (76.8KB) ⭐ 主入口
+│   ├── 知识图谱.html (22.2KB)
+│   ├── 学习路径.html (26.3KB)
+│   ├── portal.html (10.8KB)
+│   └── index.html (11.9KB)
+│
+├── 📊 数据文件
+│   └── knowledge_data.js (187.8KB) ⭐ 嵌入数据
+│
+├── 📁 健身知识库与数据/
+│   └── 知识库/
+│       ├── knowledge/ (10个Markdown文档)
+│       └── references/ ⭐ 参考文献系统
+│           ├── references.json (文献数据库)
+│           ├── index.html (浏览界面)
+│           └── README.md (使用指南)
+│
+├── 🔧 Python工具
+│   ├── extract_references.py
+│   ├── add_classic_papers.py
+│   ├── add_citation_links.py
+│   └── embed_knowledge.py
+│
+├── 🚀 启动脚本
+│   └── 启动参考文献数据库.bat ⭐
+│
+└── 📖 文档
+    ├── 网站体系结构完整报告.md ⭐
+    ├── 参考文献系统实施完成报告.md
+    └── ... (多个优化文档)
+                </div>
+            </div>
+            
+            <!-- 功能特性 -->
+            <div class="section">
+                <h2>✨ 核心功能</h2>
+                <ul class="feature-list">
+                    <li>知识文档浏览（10个主题，智能分页）</li>
+                    <li>参考文献系统（81篇文献，实时搜索）</li>
+                    <li>Mermaid图表可视化（流程图、序列图、甘特图）</li>
+                    <li>术语提示功能（悬停显示解释）</li>
+                    <li>响应式设计（桌面/平板/移动端）</li>
+                    <li>侧边栏目录导航</li>
+                    <li>上一页/下一页按钮</li>
+                    <li>DOI/PubMed一键跳转</li>
+                    <li>证据等级标注系统</li>
+                    <li>打印优化</li>
+                </ul>
+            </div>
+            
+            <!-- 访问方式 -->
+            <div class="section">
+                <h2>🚀 访问方式</h2>
+                
+                <div class="highlight-box">
+                    <strong>💡 推荐方式：</strong>双击运行 <code>启动参考文献数据库.bat</code>，自动启动服务器并打开浏览器！
+                </div>
+                
+                <h3>本地访问</h3>
+                <p><strong>方式1：</strong>双击启动脚本</p>
+                <div class="architecture-diagram">
+双击：启动参考文献数据库.bat
+                </div>
+                
+                <p><strong>方式2：</strong>手动启动</p>
+                <div class="architecture-diagram">
+cd "d:\学习\健身"
+python -m http.server 8080
+                </div>
+                
+                <p><strong>访问地址：</strong></p>
+                <ul class="feature-list">
+                    <li>主页：http://localhost:8080/知识库文档.html</li>
+                    <li>参考文献：http://localhost:8080/健身知识库与数据/知识库/references/index.html</li>
+                    <li>知识图谱：http://localhost:8080/知识图谱.html</li>
+                    <li>学习路径：http://localhost:8080/学习路径.html</li>
+                </ul>
+            </div>
+            
+            <!-- 未来规划 -->
+            <div class="section">
+                <h2>🎯 未来规划</h2>
+                <h3>P2阶段任务（待完成）</h3>
+                <ul class="feature-list">
+                    <li>扩展文献库至150+篇</li>
+                    <li>添加文献对比功能</li>
+                    <li>引用网络图可视化</li>
+                    <li>实践案例库（训练计划、饮食建议）</li>
+                    <li>多语言支持（英文摘要、术语翻译）</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>报告生成时间：</strong>2026年5月31日</p>
+            <p><strong>版本：</strong>3.0</p>
+            <p><strong>维护者：</strong>健身知识库团队</p>
+            <p style="margin-top: 15px; opacity: 0.7;">© 2026 Fitness Knowledge Base. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import articleIndex from '../data/articleIndex.json';
-import SkeletonLoader from '../components/SkeletonLoader';
 
 export default function Category() {
   const { category } = useParams();
@@ -20,39 +19,11 @@ export default function Category() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 font-sans">
-        {/* 顶部导航栏骨架 */}
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div className="h-6 bg-slate-200 rounded w-32 animate-pulse"></div>
-            <div className="h-6 bg-slate-200 rounded w-40 animate-pulse"></div>
-          </div>
-        </header>
-
-        {/* 主内容区骨架 */}
-        <main className="max-w-6xl mx-auto px-6 py-12">
-          {/* 标题骨架 */}
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 bg-slate-200 rounded-2xl animate-pulse"></div>
-              <div className="h-12 bg-slate-200 rounded-lg w-64 animate-pulse"></div>
-            </div>
-            <div className="h-6 bg-slate-200 rounded w-96 ml-20 animate-pulse"></div>
-          </div>
-
-          {/* 统计卡片骨架 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-white rounded-xl p-4 border border-slate-200 animate-pulse">
-                <div className="h-8 bg-slate-200 rounded w-16 mb-2"></div>
-                <div className="h-4 bg-slate-200 rounded w-24"></div>
-              </div>
-            ))}
-          </div>
-
-          {/* 文献列表骨架 */}
-          <SkeletonLoader type="list" />
-        </main>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">加载中...</p>
+        </div>
       </div>
     );
   }
