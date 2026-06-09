@@ -76,6 +76,8 @@ export default function Article() {
         .then(text => {
           setContent(text);
           setMeta({ title: file.title });
+          // 切换文章时滚动到页面顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(err => {
           console.error("Error loading article:", err);
@@ -84,6 +86,9 @@ export default function Article() {
     } else {
       setContent(`# 未找到相关报告`);
     }
+    
+    // 确保在组件挂载或参数变化时滚动到顶部
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [category, id]);
 
   return (
