@@ -74,7 +74,7 @@ export default defineConfig({
       }
     })
   ],
-  base: process.env.NODE_ENV === 'production' ? '/sport/' : '/', // 开发环境用根路径，生产环境用/sport/
+  base: '/', // 使用根路径,确保GitHub Pages正确访问
   publicDir: 'public',
   resolve: {
     alias: {
