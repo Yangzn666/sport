@@ -74,7 +74,7 @@ export default defineConfig({
       }
     })
   ],
-  base: '/', // 使用根路径,确保GitHub Pages正确访问
+  base: './', // 使用相对路径,支持GitHub Pages子目录部署
   publicDir: 'public',
   resolve: {
     alias: {
