@@ -64,7 +64,10 @@ export default function Article() {
     const file = findFile(articleIndex);
     if (file) {
       const basePath = import.meta.env.BASE_URL || '/';
-      const filePath = `${basePath}data/knowledge/${file.path}`;
+      // 支持从 knowledge 和 reports 两个目录加载
+      const filePath = file.path.includes('reports') 
+        ? `${basePath}data/${file.path}` 
+        : `${basePath}data/knowledge/${file.path}`;
       fetch(filePath)
         .then(res => {
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);

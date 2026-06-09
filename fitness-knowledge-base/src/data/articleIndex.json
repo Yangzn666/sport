@@ -94,5 +94,17 @@
         "title": "README_快速导航"
       }
     ]
+  },
+  {
+    "name": "personal-data",
+    "type": "folder",
+    "children": [
+      {
+        "name": "体脂秤数据分析报告",
+        "type": "file",
+        "path": "../reports/体脂秤数据分析报告.md",
+        "title": "体脂秤数据分析报告"
+      }
+    ]
   }
 ]
