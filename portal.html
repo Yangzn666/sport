@@ -6,107 +6,117 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>杨臻宁的项目空间 - THE GOAT</title>
+    <title>杨臻宁 - 项目空间</title>
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            /* Color System */
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text-primary: #0a0a0a;
+            --color-text-secondary: #525252;
+            --color-text-tertiary: #737373;
+            
+            /* Card-specific palettes */
+            --gold-primary: #d4af37;
+            --gold-light: #f4e4a6;
+            --gold-dark: #967bb6;
+            
+            --emerald-primary: #059669;
+            --emerald-light: #d1fae5;
+            --emerald-dark: #065f46;
+            
+            --violet-primary: #7c3aed;
+            --violet-light: #ede9fe;
+            --violet-dark: #5b21b6;
+            
+            /* Spacing scale */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            
+            /* Typography */
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: #ffffff;
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
-            position: relative;
             overflow-x: hidden;
-            color: #333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 移除粒子效果 */
-        .particles {
-            display: none;
-        }
-
-        .particle {
-            display: none;
-        }
-
+        /* Layout Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            padding: var(--space-xl) var(--space-lg);
         }
 
-        .header {
+        /* Hero Section */
+        .hero {
             text-align: center;
-            color: #2c3e50;
-            margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
+            padding: var(--space-2xl) 0;
+            position: relative;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-sm);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            color: #2c3e50;
-            font-weight: 700;
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.1s forwards;
         }
 
-        .header p {
-            font-size: 1.2em;
-            color: #666;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .project-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .project-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .project-card:nth-child(3) {
-            animation-delay: 0.3s;
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -114,180 +124,520 @@
             }
         }
 
+        /* Asymmetric Bento Grid */
+        .projects-bento {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+
+        /* Card Base Styles */
+        .project-card {
+            position: relative;
+            border-radius: 16px;
+            padding: var(--space-xl);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            opacity: 0;
+            animation: cardReveal 0.8s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes cardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-            border-color: #667eea;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .project-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
+        /* Card 1: GOAT Hall of Fame - Dark luxury with gold accents */
+        .card-goat {
+            grid-column: span 7;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .card-goat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .card-goat .card-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+        }
+
+        .card-goat .card-title {
+            color: var(--gold-light);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-goat .card-description {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .card-goat .tag {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .card-goat .cta-button {
+            background: linear-gradient(135deg, var(--gold-primary), #f4e4a6);
+            color: #0a0a0a;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .card-goat .cta-button:hover {
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Card 2: Knowledge Base - Clean emerald gradient */
+        .card-knowledge {
+            grid-column: span 5;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .card-knowledge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(5, 150, 105, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .card-knowledge .card-icon {
+            font-size: 3.5rem;
+        }
+
+        .card-knowledge .card-title {
+            color: var(--emerald-dark);
+        }
+
+        .card-knowledge .card-description {
+            color: var(--color-text-secondary);
+        }
+
+        .card-knowledge .tag {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--emerald-dark);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .card-knowledge .cta-button {
+            background: var(--emerald-primary);
+            color: white;
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
+        }
+
+        .card-knowledge .cta-button:hover {
+            background: var(--emerald-dark);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4);
+        }
+
+        /* Card 3: World Cup Novel - Violet/purple gradient */
+        .card-novel {
+            grid-column: span 12;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #ddd6fe 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            min-height: 380px;
+        }
+
+        .card-novel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-novel .card-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .card-novel .card-icon {
+            font-size: 4rem;
+        }
+
+        .card-novel .card-title {
+            color: var(--violet-dark);
+        }
+
+        .card-novel .card-description {
+            color: var(--color-text-secondary);
+        }
+
+        .card-novel .tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--violet-dark);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .card-novel .cta-button {
+            background: var(--violet-primary);
+            color: white;
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .card-novel .cta-button:hover {
+            background: var(--violet-dark);
+            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Card Content Structure */
+        .card-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .card-icon {
             display: block;
+            margin-bottom: var(--space-md);
+            transition: transform 0.3s ease;
         }
 
-        .project-title {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 15px;
+        .project-card:hover .card-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .card-title {
+            font-size: 1.75rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: var(--space-sm);
         }
 
-        .project-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 1em;
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
         }
 
-        .project-tags {
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-lg);
         }
 
         .tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 9999px;
             font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
         }
 
-        .project-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+        .project-card:hover .tag {
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-size: 0.9375rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            width: fit-content;
         }
 
-        .project-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        .cta-button:hover {
+            transform: translateY(-2px);
         }
 
+        .cta-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            color: #666;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 2px solid #e0e0e0;
+            padding: var(--space-2xl) 0 var(--space-xl);
+            margin-top: var(--space-2xl);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .footer p {
+            color: var(--color-text-tertiary);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xs);
         }
 
         .footer a {
-            color: #667eea;
+            color: var(--color-text-primary);
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.2s ease;
+            border-bottom: 1px solid transparent;
         }
 
         .footer a:hover {
-            text-decoration: underline;
+            color: var(--violet-primary);
+            border-bottom-color: currentColor;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .card-goat {
+                grid-column: span 12;
+            }
+
+            .card-knowledge {
+                grid-column: span 12;
+            }
+
+            .card-novel .card-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
+            .container {
+                padding: var(--space-lg) var(--space-md);
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: var(--space-xl) 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .projects-bento {
+                gap: var(--space-md);
             }
 
             .project-card {
-                padding: 30px;
+                padding: var(--space-lg);
+                min-height: auto;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-description {
+                font-size: 0.9375rem;
+            }
+
+            .card-icon {
+                font-size: 3rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .card-tags {
+                gap: 0.375rem;
+            }
+
+            .tag {
+                font-size: 0.6875rem;
+                padding: 0.3125rem 0.75rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-
     <div class="container">
-        <div class="header">
-            <h1> 欢迎来到我的项目空间</h1>
-            <p>探索我的个人项目和知识库</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <p class="hero-eyebrow">个人项目空间</p>
+            <h1 class="hero-title">探索创意与技术的交汇</h1>
+            <p class="hero-subtitle">足球传奇、运动科学、文学创作 —— 三个维度的热情项目</p>
+        </section>
+
+        <!-- Asymmetric Bento Grid -->
+        <div class="projects-bento">
+            <!-- Card 1: GOAT Hall of Fame -->
+            <article class="project-card card-goat" onclick="window.location.href='./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230'">
+                <div class="card-header">
+                    <span class="card-icon">🏆</span>
+                    <h2 class="card-title">黄佳炀 · 球王荣耀殿堂</h2>
+                    <p class="card-description">
+                        THE GOAT传奇之路 · 65+项个人荣誉全景展示。沉浸式体验梅开二度球王风采，C罗风格特效拉满的视觉盛宴，见证临安少年征服浙西天路的荣耀时刻。
+                    </p>
+                </div>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">⚽ 足球传奇</span>
+                        <span class="tag">✨ 特效展示</span>
+                        <span class="tag">🌟 荣耀时刻</span>
+                        <span class="tag">THE GOAT</span>
+                    </div>
+                    <a href="./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230" class="cta-button">
+                        进入荣耀殿堂 →
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 2: Fitness Knowledge Base -->
+            <article class="project-card card-knowledge" onclick="window.location.href='./fitness-knowledge-base/dist/index.html'">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2 class="card-title">健身与跑步科学知识库</h2>
+                    <p class="card-description">
+                        React + Vite构建的专业运动科学管理系统。整合运动生理学、力量训练、有氧耐力、营养恢复四大核心模块，引用40+篇2024-2026年前沿研究文献，打造数据驱动的科学训练体系。
+                    </p>
+                </div>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">React 19</span>
+                        <span class="tag">Vite 8</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">科学训练</span>
+                        <span class="tag">数据分析</span>
+                    </div>
+                    <a href="./fitness-knowledge-base/dist/index.html" class="cta-button">
+                        进入知识库 →
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 3: Four Emperors Legend -->
+            <article class="project-card card-novel" onclick="window.location.href='./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430'">
+                <div class="card-content">
+                    <div>
+                        <span class="card-icon">📚</span>
+                        <h2 class="card-title">四皇传奇</h2>
+                        <p class="card-description">
+                            中国队勇夺世界杯冠军！四皇集结、神之教练方毅传授秘籍、互联网热梗与文学深度完美融合。从小组赛惊魂到决赛巅峰之战，十章史诗级足球小说，见证黄金时代的降临。SIUUU！
+                        </p>
+                    </div>
+                    <div>
+                        <div class="card-tags">
+                            <span class="tag">⚽ 足球小说</span>
+                            <span class="tag">🏆 世界杯</span>
+                            <span class="tag">🔥 互联网热梗</span>
+                            <span class="tag">✨ 十章史诗</span>
+                            <span class="tag">陀思妥耶夫斯基风格</span>
+                        </div>
+                        <a href="./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430" class="cta-button">
+                            开始阅读 SIUUU! →
+                        </a>
+                    </div>
+                </div>
+            </article>
         </div>
 
-        <div class="projects-grid">
-            <!-- 黄佳炀荣耀殿堂 -->
-            <div class="project-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border: 2px solid #FFD700;" onclick="window.location.href='./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230'">
-                <span class="project-icon" style="font-size: 5em;">🏆</span>
-                <h2 class="project-title" style="color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">黄佳炀 - 球王荣耀殿堂</h2>
-                <p class="project-description" style="color: #fff;">
-                    THE GOAT · 临安传奇 · 浙西天路征服者。展示65+项个人荣誉、梅开二度球王风采、C罗风格特效拉满的荣耀展示页面。
-                </p>
-                <div class="project-tags">
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">⚽ 足球传奇</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> 个人成就</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">✨ 特效展示</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">🌟 荣耀时刻</span>
-                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> THE GOAT</span>
-                </div>
-                <a href="./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230" class="project-link" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);">进入荣耀殿堂 →</a>
-            </div>
-
-            <!-- 健身与跑步科学知识库 -->
-            <div class="project-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);" onclick="window.location.href='./fitness-knowledge-base/dist/index.html'">
-                <span class="project-icon">📊</span>
-                <h2 class="project-title">健身与跑步科学知识库</h2>
-                <p class="project-description">
-                    基于React + Vite构建的专业健身知识管理系统。涵盖运动生理学、力量训练、有氧耐力、营养恢复等完整科学知识体系,引用40+篇2024-2026年最新研究文献。
-                </p>
-                <div class="project-tags">
-                    <span class="tag" style="background: rgba(255,255,255,0.3);">React 19</span>
-                    <span class="tag" style="background: rgba(255,255,255,0.3);">Vite 8</span>
-                    <span class="tag" style="background: rgba(255,255,255,0.3);">Tailwind CSS</span>
-                    <span class="tag" style="background: rgba(255,255,255,0.3);"> 科学训练</span>
-                    <span class="tag" style="background: rgba(255,255,255,0.3);"> 数据分析</span>
-                </div>
-                <a href="./fitness-knowledge-base/dist/index.html" class="project-link" style="background: rgba(255,255,255,0.9); color: #11998e; box-shadow: 0 4px 20px rgba(17, 153, 142, 0.4);">进入知识库 →</a>
-            </div>
-
-            <!-- 世界杯传奇小说 -->
-            <div class="project-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" onclick="window.location.href='./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430'">
-                <span class="project-icon">📚</span>
-                <h2 class="project-title">2026世界杯传奇</h2>
-                <p class="project-description">
-                    中国队勇夺世界杯冠军！四皇集结、神之教练方毅传授秘籍、互联网热梗拉满！从小组赛到决赛巅峰之战，十章史诗级足球小说！SIUUU！
-                </p>
-                <div class="project-tags">
-                    <span class="tag"> THE GOAT</span>
-                    <span class="tag">⚽ 足球小说</span>
-                    <span class="tag">🏆 世界杯</span>
-                    <span class="tag">🔥 互联网热梗</span>
-                    <span class="tag">✨ 十章史诗</span>
-                </div>
-                <a href="./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430" class="project-link">开始阅读 SIUUU! →</a>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>© 2026 杨臻宁 | <a href="https://github.com/Yangzn666/sport" target="_blank">GitHub</a></p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Made with ❤️ and 💪</p>
-        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 杨臻宁 · <a href="https://github.com/Yangzn666/sport" target="_blank">GitHub</a></p>
+            <p>Made with ❤️ and 💪</p>
+        </footer>
     </div>
 
     <script>
-        // 添加粒子效果
-        function createParticles() {
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.width = particle.style.height = (Math.random() * 10 + 5) + 'px';
-                document.getElementById('particles').appendChild(particle);
-            }
-        }
-        createParticles();
+        // Smooth scroll behavior for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect on mouse move for cards
+        const cards = document.querySelectorAll('.project-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
