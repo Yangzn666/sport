@@ -3,390 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>健身与跑步科学知识库</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>杨臻宁的项目空间 - THE GOAT</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #ffffff;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            color: #333;
         }
-        
+
+        /* 移除粒子效果 */
+        .particles {
+            display: none;
+        }
+
+        .particle {
+            display: none;
+        }
+
         .container {
-            max-width: 800px;
-            width: 100%;
-        }
-        
-        .main-card {
-            background: white;
-            border-radius: 16px;
-            padding: 70px 60px 60px 60px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            max-width: 1100px;
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2c3e50 0%, #3498db 50%, #2c3e50 100%);
-        }
-        
-        /* 特色功能展示 */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 50px 0 45px 0;
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
-        
-        .feature-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 28px 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            background: white;
-            border-color: #cbd5e1;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            transform: translateY(-4px);
-        }
-        
-        .feature-item:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature-icon {
-            font-size: 36px;
-            margin-bottom: 16px;
-            display: block;
-        }
-        
-        .feature-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 10px;
-            letter-spacing: 0.3px;
-        }
-        
-        .feature-desc {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.7;
-        }
-        
-        h1 {
-            font-size: 42px;
+
+        .header {
+            text-align: center;
             color: #2c3e50;
-            margin-bottom: 12px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .subtitle {
-            font-size: 16px;
-            color: #64748b;
             margin-bottom: 50px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1;
+            animation: fadeInDown 0.8s ease-out;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
         }
-        
-        .description {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #475569;
-            margin-bottom: 50px;
-            text-align: center;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .enter-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
-            overflow: hidden;
-        }
-        
-        .enter-btn {
-            display: inline-block;
-            background: #2c3e50;
-            color: white;
-            padding: 16px 48px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 12px rgba(44,62,80,0.15);
-            border: 2px solid transparent;
-        }
-        
-        .enter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .enter-btn:hover::before {
-            left: 100%;
-        }
-        
-        .enter-btn:hover {
-            background: white;
-            color: #2c3e50;
-            border-color: #2c3e50;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(44,62,80,0.2);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #94a3b8;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 15px;
-            }
-            
-            .main-card {
-                padding: 50px 30px 40px 30px;
-            }
-            
-            h1 {
-                font-size: 32px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-                margin-bottom: 40px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                margin: 40px 0 35px 0;
-            }
-            
-            .feature-item {
-                padding: 24px 20px;
-            }
-            
-            .description {
-                font-size: 15px;
-                margin-bottom: 40px;
-            }
-            
-            .enter-btn {
-                padding: 14px 40px;
-                font-size: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .main-card {
-                padding: 50px 25px 30px 25px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            .subtitle {
-                font-size: 15px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .feature-item {
-                padding: 18px 15px;
-            }
-            
-            .description {
-                font-size: 15px;
-            }
-            
-            .enter-btn {
-                padding: 16px 40px;
-                font-size: 16px;
-            }
-        }
-        
-        /* 加载动画 */
-        @keyframes fadeInUp {
+
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
-        @keyframes scaleIn {
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: scale(0.9);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: translateY(0);
             }
         }
-        
-        .main-card {
-            animation: fadeInUp 1s ease-out, scaleIn 0.8s ease-out;
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
         }
-        
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        .project-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+
+        .project-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 0;
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1em;
         }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+
     <div class="container">
-        <div class="main-card">
-            <h1>健身与跑步科学知识库</h1>
-            <p class="subtitle">Evidence-Based Fitness & Running Science</p>
-            
-            <!-- 特色功能展示 -->
-            <div class="features">
-                <div class="feature-item">
-                    <div class="feature-icon">📚</div>
-                    <div class="feature-title">10大核心文档</div>
-                    <div class="feature-desc">涵盖生理学、力量训练、有氧耐力等完整知识体系</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🔬</div>
-                    <div class="feature-title">40+权威文献</div>
-                    <div class="feature-desc">引用2024-2026年最新PubMed研究文献</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-title">可视化图表</div>
-                    <div class="feature-desc">Mermaid流程图、时序图直观展示复杂概念</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💡</div>
-                    <div class="feature-title">实用方案</div>
-                    <div class="feature-desc">每个理论配套实践示例和训练建议</div>
-                </div>
-            </div>
-            
-            <!-- 新增功能入口 -->
-            <div style="margin: 30px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="知识图谱.html" class="enter-btn" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); font-size: 15px; padding: 12px 25px;">🕸️ 知识图谱</a>
-                <a href="学习路径.html" class="enter-btn" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%); font-size: 15px; padding: 12px 25px;">🗺️ 学习路径</a>
-            </div>
-            
-            <p class="description">
-                基于PubMed最新文献的自动化知识聚合平台。涵盖运动生理学、力量训练、有氧耐力、营养恢复等完整科学知识体系，为训练提供循证指导。
-            </p>
-            
-            <a href="知识库文档.html" class="enter-btn">进入知识库 →</a>
+        <div class="header">
+            <h1> 欢迎来到我的项目空间</h1>
+            <p>探索我的个人项目和知识库</p>
         </div>
-        
+
+        <div class="projects-grid">
+            <!-- 黄佳炀荣耀殿堂 -->
+            <div class="project-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border: 2px solid #FFD700;" onclick="window.location.href='./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230'">
+                <span class="project-icon" style="font-size: 5em;">🏆</span>
+                <h2 class="project-title" style="color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">黄佳炀 - 球王荣耀殿堂</h2>
+                <p class="project-description" style="color: #fff;">
+                    THE GOAT · 临安传奇 · 浙西天路征服者。展示65+项个人荣誉、梅开二度球王风采、C罗风格特效拉满的荣耀展示页面。
+                </p>
+                <div class="project-tags">
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">⚽ 足球传奇</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> 个人成就</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">✨ 特效展示</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);">🌟 荣耀时刻</span>
+                    <span class="tag" style="background: linear-gradient(135deg, #FFD700, #FFA500);"> THE GOAT</span>
+                </div>
+                <a href="./goat-gallery/THE_GOAT_HUANG_JIAYANG.html?v=202606031230" class="project-link" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);">进入荣耀殿堂 →</a>
+            </div>
+
+            <!-- 健身与跑步科学知识库 -->
+            <div class="project-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);" onclick="window.location.href='./项目说明.html'">
+                <span class="project-icon">📊</span>
+                <h2 class="project-title">健身与跑步科学知识库</h2>
+                <p class="project-description">
+                    基于React + Vite构建的专业健身知识管理系统。涵盖运动生理学、力量训练、有氧耐力、营养恢复等完整科学知识体系，引用40+篇2024-2026年最新研究文献。
+                </p>
+                <div class="project-tags">
+                    <span class="tag" style="background: rgba(255,255,255,0.3);">React 19</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.3);">Vite 8</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.3);">Tailwind CSS</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.3);"> 科学训练</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.3);"> 数据分析</span>
+                </div>
+                <a href="./项目说明.html" class="project-link" style="background: rgba(255,255,255,0.9); color: #11998e; box-shadow: 0 4px 20px rgba(17, 153, 142, 0.4);">进入知识库 →</a>
+            </div>
+
+            <!-- 世界杯传奇小说 -->
+            <div class="project-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" onclick="window.location.href='./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430'">
+                <span class="project-icon">📚</span>
+                <h2 class="project-title">2026世界杯传奇</h2>
+                <p class="project-description">
+                    中国队勇夺世界杯冠军！四皇集结、神之教练方毅传授秘籍、互联网热梗拉满！从小组赛到决赛巅峰之战，十章史诗级足球小说！SIUUU！
+                </p>
+                <div class="project-tags">
+                    <span class="tag"> THE GOAT</span>
+                    <span class="tag">⚽ 足球小说</span>
+                    <span class="tag">🏆 世界杯</span>
+                    <span class="tag">🔥 互联网热梗</span>
+                    <span class="tag">✨ 十章史诗</span>
+                </div>
+                <a href="./世界杯传奇/小说主页_荒诞与救赎_完整版.html?v=202606031430" class="project-link">开始阅读 SIUUU! →</a>
+            </div>
+        </div>
+
         <div class="footer">
-            <p>本地静态版本 | 无需服务器 | 离线可用</p>
+            <p>© 2026 杨臻宁 | <a href="https://github.com/Yangzn666/sport" target="_blank">GitHub</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Made with ❤️ and 💪</p>
         </div>
     </div>
+
+    <script>
+        // 添加粒子效果
+        function createParticles() {
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.width = particle.style.height = (Math.random() * 10 + 5) + 'px';
+                document.getElementById('particles').appendChild(particle);
+            }
+        }
+        createParticles();
+    </script>
 </body>
 </html>
