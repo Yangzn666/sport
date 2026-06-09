@@ -93,8 +93,8 @@ export default function Article() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans">
-      {/* 顶部导航栏 */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm">
+      {/* 顶部导航栏 - 移动端不悬浮,桌面端悬浮 */}
+      <header className="static md:sticky md:top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium group">
             <div className="mr-2 p-1 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 transition-colors">

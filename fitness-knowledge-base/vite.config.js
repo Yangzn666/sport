@@ -72,10 +72,44 @@ export default defineConfig({
       devOptions: {
         enabled: false // 开发环境禁用PWA
       }
-    })
+    }),
+    {
+      name: 'copy-data-dir',
+      buildEnd: async () => {
+        const fs = await import('fs');
+        const path = await import('path');
+        const srcDir = path.resolve(__dirname, 'data');
+        const destDir = path.resolve(__dirname, 'dist', 'data');
+        
+        // 如果 source data 目录存在，复制到 dist
+        if (fs.existsSync(srcDir)) {
+          if (!fs.existsSync(destDir)) {
+            fs.mkdirSync(destDir, { recursive: true });
+          }
+          
+          // 递归复制目录
+          function copyDir(src, dest) {
+            const entries = fs.readdirSync(src, { withFileTypes: true });
+            for (const entry of entries) {
+              const srcPath = path.join(src, entry.name);
+              const destPath = path.join(dest, entry.name);
+              if (entry.isDirectory()) {
+                fs.mkdirSync(destPath, { recursive: true });
+                copyDir(srcPath, destPath);
+              } else {
+                fs.copyFileSync(srcPath, destPath);
+              }
+            }
+          }
+          
+          copyDir(srcDir, destDir);
+          console.log('✅ Data directory copied to dist/');
+        }
+      }
+    }
   ],
   base: './', // 使用相对路径,支持GitHub Pages子目录部署
-  publicDir: 'public',
+  publicDir: 'public', // 静态资源目录
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
