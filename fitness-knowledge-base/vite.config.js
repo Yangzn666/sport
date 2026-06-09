@@ -90,15 +90,6 @@ export default defineConfig({
     sourcemap: false,
     outDir: 'dist',
     emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          markdown: ['react-markdown', 'remark-gfm', 'remark-math', 'rehype-katex'],
-          charts: ['recharts', 'mermaid']
-        }
-      }
-    },
   },
   server: {
     host: '127.0.0.1', // 明确指定IPv4地址
